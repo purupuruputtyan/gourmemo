@@ -69,10 +69,13 @@ ActiveRecord::Schema.define(version: 2023_05_03_021023) do
 
   create_table "posts", force: :cascade do |t|
     t.string "shop_name", null: false
+    t.string "address"
+    t.float "latitude"
+    t.float "longitude"
     t.string "menu", null: false
-    t.text "impression"
+    t.text "impression", null: false
     t.integer "price"
-    t.integer "volume_status", default: 1
+    t.integer "volume_status", default: 1, null: false
     t.string "star", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
@@ -93,6 +96,7 @@ ActiveRecord::Schema.define(version: 2023_05_03_021023) do
     t.datetime "remember_created_at"
     t.string "name", null: false
     t.text "introduction"
+    t.integer "status", default: 0, null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["email"], name: "index_users_on_email", unique: true
