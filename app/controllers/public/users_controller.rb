@@ -24,13 +24,19 @@ class Public::UsersController < ApplicationController
   end
 
   def confirm_deleted
-    
+    @user = current_user
   end
   
   def is_deleted
+    @user = current_user
+    @user.update(status: 2)
+    reset_session
+    flash[:notice] = "退会処理を実行いたしました"
+    redirect_to root_path
   end
   
   def my_page
+    @user = current_user
   end
   
 private

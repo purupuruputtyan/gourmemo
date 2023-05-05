@@ -21,8 +21,8 @@ scope module: :public do
   root to: 'homes#top'
   get '/about' => 'homes#about'
   get '/my_page' => 'users#my_page'
-  get 'users/confirm_deleted' => 'users#confirn_deleted'
-  patch 'users/is_deleted' => 'users#is_deleted'
+  get 'users/confirm_deleted' => 'users#confirn_deleted', as: 'confirm_deleted'
+  patch 'users/is_deleted' => 'users#is_deleted', as: 'is_deleted'
   resources :users, only: [:index, :show, :edit, :updaate] do
     resource :relationships, only: [:create, :destroy]
     get 'followings' => 'relationships#followings', as: 'followings'
