@@ -1,6 +1,11 @@
 <div class="container px-5 px-sm-0">
   <div class="row">
-    <h2>マイページ</h2>
-    <%= render 'profile', user: @user %>
+    <div class="col-lg-2 col-md-3 col-sm-4">
+      <%= render 'layouts/sidebar' %>
+    </div>
+    <div class='col-lg-10 col-md-9 col-sm-6'>
+      <h2>マイページ</h2>
+      <%= render 'profile', user: @user %>
+    </div>
   </div>
 </div>

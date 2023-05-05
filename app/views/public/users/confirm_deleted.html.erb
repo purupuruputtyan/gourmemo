@@ -1,19 +1,17 @@
 <div class="container">
   <div class="row">
     <div class="col-md-6 mx-auto mt-5">
-      <h3 class="text-center">退会のお手続き</h3>
+      <h3 class="text-center">本当に退会しますか？</h3>
 
       <p class="text-center">
         退会すると、会員登録情報や<br>
         これまでの購入履歴が閲覧できなくなります。<br>
-        退会する場合は、「退会する」をクリックしてください。<br>
-        本当に退会してよろしいでしょうか？
+        退会する場合は、「退会する」をクリックしてください。
       </p>
-
-        <div class="d-grid gap-2 d-md-block text-center">
-          <%= link_to "退会しない", my_page_path, class: 'btn btn-primary' %>
-          <%= link_to "退会する", is_deleted_path, method: :patch, class: 'btn btn-danger' %>
-        </div>
+      <div class="d-grid gap-2 d-md-block text-center">
+        <%= link_to "退会しない", my_page_path, class: 'btn btn-primary' %>
+        <%= link_to "退会する", is_deleted_path, method: :patch, class: 'btn btn-danger' %>
+      </div>
 
     </div>
   </div>

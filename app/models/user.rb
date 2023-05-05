@@ -27,4 +27,8 @@ class User < ApplicationRecord
   #  super && (status_i18n == "退会")
   #end
 
+  def active_for_authentication?
+    super && (self.status == 'withdraw')
+  end
+
 end

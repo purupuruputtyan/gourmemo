@@ -16,9 +16,6 @@
 
           <%= f.radio_button :status, User.statuses.key(1) %>
           <%= f.label :status_nonreleased, User.statuses_i18n[:nonreleased]%>
-
-          <%= f.radio_button :status, User.statuses.key(2) %>
-          <%= f.label :status_withdraw, User.statuses_i18n[:withdraw]%>
         </div>
         <div class="form-group">
           <label for="user_name">ニックネーム</label>
