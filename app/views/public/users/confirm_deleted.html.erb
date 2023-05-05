@@ -10,7 +10,7 @@
       </p>
       <div class="d-grid gap-2 d-md-block text-center">
         <%= link_to "退会しない", my_page_path, class: 'btn btn-primary' %>
-        <%= link_to "退会する", is_deleted_path, method: :patch, class: 'btn btn-danger' %>
+        <%= link_to "退会する", is_deleted_path, method: :patch, "data-confirm" => "OKを押すと退会処理がされます。本当によろしいですか？", class: 'btn btn-danger' %>
       </div>
 
     </div>

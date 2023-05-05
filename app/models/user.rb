@@ -13,7 +13,7 @@ class User < ApplicationRecord
   enum status: { released: 0, nonreleased: 1, withdraw: 2 }
 
   #ユーザーステータスが”退会”以外のユーザーをユーザー一覧で表示させるためのscope
-  scope :active_user, -> { where(status: 0).or(where(status: 1)) }#(条件).or(モデル名.where(条件))#where(status: 0).where(status: 1)
+  scope :active_user, -> { where(status: 0).or(where(status: 1)) }
 
   has_many :posts, dependent: :destroy
   has_many :favorites, dependent: :destroy
@@ -29,5 +29,13 @@ class User < ApplicationRecord
   def active_for_authentication?
     super && (self.status == 'released')
   end
+  
+  def self.guest
+    find_or_create_by!(name: 'guestuser' ,email: 'guest@example.com') do |user|
+      user.password = SecureRandom.urlsafe_base64
+      user.name = "guestuser"
+    end
+  end
+
 
 end
