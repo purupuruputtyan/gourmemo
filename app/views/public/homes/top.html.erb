@@ -1,0 +1,34 @@
+<div class="container">
+  <div class="row">
+    <div class="mx-auto col-11 col-sm-10 col-lg-8 col-xl-6">
+      <% if user_signed_in? %>
+       トップページ
+        <li>
+          <%= link_to "ログアウト", destroy_user_session_path, method: :get %>
+        </li>
+      <% else %>
+        <h1>
+          <strong>グルメモ</strong>
+          &nbsp;へようこそ！
+        </h1>
+        <p>
+          何か文を書く
+        </p>
+        <P>
+           何か文を書く<i class="fas fa-broadcast-tower"></i>
+        </P>
+        <div class-"btn-wrapper col-10 mx-auto">
+          <div class="row">
+          　<%= link_to 'ゲストログイン（閲覧用）', users_guest_sign_in_path, class: "btn btn-secondary btn-sm btn-block mb-3 sign_in", method: :post %>
+          </div>
+          <div class="row">
+            <%= link_to 'Log in', new_user_session_path, class: "btn btn-info btn-sm btn-block mb-3" %>
+          </div>
+          <div class="row">
+            <%= link_to 'Sign up', new_user_registration_path, class: "btn btn-success btn-sm btn-block" %>
+          </div>
+        </div>
+       <% end %>
+      </div>
+    </div>
+  </div>
