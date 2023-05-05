@@ -7,7 +7,7 @@
       <li><%= link_to '投稿一覧', posts_path %></li>
       <li><%= link_to 'ユーザー一覧', users_path %></li>
       <li><%= link_to 'ログアウト', destroy_admin_session_path, method: :get %></li>
-      <li><%= link_to '退会する', confirm_deleted_path %></li>
+      <li><%= link_to '退会する', confirm_deleted_path, "data-confirm" => "OKを押すと退会処理がされます。本当によろしいですか？" %></li>
     </ul>
   </div>
 </div>

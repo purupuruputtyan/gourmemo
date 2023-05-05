@@ -2,7 +2,7 @@ class Public::UsersController < ApplicationController
   before_action :is_matching_login_user, only: [:edit, :update]
 
   def index
-    @users = User.all
+    @users = User.active_user
   end
 
   def show

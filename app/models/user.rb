@@ -12,6 +12,9 @@ class User < ApplicationRecord
 
   enum status: { released: 0, nonreleased: 1, withdraw: 2 }
 
+  #ユーザーステータスが”退会”以外のユーザーをユーザー一覧で表示させるためのscope
+  scope :active_user, -> { where(status: 0).or(where(status: 1)) }#(条件).or(モデル名.where(条件))#where(status: 0).where(status: 1)
+
   has_many :posts, dependent: :destroy
   has_many :favorites, dependent: :destroy
 
@@ -23,12 +26,8 @@ class User < ApplicationRecord
     profile_image.variant(resize_to_limit: [width, height]).processed
   end
 
-  #def active_for_authentication?
-  #  super && (status_i18n == "退会")
-  #end
-
   def active_for_authentication?
-    super && (self.status == 'withdraw')
+    super && (self.status == 'released')
   end
 
 end

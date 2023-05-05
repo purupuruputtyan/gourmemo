@@ -23,10 +23,11 @@ protected
 
   def user_state
     @user = User.find_by(email: params[:user][:email])
-    return if !@user
-    if @user.valid_password?(params[:user][:password]) && (@user.status == 'withdraw')
-      flash[:notice] = "退会済みです。再度ご登録をしてご利用ください。"
-      redirect_to root_path
+    if @user
+      if @user.valid_password?(params[:user][:password]) && (@user.status == 'withdraw')
+        flash[:notice] = "退会済みです。再度ご登録をしてご利用ください。"
+        redirect_to root_path
+      end
     end
   end
 

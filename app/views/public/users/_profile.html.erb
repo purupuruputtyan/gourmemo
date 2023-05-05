@@ -27,4 +27,13 @@
       <div>自己紹介文がありません</div>
     <% end %>
   </div>
+  <div class="row">
+    <div><strong>投稿一覧</strong></div>
+    <% if user.status == 'released' %>
+      <div>公開中</div>
+    <% elsif user.status == 'nonreleased' %>
+      <div>このユーザーは非公開です。</div>
+    <% end %>
+  </div>
 </div>
+
