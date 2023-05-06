@@ -18,7 +18,7 @@ class Public::UsersController < ApplicationController
     @user = User.find(params[:id])
     if @user.update(user_params)
       redirect_to  my_page_path
-      flash[:notice] = "編集が成功しました"
+      flash[:notice] = "編集に成功しました"
     else
       render :edit
     end

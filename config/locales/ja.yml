@@ -5,6 +5,11 @@ ja:
         released: "公開"
         nonreleased: "非公開"
         withdraw: "退会"
+    post:
+      volume_status:
+        full: "多い"
+        just_right: "ちょうどいい"
+        not_enough: "物足りない"
 
   activerecord:
     errors:

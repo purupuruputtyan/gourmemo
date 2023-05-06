@@ -1,0 +1,70 @@
+<%= form_with model: post do |f| %>
+  <div class="form-group">
+    <label for="user_image">お食事の写真</label>
+    <%= f.file_field :post_image, accept: "image/*" %>
+  </div>
+  <div class="form-group">
+    <label for="shop_name">お店の名前</label>
+    <div><%= f.text_field :shop_name, class: "form-control", placeholder: "必須入力" %></div>
+  </div>
+  <div class="form-group">
+    <label for="shop_address_introduction">住所</label>
+    <div><%= f.text_field :address, class: "form-control", placeholder: "任意入力" %></div>
+  </div>
+  <div class="form-group">
+    <label for="menu">メニュー名</label>
+    <div><%= f.text_field :menu, class: "form-control", placeholder: "必須入力" %></div>
+  </div>
+  <div class="form-group">
+    <label for="impression">感想</label>
+    <div><%= f.text_area :impression, class: "form-control", placeholder: "必須入力" %></div>
+  </div>
+  <div class="form-group">
+    <label for="price">値段</label>
+    <div><%= f.text_field :price, class: "form-control", placeholder: "任意入力" %>円</div>
+  </div>
+  <div class="form-group">
+    <label for="volume_status">ボリューム感</label>
+    <div>
+      <%= f.radio_button :volume_status, Post.volume_statuses.key(0) %>
+      <%= f.label :volume_status_full, Post.volume_statuses_i18n[:full] %>
+  
+      <%= f.radio_button :volume_status, Post.volume_statuses.key(1) %>
+      <%= f.label :volume_status_just_right, Post.volume_statuses_i18n[:just_right]%>
+      
+      <%= f.radio_button :volume_status, Post.volume_statuses.key(2) %>
+      <%= f.label :volume_status_not_enough, Post.volume_statuses_i18n[:not_enough]%>
+    </div>
+  </div>
+  
+  <% if post.id.nil? %>
+    <div class="form-group" id="star">
+      <%= f.label :star %>
+      <%= f.hidden_field :star, id: :review_star, class: 'form-control' %>
+      <div id="post_raty"></div>
+    </div>
+    <script>
+      $(document).on('turbolinks:load', function() {
+        let elem = document.querySelector('#post_raty');
+        if (elem == null) return;
+
+        elem.innerHTML = ""
+        let opt = {
+          starOn: "<%= asset_path('star-on.png') %>",
+          starOff: "<%= asset_path('star-off.png') %>",
+          starHalf: "<%= asset_path('star-half.png') %>",
+          scoreName: 'post[star]',
+        };
+        raty(elem, opt);
+      });
+    </script>
+  <% else %>
+    <div class="form-group">
+      <%= render "static_rate", post: post %>
+    </div>
+  <% end %>
+
+  <div class="form-group">
+    <%= f.submit '投稿する', class: "btn btn-secondary" %>
+  </div>
+<% end %>
