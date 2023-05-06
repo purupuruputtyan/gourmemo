@@ -1,0 +1,73 @@
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-xs-12 col-md-10 col-md-offset-1" id="shop-detail-wrapper">
+      <div class="row">
+        <div class="col-xs-12 col-md-9 text-left">
+          <div><%= @post.user.get_profile_image(50,50) %></div>
+          <h4><%= @post.user.name %></h4>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-xs-12 col-md-7">
+          <div><%= image_tag @post.get_image(300,200) %></div>
+        </div>
+        <div class="shop-info col-xs-12 col-md-5">
+          <dl>
+            <dt>お店の名前</dt>
+            <dd><%= @post.shop_name %></dd>
+            <dt>住所</dt>
+            <dd><%= @post.address %></dd>
+            <dt>メニュー名</dt>
+            <dd><%= @post.menu %></dd>
+            <dt>感想</dt>
+            <dd><%= @post.introduction %></dd>
+            <dt>値段</dt>
+            <dd><%= @post.price %></dd>
+            <dt>ボリューム</dt>
+            <dd><%= @post.volume_status_i18n %></dd>
+            <dt>また食べたい度</dt>
+            <dd><%= render "static_rate", post: @post %></dd>
+          </dl>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-xs-12">
+          <h3>コメント一覧</h3>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-xs-12">
+          <h3>マップ</h3>
+        </div>
+        <div class="col-xs-12 col-md-10 col-md-offset-1">
+
+          <div id="map"></div>
+          <style>
+               #map {
+               height: 500px;
+               width: 70%;
+              }
+          </style>
+          <script>
+            function initMap() {
+              var uluru = {lat: <%= post.latitude %>, lng: <%= post.longitude %>};
+              var map = new google.maps.Map(document.getElementById('map'), {
+              zoom: 16,
+              enter: uluru
+              });
+              var marker = new google.maps.Marker({
+                position: uluru,
+                map: map
+              });
+                 }
+          </script>
+          <script src="https://maps.googleapis.com/maps/api/js?key=<%= ENV['GOOGLEMAP'] %>&callback=initMap"async defer></script>
+
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

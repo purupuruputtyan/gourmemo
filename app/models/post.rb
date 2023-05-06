@@ -4,7 +4,7 @@ class Post < ApplicationRecord
   validates :introduction, length: { maximum: 50 }
   validates :status, presence: true
   
-  has_one_attached :post_image
+  has_one_attached :pimage
   
   belongs_to :user
   

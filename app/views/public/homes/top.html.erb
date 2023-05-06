@@ -4,7 +4,7 @@
       <% if user_signed_in? %>
        トップページ
         <li>
-          <%= link_to "ログアウト", destroy_user_session_path, method: :get %>
+          <%= link_to "ログアウト", destroy_user_session_path, method: :delete %>
         </li>
       <% else %>
         <h1>
