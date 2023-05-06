@@ -1,8 +1,10 @@
 class Post < ApplicationRecord
 
-  validates :shop_name, presence: true, uniqueness: true, length: { in: 2..20 }
-  validates :impression, length: { maximum: 50 }
-  # validates :status, presence: true
+  validates :shop_name, presence: true, length: { in: 2..30 }
+  validates :menu, presence: true, length: { maximum: 30 }
+  validates :impression, length: { maximum: 100 }
+  validates :volume_status, presence: true
+  validates :star, presence: true
 
   has_one_attached :image
 

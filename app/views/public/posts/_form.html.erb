@@ -28,15 +28,15 @@
     <div>
       <%= f.radio_button :volume_status, Post.volume_statuses.key(0) %>
       <%= f.label :volume_status_full, Post.volume_statuses_i18n[:full] %>
-  
+
       <%= f.radio_button :volume_status, Post.volume_statuses.key(1) %>
       <%= f.label :volume_status_just_right, Post.volume_statuses_i18n[:just_right]%>
-      
+
       <%= f.radio_button :volume_status, Post.volume_statuses.key(2) %>
       <%= f.label :volume_status_not_enough, Post.volume_statuses_i18n[:not_enough]%>
     </div>
   </div>
-  
+
   <% if post.id.nil? %>
     <div class="form-group" id="star">
       <%= f.label :star %>
@@ -65,6 +65,10 @@
   <% end %>
 
   <div class="form-group">
-    <%= f.submit '投稿する', class: "btn btn-secondary" %>
+    <% if f.object.new_record? %>
+      <%= f.submit '投稿する', class: "btn btn-success" %>
+    <% else %>
+      <%= f.submit '更新する', class: "btn btn-success" %>
+    <% end %>
   </div>
 <% end %>
