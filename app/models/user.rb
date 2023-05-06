@@ -9,7 +9,7 @@ class User < ApplicationRecord
   validates :status, presence: true
 
   has_one_attached :profile_image
-  
+
   #公開、非公開、退会のユーザーをenumでまとめて管理
   enum status: { released: 0, nonreleased: 1, withdraw: 2 }
 
@@ -28,9 +28,9 @@ class User < ApplicationRecord
   end
 
   def active_for_authentication?
-    super && (self.status == 'released')
+    super && !self.withdraw?
   end
-  
+
   def self.guest
     find_or_create_by!(name: 'guestuser' ,email: 'guest@example.com') do |user|
       user.password = SecureRandom.urlsafe_base64

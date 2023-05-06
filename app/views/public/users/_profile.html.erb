@@ -1,7 +1,7 @@
 <div class="container">
   <div class="row">
     <div class="col-lg-4">
-      <%= image_tag user.get_profile_image(80,80) %>
+      <%= image_tag user.get_profile_image(100,100), class: "mt-o rounded-circle"; %>
     </div>
     <div class="col-lg-5">
       <div><strong>名前</strong></div>
@@ -35,9 +35,9 @@
   </div>
   <div class="row">
     <div><strong>投稿一覧</strong></div>
-    <% if user.status == 'released' %>
-      <div>公開中</div>
-    <% elsif user.status == 'nonreleased' %>
+    <% if user.released? || user == current_user %>
+      <div><%= render 'public/posts/history', posts: posts %></div>
+    <% elsif user.nonreleased? && user != current_user %>
       <div>このユーザーは非公開です。</div>
     <% end %>
   </div>

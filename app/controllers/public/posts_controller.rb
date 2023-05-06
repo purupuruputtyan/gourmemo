@@ -17,7 +17,7 @@ class Public::PostsController < ApplicationController
       redirect_to post_path(@post.id)
     else
       @posts = Post.all
-      render :index
+      render :new
     end
   end
 
