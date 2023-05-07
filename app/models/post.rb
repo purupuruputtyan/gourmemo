@@ -14,6 +14,7 @@ class Post < ApplicationRecord
   belongs_to :user
 
   has_many :favorites, dependent: :destroy
+  has_many :favorite_posts, through: :favorites, source: :post
 
   #物足りないなどの量感のステータスをenumで管理
   enum volume_status: { full: 0, just_right: 1, not_enough: 2 }

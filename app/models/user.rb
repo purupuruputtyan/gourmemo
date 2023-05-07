@@ -17,7 +17,9 @@ class User < ApplicationRecord
   scope :active_user, -> { where(status: 0).or(where(status: 1)).order(created_at: :desc) }
 
   has_many :posts, dependent: :destroy
+
   has_many :favorites, dependent: :destroy
+  has_many :favorite_posts, through: :favorites, source: :post
 
   def get_profile_image(width, height)
     unless profile_image.attached?

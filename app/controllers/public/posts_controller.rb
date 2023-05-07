@@ -44,6 +44,10 @@ class Public::PostsController < ApplicationController
     post.destroy
     redirect_to posts_path
   end
+  
+  def favorites
+    @favorite_posts = current_user.favorite_posts.includes(:user).order(created_at: :desc)
+  end
 
 private
 
