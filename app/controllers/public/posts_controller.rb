@@ -6,7 +6,10 @@ class Public::PostsController < ApplicationController
   end
 
   def index
-    @posts = Post.order(created_at: :desc).page(params[:page])
+    #@posts = Post.order(created_at: :desc).page(params[:page])
+    #公開ユーザーとカレントユーザーの投稿だけ表示されるように絞り込み
+    @posts = Post.joins(:user).where(users: {status: User.statuses[:released]}).or(Post.joins(:user).where(user_id: current_user.id)).order(created_at: :desc) .page(params[:page])
+    #@posts = Post.active_posts.page(params[:page])
   end
 
   def create
@@ -44,9 +47,9 @@ class Public::PostsController < ApplicationController
     post.destroy
     redirect_to posts_path
   end
-  
+
   def favorites
-    @favorite_posts = current_user.favorite_posts.includes(:user).order(created_at: :desc)
+    @favorite_posts = current_user.favorite_posts.includes(:user).order(created_at: :desc).page(params[:page])
   end
 
 private
