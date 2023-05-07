@@ -24,7 +24,7 @@
   <div class="row">
     <div><strong>自己紹介</strong></div>
     <% if user.name != "guestuser" %>
-      <% unless user.introduction == nil %>
+      <% unless user.introduction.present? %>
         <div><%= user.introduction %></div>
       <% else %>
         <div>自己紹介文がありません</div>
@@ -35,10 +35,14 @@
   </div>
   <div class="row">
     <div><strong>投稿一覧</strong></div>
-    <% if user.released? || user == current_user %>
-      <div><%= render 'public/posts/history', posts: posts %></div>
-    <% elsif user.nonreleased? && user != current_user %>
-      <div>このユーザーは非公開です。</div>
+    <% if user.posts.present? %>
+      <% if user.released? || user == current_user %>
+        <div><%= render 'public/posts/history', posts: posts %></div>
+      <% elsif user.nonreleased? && user != current_user %>
+        <div>このユーザーは非公開です。</div>
+      <% end %>
+    <% else %>
+      <div>まだ投稿がありません。</div>
     <% end %>
   </div>
 </div>

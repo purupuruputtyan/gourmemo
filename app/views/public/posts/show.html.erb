@@ -39,6 +39,7 @@
       <div class="row">
         <div class="col-xs-12">
           <h3>コメント一覧</h3>
+          
         </div>
       </div>
 
@@ -47,36 +48,38 @@
           <h3>マップ</h3>
         </div>
         <div class="col-xs-12 col-md-10 col-md-offset-1">
+          <% if @post.address.present? %>
+            <div id="map"></div>
+            <style>
+              #map {
+                height: 500px;
+                width: 70%;
+              }
+            </style>
+            <script>
+              function initMap() {
+                var uluru = {lat: <%= @post.latitude %>, lng: <%= @post.longitude %>};
+                var map = new google.maps.Map(document.getElementById('map'), {
+                  zoom: 16,
+                  center: uluru
+                });
+                var transitLayer = new google.maps.TransitLayer();
+                transitLayer.setMap(map);
 
-          <div id="map"></div>
-          <style>
-            #map {
-              height: 500px;
-              width: 70%;
-            }
-          </style>
-          <script>
-            function initMap() {
-              var uluru = {lat: <%= @post.latitude %>, lng: <%= @post.longitude %>};
-              var map = new google.maps.Map(document.getElementById('map'), {
-                zoom: 16,
-                center: uluru
-              });
-              var transitLayer = new google.maps.TransitLayer();
-              transitLayer.setMap(map);
-
-              var contentString = '住所：<%= @post.address %>';
-              var infowindow = new google.maps.InfoWindow({
-                content: contentString
-              });
-              var marker = new google.maps.Marker({
-                position: uluru,
-                map: map
-              });
-                 }
-          </script>
-          <script src="https://maps.googleapis.com/maps/api/js?key=<%= ENV['GOOGLEMAP'] %>&callback=initMap"async defer></script>
-
+                var contentString = '住所：<%= @post.address %>';
+                var infowindow = new google.maps.InfoWindow({
+                  content: contentString
+                });
+                var marker = new google.maps.Marker({
+                  position: uluru,
+                  map: map
+                });
+                   }
+            </script>
+            <script src="https://maps.googleapis.com/maps/api/js?key=<%= ENV['GOOGLEMAP'] %>&callback=initMap"async defer></script>
+          <% else %>
+            住所の情報が入力されていません。
+          <% end %>
         </div>
       </div>
     </div>
