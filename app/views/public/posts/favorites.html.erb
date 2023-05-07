@@ -2,7 +2,11 @@
   <div class="row">
     <div class="col-md-8 offset-md-1">
       <h2>いいね一覧</h2>
-      <%= render 'index', posts: @favorite_posts %>
+      <% if @favorite_posts.present? %>
+        <%= render 'index', posts: @favorite_posts %>
+      <% else %>
+        まだ"いいね"した投稿がありません。
+      <% end %>
     </div>
   </div>
 </div>

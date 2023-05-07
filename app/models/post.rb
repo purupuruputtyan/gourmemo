@@ -8,10 +8,6 @@ class Post < ApplicationRecord
 
   has_one_attached :image
 
-  #ユーザーステータスが”退会”以外のユーザーをユーザー一覧で表示させるためのscope
-  #scope :active_user, -> { where(user_id: current_user.id).or(where(status: 0)).order(created_at: :desc) }
-  #scope :active_posts, -> { joins(:user).where(users: {status: User.statuses[:released]}).or(Post.joins(:user).where(user_id: current_user.id)).order(created_at: :desc) }
-
   belongs_to :user
 
   has_many :favorites, dependent: :destroy
