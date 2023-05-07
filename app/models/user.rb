@@ -14,7 +14,7 @@ class User < ApplicationRecord
   enum status: { released: 0, nonreleased: 1, withdraw: 2 }
 
   #ユーザーステータスが”退会”以外のユーザーをユーザー一覧で表示させるためのscope
-  scope :active_user, -> { where(status: 0).or(where(status: 1)) }
+  scope :active_user, -> { where(status: 0).or(where(status: 1)).order(created_at: :desc) }
 
   has_many :posts, dependent: :destroy
   has_many :favorites, dependent: :destroy

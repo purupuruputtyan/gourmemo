@@ -8,6 +8,9 @@ class Post < ApplicationRecord
 
   has_one_attached :image
 
+  #ユーザーステータスが”退会”以外のユーザーをユーザー一覧で表示させるためのscope
+  #scope :active_user, -> { where(status: 0).or(where(status: 1)).order(created_at: :desc) }
+
   belongs_to :user
 
   has_many :favorites, dependent: :destroy
@@ -24,6 +27,10 @@ class Post < ApplicationRecord
       image.attach(io: File.open(file_path), filename: 'default-image.jpg', content_type: 'image/jpeg')
     end
     image.variant(resize_to_limit: [width, height]).processed
+  end
+
+  def favorited_by?(user)
+    favorites.exists?(user_id: user.id)
   end
 
 end

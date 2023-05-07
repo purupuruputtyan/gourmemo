@@ -19,6 +19,7 @@
 
           <span><i class="fas fa-user"></i> By <%= post.user.name %> ｜ </span>
           <span>コメント</span>
+          <%= render "public/favorites/btn", post: post %>
           <%= render "public/posts/static_rate", post: post %>
         </div>
       </div>
