@@ -13,6 +13,8 @@ class Post < ApplicationRecord
   has_many :favorites, dependent: :destroy
   has_many :favorite_posts, through: :favorites, source: :post
   #has_many :favorited_users, through: :favorites, source: :user
+  #has_many :week_favorites, -> { where(created_at: ((Time.current.at_end_of_day - 6.day).at_beginning_of_day)..(Time.current.at_end_of_day)) }, class_name: 'Favorite'
+
 
   has_many :comments, dependent: :destroy
 
@@ -21,6 +23,10 @@ class Post < ApplicationRecord
 
   geocoded_by :address
   after_validation :geocode, if: :address_changed?
+
+  def self.week_favorites
+    where(created_at: ((Time.current.at_end_of_day - 6.day).at_beginning_of_day)..(Time.current.at_end_of_day))
+  end
 
   def get_image(width, height)
     unless image.attached?
