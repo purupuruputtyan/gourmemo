@@ -1,4 +1,5 @@
 class Public::PostsController < ApplicationController
+  before_action :authenticate_user!, except: [:index, :show]
   before_action :is_matching_login_user, only: [:edit, :update]
 
   def new
@@ -24,8 +25,8 @@ class Public::PostsController < ApplicationController
       render :new
     end
   end
-  
-  
+
+
   # def user_favorite_posts
   #   user= User.find(params[:id])
   #   user.favorite_posts
@@ -33,6 +34,7 @@ class Public::PostsController < ApplicationController
 
   def show
     @post = Post.find(params[:id])
+    @comment = Comment.new
   end
 
   def edit

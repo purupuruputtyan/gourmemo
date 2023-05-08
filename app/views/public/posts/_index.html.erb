@@ -7,17 +7,19 @@
       <div class="card-body">
         <div class="row">
           <div class="col-2">
-            <%= image_tag post.user.get_profile_image(50,50), class:"mt-o rounded-circle"; %>
+            <%= link_to user_path(post.user.id) do %>
+              <%= image_tag post.user.get_profile_image(50,50), class:"mt-o rounded-circle"; %>
+            <% end %>
           </div>
           <div class="col-10">
             <p class="card-title">
-              <%= link_to(post_path(post.id), class:"text-dark") do %>
-                <strong>お店の名前<span> <%= post.shop_name %></span></strong>
-              <% end %>
+              お店の名前：<%= link_to post.shop_name, post_path(post.id), class:"text-dark" %>
             </p>
-            <p class="card-text">メニュー名：<%= post.menu %></p>
-            <span><i class="fas fa-user"></i> By <%= post.user.name %> ｜ </span>
-            <span>コメント</span>
+            <p class="card-text">
+              メニュー名：<%= link_to post.menu, post_path(post.id), class:"text-dark" %>
+            </p>
+            <span><i class="fas fa-user"></i> By <%= link_to post.user.name, user_path(post.user.id), class:"text-dark" %> ｜ </span>
+            <span><%= render 'public/comments/count', post: post %></span>
             <%= render "public/favorites/btn", post: post %>
             <%= render "public/posts/static_rate", post: post %>
           </div>

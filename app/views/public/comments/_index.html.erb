@@ -1,0 +1,24 @@
+<table>
+  <tbody>
+    <% post.comments.each do |comment| %>
+      <tr>
+        <td>
+          <div>
+            <%= link_to user_path(comment.user.id) do %>
+              <%= image_tag comment.user.get_profile_image(50,50), class: "mt-o rounded-circle"; %>
+            <% end %>
+          </div>
+          <div>
+            <%= comment.user.name %>
+          </div>
+        </td>
+        <td><%= comment.created_at.strftime('%Y/%m/%d') %><%= comment.comment %></td>
+        <td>
+          <% if comment.user == current_user %>
+            <%= link_to '削除', comment_path(comment.id), method: :delete, class: "btn btn-sm btn-danger" %>
+          <% end %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
