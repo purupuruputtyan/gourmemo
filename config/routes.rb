@@ -28,6 +28,7 @@ scope module: :public do
     get 'followings' => 'relationships#followings', as: 'followings'
     get 'followers' => 'relationships#followers', as: 'followers'
   end
+  
   resources :posts do
     #favoritesの一覧ページ、参考記事に倣ってcollectionを使ったけど意味はわかっていない
     get :favorites, on: :collection

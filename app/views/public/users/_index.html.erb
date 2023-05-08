@@ -3,6 +3,7 @@
     <tr>
       <th>image</th>
       <th>name</th>
+      <th>introduction</th>
       <th colspan="3"></th>
     </tr>
   </thead>
@@ -16,7 +17,11 @@
         </td>
         <td><%= link_to user.name, user_path(user.id) %></td>
         <td><%= user.introduction %></td>
-        <td>フォロー中/フォローする</td>
+        <td>
+          <div>フォロー数:<%= user.followings.count %></div>
+          <div>フォロワー数:<%= user.followers.count %></div>
+        </td>
+        <td><%= render 'public/relationships/btn', user: user %></td>
       </tr>
     <% end %>
   </tbody>

@@ -24,6 +24,12 @@ class Public::PostsController < ApplicationController
       render :new
     end
   end
+  
+  
+  # def user_favorite_posts
+  #   user= User.find(params[:id])
+  #   user.favorite_posts
+  # end
 
   def show
     @post = Post.find(params[:id])
