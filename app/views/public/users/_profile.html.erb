@@ -8,15 +8,17 @@
       <div><%= user.name %></div>
       <% if user.name != "guestuser" %>
         <div class="row">
-          <div class="col-2">投稿件数：<!--%= user.post.count %--></div>
+          <div>投稿件数：<%= user.posts.count %></div>
           <% if user.nonreleased? %>
             <div>フォロー<%= user.followings.count %>人</div>
             <div>フォロワー<%= user.followers.count %>人</div>
           <% else %>
-            <div><%= link_to 'フォロー' + '1' + '人', user_followings_path(user.id), class: 'btn btn-sm btn-info' %></div>
-            <div><%= link_to 'フォロワー' + '1' + '人', user_followers_path(user.id), class: 'btn btn-sm btn-info' %></div>
+            <div><%= link_to 'フォロー' + user.followings.count.to_s + '人', user_followings_path(user.id), class: 'btn btn-sm btn-info' %></div>
+            <div><%= link_to 'フォロワー' + user.followers.count.to_s + '人', user_followers_path(user.id), class: 'btn btn-sm btn-info' %></div>
           <% end %>
-          <div><%= render 'public/relationships/btn', user: user %></div>
+          <% if user != current_user %>
+            <div><%= render 'public/relationships/btn', user: user %></div>
+          <% end %>
         </div>
         <% if user == current_user %>
           <div class="row">

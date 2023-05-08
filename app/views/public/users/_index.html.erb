@@ -17,11 +17,15 @@
         </td>
         <td><%= link_to user.name, user_path(user.id) %></td>
         <td><%= user.introduction %></td>
-        <td>
-          <div>フォロー数:<%= user.followings.count %></div>
-          <div>フォロワー数:<%= user.followers.count %></div>
-        </td>
-        <td><%= render 'public/relationships/btn', user: user %></td>
+        <% if user.name != "guestuser" %>
+          <td>
+            <div>フォロー数:<%= user.followings.count %></div>
+            <div>フォロワー数:<%= user.followers.count %></div>
+          </td>
+          <% if user != current_user %>
+            <td><%= render 'public/relationships/btn', user: user %></td>
+          <% end %>
+        <% end %>
       </tr>
     <% end %>
   </tbody>
