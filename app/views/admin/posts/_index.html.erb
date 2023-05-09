@@ -1,0 +1,35 @@
+<div class="card-list-container py-5">
+  <% posts.each do |post| %>
+    <div class="card w-70 mx-auto mt-5">
+      <%= link_to admin_post_path(post.id) do %>
+        <%= image_tag post.get_image(700,700), class:"card-img-top"; %>
+      <% end %>
+      <div class="card-body">
+        <div class="row">
+          <div class="col-2">
+            <%= link_to admin_user_path(post.user.id) do %>
+              <%= image_tag post.user.get_profile_image(50,50), class:"mt-o rounded-circle"; %>
+            <% end %>
+          </div>
+          <div class="col-10">
+            <p class="card-title">
+              お店の名前：<%= link_to post.shop_name, admin_post_path(post.id), class:"text-dark" %>
+            </p>
+            <p class="card-text">
+              メニュー名：<%= link_to post.menu, admin_post_path(post.id), class:"text-dark" %>
+            </p>
+            <span><i class="fas fa-user"></i> By <%= link_to post.user.name, admin_user_path(post.user.id), class:"text-dark" %> ｜ </span>
+            <span><%= render 'admin/comments/count', post: post %></span>
+            <% if post.favorites.count != 0 %>
+              <p><i class="fas fa-heart" style="color: #ff0000;"></i><%= post.favorites.count %></p>
+            <% else %>
+              <p>♡0</p>
+            <% end %>
+            <%= render "admin/posts/static_rate", post: post %>
+          </div>
+        </div>
+      </div>
+    </div>
+  <% end %>
+</div>
+<%= paginate posts %>

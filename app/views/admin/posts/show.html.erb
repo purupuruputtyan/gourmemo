@@ -1,0 +1,93 @@
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-lg-2 col-md-3 col-sm-4">
+      <%= render 'layouts/sidebar' %>
+    </div>
+    <div class="col-xs-12 col-md-10 col-md-offset-1">
+      <div class="row">
+        <div class="col-xs-12 col-md-9 text-left">
+          <%= image_tag @post.user.get_profile_image(50,50), class: "mt-o rounded-circle"; %>
+          <h4><%= @post.user.name %></h4>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-xs-12 col-md-7">
+          <div><%= image_tag @post.get_image(500,400) %></div>
+          <div><%= render 'public/favorites/btn', post: @post %></div>
+          <div class="d-grid gap-2 d-md-block text-center">
+            <%= link_to "投稿を削除", admin_post_path, method: :delete, "data-confirm" => "本当に削除しますか？", class: 'btn btn-danger' %>
+          </div>
+        </div>
+        <div class="shop-info col-xs-12 col-md-5">
+          <dl>
+            <dt>投稿日</dt>
+            <dd><%= @post.created_at.strftime('%Y/%m/%d') %></dd>
+            <dt>お店の名前</dt>
+            <dd><%= @post.shop_name %></dd>
+            <dt>住所</dt>
+            <dd><%= @post.address %></dd>
+            <dt>メニュー名</dt>
+            <dd><%= @post.menu %></dd>
+            <dt>感想</dt>
+            <dd><%= @post.impression %></dd>
+            <dt>値段</dt>
+            <dd><%= @post.price %>円</dd>
+            <dt>ボリューム</dt>
+            <dd><%= @post.volume_status_i18n %></dd>
+            <dt>また食べたい度</dt>
+            <dd><%= render "admin/posts/static_rate", post: @post %></dd>
+          </dl>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-xs-12">
+          <h3>コメント一覧</h3>
+          <p><%= render 'admin/comments/count', post: @post %></p>
+          <%= render 'admin/comments/index', post: @post %>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-xs-12">
+          <h3>マップ</h3>
+        </div>
+        <div class="col-xs-12 col-md-10 col-md-offset-1">
+          <% if @post.address.present? %>
+            <div id="map"></div>
+            <style>
+              #map {
+                height: 500px;
+                width: 70%;
+              }
+            </style>
+            <script>
+              function initMap() {
+                var shop = {lat: <%= @post.latitude %>, lng: <%= @post.longitude %>};
+                var map = new google.maps.Map(document.getElementById('map'), {
+                  zoom: 16,
+                  center: shop
+                });
+                var transitLayer = new google.maps.TransitLayer();
+                transitLayer.setMap(map);
+
+                var contentString = '住所：<%= @post.address %>';
+                var infowindow = new google.maps.InfoWindow({
+                  content: contentString
+                });
+                var marker = new google.maps.Marker({
+                  position: shop,
+                  map: map
+                });
+                   }
+            </script>
+            <script src="https://maps.googleapis.com/maps/api/js?key=<%= ENV['GOOGLEMAP'] %>&callback=initMap"async defer></script>
+          <% else %>
+            住所の情報が入力されていません。
+          <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
