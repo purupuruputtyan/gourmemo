@@ -1,7 +1,9 @@
 <div class="container">
   <div class="row">
     <div class="col-lg-2 col-md-3 col-sm-4">
-      <%= render 'layouts/sidebar' %>
+      <% if user_signed_in? %>
+        <%= render 'layouts/sidebar' %>
+      <% end %>
     </div>
     <div class="col-sm-12 col-md-8 col-lg-5 px-5 px-sm-0 mx-auto">
       <h2>投稿一覧</h2>

@@ -37,7 +37,8 @@ class Post < ApplicationRecord
   end
 
   def favorited_by?(user)
-    favorites.exists?(user_id: user.id)
+    #後置修飾の"if user"は非ログイン時にいいねボタンを押すとログインページに遷移させたいため記述
+    favorites.exists?(user_id: user.id) if user
   end
 
 end

@@ -1,21 +1,25 @@
-<% if user_signed_in? %>
+<%# if user_signed_in? %>
+
   <% if post.favorited_by?(current_user) %>
     <p>
       <%= link_to post_favorites_path(post.id), method: :delete do %>
-        <i class="fas fa-heart" style="color: #ff0000;"></i><%= post.favorites.count %>
+        <i class="fas fa-heart" style="color: #ff0000;"></i>
       <% end %>
+      <%= post.favorites.count %>
     </p>
     <% else %>
     <p>
       <%= link_to post_favorites_path(post.id), method: :post do %>
-        <i class="far fa-heart" style="color: #008cff;"></i><%= post.favorites.count %>
+        <i class="far fa-heart" style="color: #008cff;"></i>
       <% end %>
+      <%= post.favorites.count %>
     </p>
   <% end %>
-<% else %>
-  <% if post.favorites.count != 0 %>
-    <p><i class="fas fa-heart" style="color: #ff0000;"></i><%= post.favorites.count %></p>
-  <% else %>
-    <p><i class="far fa-heart" style="color: #000000;"></i>0</p>
-  <% end %>
-<% end %>
+  
+<!--% else %-->
+  <%# if post.favorites.count != 0 %>
+    <!--p><i class="fas fa-heart" style="color: #ff0000;"></i><%#= post.favorites.count %></p-->
+  <%# else %>
+    <!--p><i class="far fa-heart" style="color: #000000;"></i>0</p-->
+  <%# end %>
+<!--<%# end %>-->
