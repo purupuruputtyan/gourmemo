@@ -17,7 +17,7 @@ class Admin::UsersController < ApplicationController
   def update
     @user = User.find(params[:id])
     if @user.update(user_params)
-      redirect_to  user_path(@user.id)
+      redirect_to admin_user_path(@user.id)
       flash[:notice] = "編集に成功しました"
     else
       render :edit
@@ -29,7 +29,7 @@ class Admin::UsersController < ApplicationController
     @user.update(status: 2)
     reset_session
     flash[:notice] = "退会処理を実行いたしました"
-    redirect_to users_path
+    redirect_to admin_users_path
   end
 
 private

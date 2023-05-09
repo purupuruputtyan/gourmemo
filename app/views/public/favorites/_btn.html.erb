@@ -2,20 +2,20 @@
   <% if post.favorited_by?(current_user) %>
     <p>
       <%= link_to post_favorites_path(post.id), method: :delete do %>
-        ♥<%= post.favorites.count %>
+        <i class="fas fa-heart" style="color: #ff0000;"></i><%= post.favorites.count %>
       <% end %>
     </p>
     <% else %>
     <p>
       <%= link_to post_favorites_path(post.id), method: :post do %>
-        ♡<%= post.favorites.count %>
+        <i class="far fa-heart" style="color: #008cff;"></i><%= post.favorites.count %>
       <% end %>
     </p>
   <% end %>
 <% else %>
   <% if post.favorites.count != 0 %>
-    <p>♥<%= post.favorites.count %></p>
+    <p><i class="fas fa-heart" style="color: #ff0000;"></i><%= post.favorites.count %></p>
   <% else %>
-    <p>♡0</p>
+    <p><i class="far fa-heart" style="color: #000000;"></i>0</p>
   <% end %>
 <% end %>

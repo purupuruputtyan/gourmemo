@@ -1,0 +1,8 @@
+<div class="row">
+  <% posts.each do |post| %>
+    <%= link_to admin_post_path(post.id) do %>
+      <%= image_tag post.get_image(300,300), class: "img-thumbnail" %>
+    <% end %>
+  <% end %>
+</div>
+<%= paginate posts %>

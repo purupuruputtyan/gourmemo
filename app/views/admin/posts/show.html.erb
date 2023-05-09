@@ -14,7 +14,13 @@
       <div class="row">
         <div class="col-xs-12 col-md-7">
           <div><%= image_tag @post.get_image(500,400) %></div>
-          <div><%= render 'public/favorites/btn', post: @post %></div>
+          <div>
+            <% if @post.favorites.count != 0 %>
+              <p><i class="fas fa-heart" style="color: #ff0000;"></i><%= @post.favorites.count %></p>
+            <% else %>
+              <p><i class="far fa-heart" style="color: #000000;"></i>0</p>
+            <% end %>
+          </div>
           <div class="d-grid gap-2 d-md-block text-center">
             <%= link_to "投稿を削除", admin_post_path, method: :delete, "data-confirm" => "本当に削除しますか？", class: 'btn btn-danger' %>
           </div>
@@ -36,7 +42,7 @@
             <dt>ボリューム</dt>
             <dd><%= @post.volume_status_i18n %></dd>
             <dt>また食べたい度</dt>
-            <dd><%= render "admin/posts/static_rate", post: @post %></dd>
+            <dd><%= render "public/posts/static_rate", post: @post %></dd>
           </dl>
         </div>
       </div>

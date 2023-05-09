@@ -23,9 +23,9 @@
             <% if post.favorites.count != 0 %>
               <p><i class="fas fa-heart" style="color: #ff0000;"></i><%= post.favorites.count %></p>
             <% else %>
-              <p>♡0</p>
+              <p><i class="far fa-heart" style="color: #000000;"></i>0</p>
             <% end %>
-            <%= render "admin/posts/static_rate", post: post %>
+            <%= render "public/posts/static_rate", post: post %>
           </div>
         </div>
       </div>

@@ -13,11 +13,7 @@
           </div>
         </td>
         <td><%= comment.created_at.strftime('%Y/%m/%d') %><%= comment.comment %></td>
-        <td>
-          <% if comment.user == current_user %>
-            <%= link_to '削除', admin_comment_path(comment.id), method: :delete, class: "btn btn-sm btn-danger" %>
-          <% end %>
-        </td>
+        <td><%= link_to '削除', admin_comment_path(comment.id), method: :delete, "data-confirm" => "本当に削除しますか？", class: "btn btn-sm btn-danger" %></td>
       </tr>
     <% end %>
   </tbody>

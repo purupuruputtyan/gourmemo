@@ -9,23 +9,12 @@
       <div>投稿件数：<%= user.posts.count %></div>
       <% if user.name != "guestuser" %>
         <div class="row">
-          <% if user.nonreleased? %>
-            <div>フォロー<%= user.followings.count %>人</div>
-            <div>フォロワー<%= user.followers.count %>人</div>
-          <% else %>
-            <div><%= link_to 'フォロー' + user.followings.count.to_s + '人', user_followings_path(user.id), class: 'btn btn-sm btn-info' %></div>
-            <div><%= link_to 'フォロワー' + user.followers.count.to_s + '人', user_followers_path(user.id), class: 'btn btn-sm btn-info' %></div>
-          <% end %>
-          <% if user != current_user %>
-            <div><%= render 'public/relationships/btn', user: user %></div>
-          <% end %>
+          <div>フォロー<%= user.followings.count %>人</div>
+          <div>フォロワー<%= user.followers.count %>人</div>
         </div>
-        <% if user == current_user %>
-          <div class="row">
-            <div><%= link_to 'いいね一覧' + user.favorites.count.to_s + '件', favorites_posts_path, class: 'btn btn-sm btn-info' %></div>
-            <div><%= link_to 'プロフィールを編集', edit_user_path(user.id), class: 'btn btn-sm btn-info' %></div>
-          </div>
-        <% end %>
+        <div class="row">
+          <div><%= link_to 'プロフィールを編集', edit_admin_user_path(user.id), class: 'btn btn-sm btn-success' %></div>
+        </div>
       <% end %>
     </div>
   </div>
@@ -45,7 +34,7 @@
     <div><strong>投稿一覧</strong></div>
     <% if user.posts.present? %>
       <% if user.released? || user == current_user %>
-        <div><%= render 'public/posts/history', posts: posts %></div>
+        <div><%= render 'admin/posts/history', posts: posts %></div>
       <% elsif user.nonreleased? && user != current_user %>
         <div>このユーザーは非公開です。</div>
       <% end %>
