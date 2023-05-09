@@ -39,8 +39,9 @@ scope module: :public do
 end
 
 namespace :admin do
+  root to: 'posts#index'
   resources :users, only: [:index, :show, :edit, :update]
-  resources :posts, only: [:index, :show, :destroy]
+  resources :posts, only: [:show, :destroy]
   resources :comments, only: [:destroy]
 end
 
