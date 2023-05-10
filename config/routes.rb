@@ -20,6 +20,7 @@ devise_for :admin, skip: [:registrations, :passwords] ,controllers: {
 scope module: :public do
   root to: 'homes#top'
   get '/about' => 'homes#about'
+  get 'search' => 'searches#search'
   get '/my_page' => 'users#my_page'
   get 'users/confirm_deleted' => 'users#confirm_deleted', as: 'confirm_deleted'
   patch 'users/is_deleted' => 'users#is_deleted', as: 'is_deleted'
@@ -30,7 +31,7 @@ scope module: :public do
   end
   
   resources :posts do
-    #favoritesの一覧ページ、参考記事に倣ってcollectionを使ったけど意味はわかっていない
+    #favoritesの一覧ページ,いいねした投稿の一覧ページのためon: :collection使用
     get :favorites, on: :collection
     resource :favorites, only: [:create, :destroy]
     resources :comments, only: [:create]
@@ -40,6 +41,7 @@ end
 
 namespace :admin do
   root to: 'posts#index'
+  get 'search' => 'searches#search'
   resources :users, only: [:index, :show, :edit, :update]
   resources :posts, only: [:show, :destroy]
   resources :comments, only: [:destroy]

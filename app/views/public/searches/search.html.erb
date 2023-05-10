@@ -1,0 +1,12 @@
+<% if @model == 'user' %>
+  <h3>ユーザー"<%= @content %>"さんに関する検索結果</h3>
+  <%= render 'users/index', users: @records %>
+<% elsif @model == 'book' %>
+  <h3>投稿"<%= @content %>"に関する検索結果</h3>
+  <%= render 'posts/index', books: @records %>
+<%# elsif @model == 'tag' %>
+
+  <!--<h3>Tags search for "<%= @content %>"</h3>-->
+  <%#= render 'books/index', books: @records %>
+
+<% end %>
