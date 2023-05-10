@@ -18,6 +18,32 @@ ja:
         restrict_dependent_destroy:
           has_one: "%{record}が存在しているので削除できません"
           has_many: "%{record}が存在しているので削除できません"
+          
+    models:
+      admin: 管理者
+      user: ユーザー
+      post: 投稿
+      favorite: いいね
+      relationship: フォロー
+      comment: コメント
+  
+    attributes:
+      user:
+        guestuser: ゲストユーザー
+        name: ニックネーム
+        email: メールアドレス
+        password: パスワード
+        introduction: 自己紹介文
+        status: 公開、非公開
+      post:
+        shop_name: お店の名前
+        address: お店の住所
+        menu: メニュー名
+        impression: 感想
+        price: 金額
+        volume_status: 量感
+        star: また食べたい度
+          
   date:
     abbr_day_names:
     - 日

@@ -1,16 +1,15 @@
 <% if @content.present? %>
   <% if @model == 'user' %>
     <h3>ユーザー"<%= @content %>"さんに関する検索結果</h3>
-    <% if @records.present? %>
-      <%= render 'public/users/index', users: @records %>
+    <% if @users.present? %>
+      <%= render 'public/users/index', users: @users %>
     <% else %>
       検索結果がありません。
     <% end %>
   <% elsif @model == 'post' %>
     <h3>投稿"<%= @content %>"に関する検索結果</h3>
-    <% if @records.present? %>
-      <%= render 'public/posts/index', posts: @records %>
-      検索結果がありません。
+    <% if @posts.present? %>
+      <%= render 'public/posts/index', posts: @posts %>
     <% else %>
       検索結果がありません。
     <% end %>
@@ -19,5 +18,7 @@
     <%#= render 'books/index', books: @records %>
   <% end %>
 <% else %>
-  検索に失敗しました。検索フォームにキーワードを入力してください。
+  検索に失敗しました。検索フォームに入力して検索して下さい。
+  <%#= render 'public/users/index', users: @users %>
+  <%#= render 'public/posts/index', posts: @posts %>
 <% end %>

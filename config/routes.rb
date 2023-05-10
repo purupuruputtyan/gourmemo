@@ -29,7 +29,7 @@ scope module: :public do
     get 'followings' => 'relationships#followings', as: 'followings'
     get 'followers' => 'relationships#followers', as: 'followers'
   end
-  
+
   resources :posts do
     #favoritesの一覧ページ,いいねした投稿の一覧ページのためon: :collection使用
     get :favorites, on: :collection
