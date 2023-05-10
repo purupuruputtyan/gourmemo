@@ -1,10 +1,10 @@
-<% if user_signed_in? %>
+<% if admin_signed_in? %>
   <div class="search_form">
-    <%= form_with url: search_path, method: :get, local: true do |f| %>
-      <%= f.text_field :content %>
-      <%= f.select :model, options_for_select({ "User" => "user", "Post" => "post" }) %>
-      <%= f.select :method, options_for_select({ "完全一致" => "perfect", "前方一致" => "forward", "後方一致" => "backward", "部分一致" => "partial" }) %>
-      <%= f.submit '検索' %>
+    <%= form_with url: admin_search_path, method: :get, local: true do |f| %>
+      <%= f.text_field :content, class: "col-3",  placeholder: "ユーザー名かメニュー名を入力" %>
+      <%= f.select :model, options_for_select({ "ユーザー検索" => "user", "メニュー名検索" => "post" }), include_blank:"選択して下さい" %>
+      <%= f.select :method, options_for_select({ "完全一致" => "perfect", "前方一致" => "forward", "後方一致" => "backward", "部分一致" => "partial" }) ,include_blank:"選択して下さい" %>
+      <%= f.submit '検索', class: "btn btn-sm btn-primary" %>
     <% end %>
   </div>
 <% end %>

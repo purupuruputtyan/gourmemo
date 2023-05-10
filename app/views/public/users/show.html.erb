@@ -4,11 +4,7 @@
       <%= render 'layouts/sidebar' %>
     </div>
     <h2>ユーザー詳細</h2>
-    <% unless @user.withdraw? %>
       <%= render 'profile', user: @user, posts: @posts %>
-    <% else %>
-      このユーザーは退会済みです。
-    <% end %>
   </div>
   <%= link_to 'Back', :back %>
 </div>
