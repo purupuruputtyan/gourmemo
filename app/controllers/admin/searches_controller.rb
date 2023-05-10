@@ -1,5 +1,8 @@
 class Admin::SearchesController < ApplicationController
-  @model = params[:model]
+  before_action :authenticate_sdmin!
+  
+  def search
+    @model = params[:model]
     @content = params[:content]
     @method = params[:method]
     if @model == 'user'
@@ -9,4 +12,6 @@ class Admin::SearchesController < ApplicationController
     #elsif @model == 'tag'
 		#	@records = Tag.search_books_for(@content, @method)
     end
+  end
+  
 end

@@ -41,4 +41,16 @@ class Post < ApplicationRecord
     favorites.exists?(user_id: user.id) if user
   end
 
+  def self.search_for(content, method)
+    if method == 'perfect'
+      Post.where(menu: content)
+    elsif method == 'forward'
+      Post.where('menu LIKE ?', content + '%')
+    elsif method == 'backward'
+      Post.where('menu LIKE ?', '%' + content)
+    else
+      Post.where('menu LIKE ?', '%' + content + '%')
+    end
+  end
+
 end

@@ -13,6 +13,11 @@
 
   <body>
     <%= render 'layouts/header' %>
+    <% if admin_signed_in? %>
+      <%= render 'admin/searches/form' %>
+    <% elsif user_signed_in? %>
+      <%= render 'public/searches/form' %>
+    <% end %>
     <div><%= flash[:notice] %></div>
     <%= yield %>
   </body>
