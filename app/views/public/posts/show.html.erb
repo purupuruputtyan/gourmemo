@@ -49,8 +49,12 @@
       <div class="row">
         <div class="col-xs-12">
           <h3>コメント一覧</h3>
-          <p><%= render 'public/comments/count', post: @post %></p>
-          <%= render 'public/comments/index', post: @post %>
+          <p class="comments-count">
+            <%= render 'public/comments/count', post: @post %>
+          </p>
+          <p class="comments-area">
+            <%= render 'public/comments/index', post: @post %>
+          </p>
           <%= render 'public/comments/form', post: @post, comment: @comment %>
         </div>
       </div>

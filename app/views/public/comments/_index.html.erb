@@ -15,7 +15,7 @@
         <td><%= comment.created_at.strftime('%Y/%m/%d') %><%= comment.comment %></td>
         <td>
           <% if comment.user == current_user %>
-            <%= link_to '削除', comment_path(comment.id), method: :delete, class: "btn btn-sm btn-danger" %>
+            <%= link_to '削除', comment_path(comment.id), method: :delete, remote:true, class: "btn btn-sm btn-danger" %>
           <% end %>
         </td>
       </tr>
