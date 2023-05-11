@@ -14,7 +14,9 @@
       <div class="row">
         <div class="col-xs-12 col-md-7">
           <div><%= image_tag @post.get_image(500,400) %></div>
-          <div><%= render 'public/favorites/btn', post: @post %></div>
+          <div class="favorite-btn<%= @post.id %>">
+            <%= render 'public/favorites/btn', post: @post %>
+          </div>
           <% if @post.user == current_user %>
             <div class="d-grid gap-2 d-md-block text-center">
               <%= link_to "投稿を編集", edit_post_path, class: 'btn btn-success' %>
@@ -35,7 +37,7 @@
             <dt>感想</dt>
             <dd><%= @post.impression %></dd>
             <dt>値段</dt>
-            <dd><%= @post.price %>円</dd>
+            <dd><%= @post.price.to_s(:delimited, delimiter: ',')  %>円</dd>
             <dt>ボリューム</dt>
             <dd><%= @post.volume_status_i18n %></dd>
             <dt>また食べたい度</dt>

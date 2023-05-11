@@ -20,7 +20,9 @@
             </p>
             <span><i class="fas fa-user"></i> By <%= link_to post.user.name, user_path(post.user.id), class:"text-dark" %> ｜ </span>
             <span><%= render 'public/comments/count', post: post %></span>
-            <%= render "public/favorites/btn", post: post %>
+            <div class="favorite-btn<%= post.id %>">
+              <%= render "public/favorites/btn", post: post %>
+            </div>
             また食べたい度：<%= render "public/posts/static_rate", post: post %>
           </div>
         </div>

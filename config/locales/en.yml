@@ -31,5 +31,15 @@
 
 en:
   hello: "Hello world"
-  
-  
+
+  attributes:
+    user:
+      name: "nickname"
+      email: "mail address"
+      introduction: "self introduction"
+      status: "participation status"
+    post:
+      address: "shop address"
+      menu: "menu name"
+      impression: "impressions of eating"
+      star: "eat again"

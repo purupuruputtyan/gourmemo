@@ -32,7 +32,7 @@
   <div class="row">
     <div><strong>自己紹介</strong></div>
     <% if user.name != "guestuser" %>
-      <% unless user.introduction.present? %>
+      <% if user.introduction.present? %>
         <div><%= user.introduction %></div>
       <% else %>
         <div>自己紹介文がありません</div>
