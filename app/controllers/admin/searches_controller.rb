@@ -4,7 +4,7 @@ class Admin::SearchesController < ApplicationController
   def search
     @content = params[:content]
     @users = User.search_for(@content).page(params[:page])
-    @posts= Post.search_for(@content).page(params[:page])
+    @posts = Post.search_for(@content).page(params[:page])
   end
 
 end

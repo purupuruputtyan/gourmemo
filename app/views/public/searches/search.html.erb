@@ -1,9 +1,10 @@
 <% if user_signed_in? %>
   <% if @users.present? && @posts.present? %>
-    <h3>【ユーザーとメニュー名の検索結果】検索ワード："<%= @content %>"</h3>
-    <h4>・ユーザー</h4>
+    <h3 class="mb-3">【ユーザーとメニュー名の検索結果】検索ワード："<%= @content %>"</h3>
+    <h4>【ユーザー】</h4>
     <%= render 'public/users/index', users: @users %>
-    <h4>・メニュー名</h4>
+    <hr class="mt-5">
+    <h4>【メニュー名】</h4>
     <%= render 'public/posts/index', posts: @posts %>
   <% elsif @users.present? && @posts.empty? %>
     <h3>【ユーザーの検索結果】検索ワード："<%= @content %>"</h3>
