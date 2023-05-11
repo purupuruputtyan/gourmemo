@@ -60,16 +60,12 @@ class User < ApplicationRecord
     followings.include?(user)
   end
 
-  def self.search_for(content, method)
-    #if method == 'perfect'
-    #  User.where(name: content)
-    #elsif method == 'forward'
-    #  User.where('name LIKE ?', content + '%')
-    #elsif method == 'backward'
-    #  User.where('name LIKE ?', '%' + content)
-    #else
+  def self.search_for(content)
+    if content != nil
       User.where('name LIKE ?', '%' + content + '%')
-    #end
+    else
+      User.all
+    end
   end
 
 end

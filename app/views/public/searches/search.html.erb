@@ -1,24 +1,19 @@
-<% if @content.present? %>
-  <% if @model == 'user' %>
-    <h3>ユーザー"<%= @content %>"さんに関する検索結果</h3>
-    <% if @users.present? %>
-      <%= render 'public/users/index', users: @users %>
-    <% else %>
-      検索結果がありません。
-    <% end %>
-  <% elsif @model == 'post' %>
-    <h3>投稿"<%= @content %>"に関する検索結果</h3>
-    <% if @posts.present? %>
-      <%= render 'public/posts/index', posts: @posts %>
-    <% else %>
-      検索結果がありません。
-    <% end %>
-  <%# elsif @model == 'tag' %>
-    <!--<h3>Tags search for "<%#= @content %>"</h3>-->
-    <%#= render 'books/index', books: @records %>
+<% if user_signed_in? %>
+  <% if @users.present? && @posts.present? %>
+    <h3>【ユーザーとメニュー名の検索結果】検索ワード："<%= @content %>"</h3>
+    <h4>・ユーザー</h4>
+    <%= render 'public/users/index', users: @users %>
+    <h4>・メニュー名</h4>
+    <%= render 'public/posts/index', posts: @posts %>
+  <% elsif @users.present? && @posts.empty? %>
+    <h3>【ユーザーの検索結果】検索ワード："<%= @content %>"</h3>
+    <h4>・ユーザー</h4>
+    <%= render 'public/users/index', users: @users %>
+  <% elsif @users.empty? && @posts.present? %>
+    <h3>【メニュー名の検索結果】検索ワード："<%= @content %>"</h3>
+    <h4>・メニュー名</h4>
+    <%= render 'public/posts/index', posts: @posts %>
+  <% else %>
+    <h3>検索ワード："<%= @content %>"に該当はありません</h3>
   <% end %>
-<% else %>
-  検索に失敗しました。検索フォームに入力して検索して下さい。
-  <%#= render 'public/users/index', users: @users %>
-  <%#= render 'public/posts/index', posts: @posts %>
 <% end %>
