@@ -26,10 +26,12 @@ class Public::UsersController < ApplicationController
     end
   end
 
+  #退会確認画面表示
   def confirm_deleted
     @user = current_user
   end
 
+  #ユーザーの在籍ステータスを”退会"に変える
   def is_deleted
     @user = current_user
     @user.update(status: 2)
@@ -49,6 +51,7 @@ private
     params.require(:user).permit(:name, :profile_image, :introduction, :status)
   end
 
+  #カレントユーザー以外プロフィール編集画面にアクセスできなくさせる
   def is_matching_login_user
     user = User.find(params[:id])
     unless user.id == current_user.id
@@ -56,6 +59,7 @@ private
     end
   end
 
+  #カレントユーザーでもゲストユーザーはプロフィール編集画面にアクセスできなくさせる
   def ensure_guest_user
     @user = User.find(params[:id])
     if @user.name == "guestuser"

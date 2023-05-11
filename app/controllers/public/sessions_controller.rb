@@ -19,6 +19,7 @@ class Public::SessionsController < Devise::SessionsController
   #   super
   # end
 
+  #ゲストユーザーログイン用アクション
   def guest_sign_in
     user = User.guest
     sign_in user
@@ -27,10 +28,11 @@ class Public::SessionsController < Devise::SessionsController
 
 protected
 
+  #在籍状況ステータスが"退会"
   def user_state
     @user = User.find_by(email: params[:user][:email])
     if @user
-      if @user.valid_password?(params[:user][:password]) && (@user.status == 'withdraw')
+      if @user.valid_password?(params[:user][:password]) && (@user.withdraw?)
         flash[:notice] = "退会済みです。再度ご登録をしてご利用ください。"
         redirect_to root_path
       end
