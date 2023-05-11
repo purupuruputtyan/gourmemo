@@ -10,10 +10,10 @@ class User < ApplicationRecord
 
   has_one_attached :profile_image
 
-  #公開、非公開、退会のユーザーをenumでまとめて管理
+  #ユーザーに在籍状況ステータスを設け、”公開”、”非公開”、”退会のユーザー”をenumでまとめて管理
   enum status: { released: 0, nonreleased: 1, withdraw: 2 }
 
-  #ユーザーステータスが”退会”以外のユーザーをユーザー一覧で表示させるためのscope
+  #在籍状況ステータスが”退会”以外のユーザーをユーザー一覧で表示させるためのscope
   scope :active_user, -> { where(status: 0).or(where(status: 1)).order(created_at: :desc) }
 
   has_many :posts, dependent: :destroy
@@ -29,6 +29,7 @@ class User < ApplicationRecord
 
   has_many :comments, dependent: :destroy
 
+  #ユーザーの画像を各画面によってサイズの指定ができ、画像の更新がない時に「no_image」を表示する
   def get_profile_image(width, height)
     unless profile_image.attached?
       file_path = Rails.root.join('app/assets/images/no_image.jpeg')
@@ -37,29 +38,37 @@ class User < ApplicationRecord
     profile_image.variant(resize_to_limit: [width, height]).processed
   end
 
+  #理論退会機能を実装するにあたり、在籍状況ステータスが"withdraw?"(退会)だったら強制ログアウトさせる
   def active_for_authentication?
     super && !self.withdraw?
   end
 
+  #ゲストログイン機能用
   def self.guest
+    #find_or_create_by!→データの検索と作成を自動的に判断して処理を行うRailsのメソッド
     find_or_create_by!(name: 'guestuser' ,email: 'guest@example.com') do |user|
+      #SecureRandom.urlsafe_base64→ランダムな文字列を生成するRubyのメソッドの一種
       user.password = SecureRandom.urlsafe_base64
       user.name = "guestuser"
     end
   end
 
+  #フォロー機能、フォローする時の処理
   def follow(user_id)
     relationships.create(followed_id: user_id)
   end
 
+  #フォロー機能、フォローを外す時の処理
   def unfollow(user_id)
     relationships.find_by(followed_id: user_id).destroy
   end
 
+  #すでにフォローしているのか確認
   def following?(user)
     followings.include?(user)
   end
 
+  #ユーザー名を曖昧検索をするため
   def self.search_for(content)
     if content != nil
       User.where('name LIKE ?', '%' + content + '%')

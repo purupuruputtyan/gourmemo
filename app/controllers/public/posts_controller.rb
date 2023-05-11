@@ -26,12 +26,6 @@ class Public::PostsController < ApplicationController
     end
   end
 
-
-  # def user_favorite_posts
-  #   user= User.find(params[:id])
-  #   user.favorite_posts
-  # end
-
   def show
     @post = Post.find(params[:id])
     @comment = Comment.new
@@ -54,7 +48,7 @@ class Public::PostsController < ApplicationController
   def destroy
     post = Post.find(params[:id])
     post.destroy
-    redirect_to my_page_path
+    redirect_to mypage_path
   end
 
   def favorites
