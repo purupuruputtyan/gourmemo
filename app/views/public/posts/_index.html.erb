@@ -19,7 +19,7 @@
               メニュー名：<%= link_to post.menu, post_path(post.id), class:"text-dark" %>
             </p>
             <span><i class="fas fa-user"></i> By <%= link_to post.user.name, user_path(post.user.id), class:"text-dark" %> ｜ </span>
-            <span class="comments-count">
+            <span id="comments-count">
               <%= render 'public/comments/count', post: post %>
             </span>
             <div class="favorite-btn<%= post.id %>">
