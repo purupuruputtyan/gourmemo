@@ -1,10 +1,20 @@
-<div class="container">
-  <div class="row">
-    <div class="mx-auto col-11 col-sm-10 col-lg-8 col-xl-6">
-      <% if user_signed_in? %>
+
+<% if user_signed_in? %>
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-2 col-md-3 col-sm-4">
+        <%= render 'layouts/sidebar' %>
+      </div>
+      <div class='col-sm-12 col-md-8 col-lg-5 px-5 px-sm-0 mx-auto'>
         <h4>トピック</h4>
         <%= render 'public/posts/index', posts: @posts %>
-      <% else %>
+      </div>
+    </div>
+  </div>
+<% else %>
+  <div class="container">
+    <div class="row">
+      <div class="mx-auto col-11 col-sm-10 col-lg-8 col-xl-6">
         <h1>
           <strong>グルメモ</strong>
           &nbsp;へようこそ！
@@ -22,8 +32,9 @@
             <%= link_to 'Sign up', new_user_registration_path, class: "btn btn-success btn-sm btn-block" %>
           </div>
         </div>
-        <%= link_to '管理者はこちら', admin_session_path %>
-       <% end %>
       </div>
     </div>
   </div>
+  <%= link_to '管理者はこちら', admin_session_path %>
+<% end %>
+

@@ -14,9 +14,13 @@
   <body>
     <%= render 'layouts/header' %>
     <% if admin_signed_in? %>
-      <%= render 'admin/searches/form' %>
+      <div class="text-center mt-2">
+        <%= render 'admin/searches/form' %>
+      </div>
     <% elsif user_signed_in? %>
-      <%= render 'public/searches/form' %>
+      <div class="text-center mt-2">
+        <%= render 'public/searches/form' %>
+      </div>
     <% end %>
     <div><%= flash[:notice] %></div>
     <p class="alert"><%= alert %></p>
