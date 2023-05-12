@@ -42,7 +42,7 @@ class Public::UsersController < ApplicationController
 
   def my_page
     @user = current_user
-    @posts = @user.posts.page(params[:page])
+    @posts = @user.posts.page(params[:page]).per(6)
   end
 
 private

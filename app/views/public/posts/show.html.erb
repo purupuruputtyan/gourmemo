@@ -37,7 +37,11 @@
             <dt>感想</dt>
             <dd><%= @post.impression %></dd>
             <dt>値段</dt>
-            <dd><%= @post.price.to_s(:delimited, delimiter: ',')  %>円</dd>
+            <% if @post.price.present? %>
+              <dd><%= @post.price.to_s(:delimited, delimiter: ',') %>円</dd>
+            <% else %>
+              <dd>値段が入力されていません。</dd>
+            <% end %>
             <dt>ボリューム</dt>
             <dd><%= @post.volume_status_i18n %></dd>
             <dt>また食べたい度</dt>

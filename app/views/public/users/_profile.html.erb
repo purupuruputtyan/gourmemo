@@ -1,29 +1,31 @@
 <div class="container">
   <div class="row">
-    <div class="col-lg-4">
+    <div class="col-lg-2">
       <%= image_tag user.get_profile_image(100,100), class: "mt-o rounded-circle"; %>
     </div>
     <div class="col-lg-5">
-      <div><strong>名前</strong></div>
-      <div><%= user.name %></div>
-      <div>投稿件数：<%= user.posts.count %></div>
       <div class="row">
+        <label><strong>名前</strong>：</label>
+        <div><%= user.name %></div>
+      </div>
+      <div class="row">
+        <div class="mr-3">投稿件数：<%= user.posts.count %></div>
         <% if user.released? || user == current_user %>
-          <div><%= link_to 'フォロー' + user.followings.count.to_s + '人', user_followings_path(user.id), class: 'btn btn-sm btn-info' %></div>
-          <div><%= link_to 'フォロワー' + user.followers.count.to_s + '人', user_followers_path(user.id), class: 'btn btn-sm btn-info' %></div>
+          <div class="mr-3"><%= link_to 'フォロー' + user.followings.count.to_s + '人', user_followings_path(user.id), class: 'btn btn-sm btn-primary' %></div>
+          <div class="mr-3"><%= link_to 'フォロワー' + user.followers.count.to_s + '人', user_followers_path(user.id), class: 'btn btn-sm btn-primary' %></div>
         <% else %>
-          <div>フォロー<%= user.followings.count %>人</div>
+          <div class="mr-3">フォロー<%= user.followings.count %>人</div>
           <div>フォロワー<%= user.followers.count %>人</div>
         <% end %>
         <% if user != current_user %>
           <div><%= render 'public/relationships/btn', user: user %></div>
         <% end %>
       </div>
-      <div class="row">
+      <div class="row mt-2">
         <% if user == current_user %>
-          <div><%= link_to 'いいね一覧' + user.favorites.count.to_s + '件', favorites_posts_path, class: 'btn btn-sm btn-info' %></div>
+          <div class="mr-3"><%= link_to 'いいね一覧' + user.favorites.count.to_s + '件', favorites_posts_path, class: 'btn btn-sm btn-info' %></div>
           <% if user.name != "guestuser" %>
-            <div><%= link_to 'プロフィールを編集', edit_user_path(user.id), class: 'btn btn-sm btn-info' %></div>
+            <div><%= link_to 'プロフィールを編集', edit_user_path(user.id), class: 'btn btn-sm btn-success' %></div>
           <% end %>
         <% end %>
       </div>
@@ -31,6 +33,8 @@
   </div>
   <div class="row">
     <div><strong>自己紹介</strong></div>
+  </div>
+  <div class="row mb-5">
     <% if user.name != "guestuser" %>
       <% if user.introduction.present? %>
         <div><%= user.introduction %></div>
@@ -43,6 +47,8 @@
   </div>
   <div class="row">
     <div><strong>投稿一覧</strong></div>
+  </div>
+  <div class="row">
     <% if user.posts.present? %>
       <% if user.released? || user == current_user %>
         <div><%= render 'public/posts/history', posts: posts %></div>
