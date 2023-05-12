@@ -11,6 +11,14 @@ ja:
         just_right: "ちょうどいい"
         not_enough: "物足りない"
 
+  views:
+    pagination:
+      first: "&laquo; 最初"
+      last: "最後 &raquo;"
+      previous: "&lsaquo; 前"
+      next: "次 &rsaquo;"
+      truncate: "..."
+
   activerecord:
     errors:
       messages:
@@ -18,7 +26,7 @@ ja:
         restrict_dependent_destroy:
           has_one: "%{record}が存在しているので削除できません"
           has_many: "%{record}が存在しているので削除できません"
-          
+
     models:
       admin: 管理者
       user: ユーザー
@@ -26,7 +34,7 @@ ja:
       favorite: いいね
       relationship: フォロー
       comment: コメント
-  
+
     attributes:
       user:
         name: ニックネーム
@@ -42,7 +50,7 @@ ja:
         price: 金額
         volume_status: 量感
         star: また食べたい度
-          
+
   date:
     abbr_day_names:
     - 日

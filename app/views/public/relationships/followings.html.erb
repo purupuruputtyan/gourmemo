@@ -3,16 +3,14 @@
     <div class="col-lg-2 col-md-3 col-sm-4">
       <%= render 'layouts/sidebar' %>
     </div>
-    <h2>フォロワー一覧</h2>
-  </div>
-  <div class="row">
-    <% if @users.present? %>
-      <%= render 'public/users/index', users: @users %>
-    <% else %>
-      <p>まだフォロワーがいません。</p>
-    <% end %>
-  </div>
-  <div class="row">
-    <%= link_to 'Back', :back %>
+    <div class='col-lg-10 col-md-9 col-sm-6'>
+      <h2>フォロー一覧</h2>
+      <% if @users.present? %>
+        <%= render 'public/users/index', users: @users %>
+      <% else %>
+        <p>まだフォローしていません。</p>
+      <% end %>
+      <%= link_to 'Back', :back %>
+    </div>
   </div>
 </div>
