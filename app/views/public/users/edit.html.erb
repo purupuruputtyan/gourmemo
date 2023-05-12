@@ -9,12 +9,15 @@
           <div><%= image_tag @user.get_profile_image(80,80), class: "mt-o rounded-circle"; %></div>
           <div><%= f.file_field :profile_image, accept: "image/*" %></div>
         </div>
-        <div>
-          <%= f.radio_button :status, User.statuses.key(0) %>
-          <%= f.label :status_released, User.statuses_i18n[:released] %>
+        <div class="form-group">
+          <label for="user_status">公開ステータス</label>
+          <div>
+            <%= f.radio_button :status, User.statuses.key(0) %>
+            <%= f.label :status_released, User.statuses_i18n[:released] %>
 
-          <%= f.radio_button :status, User.statuses.key(1) %>
-          <%= f.label :status_nonreleased, User.statuses_i18n[:nonreleased]%>
+            <%= f.radio_button :status, User.statuses.key(1) %>
+            <%= f.label :status_nonreleased, User.statuses_i18n[:nonreleased]%>
+          </div>
         </div>
         <div class="form-group">
           <label for="user_name">ニックネーム</label>

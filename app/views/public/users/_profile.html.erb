@@ -8,12 +8,12 @@
       <div><%= user.name %></div>
       <div>投稿件数：<%= user.posts.count %></div>
       <div class="row">
-        <% if user.nonreleased? %>
-          <div>フォロー<%= user.followings.count %>人</div>
-          <div>フォロワー<%= user.followers.count %>人</div>
-        <% else %>
+        <% if user.released? || user == current_user %>
           <div><%= link_to 'フォロー' + user.followings.count.to_s + '人', user_followings_path(user.id), class: 'btn btn-sm btn-info' %></div>
           <div><%= link_to 'フォロワー' + user.followers.count.to_s + '人', user_followers_path(user.id), class: 'btn btn-sm btn-info' %></div>
+        <% else %>
+          <div>フォロー<%= user.followings.count %>人</div>
+          <div>フォロワー<%= user.followers.count %>人</div>
         <% end %>
         <% if user != current_user %>
           <div><%= render 'public/relationships/btn', user: user %></div>
