@@ -1,7 +1,9 @@
 <div class="container-fluid">
   <div class="row">
     <div class="col-lg-2 col-md-3 col-sm-4">
-      <%= render 'layouts/sidebar' %>
+      <% if user_signed_in? %>
+        <%= render 'layouts/sidebar' %>
+      <% end %>
     </div>
     <div class="col-xs-12 col-md-10 col-md-offset-1">
       <h2>投稿詳細</h2>
@@ -50,7 +52,7 @@
       </div>
 
       <div class="row">
-        <div class="col-xs-12">
+        <div class="col-12">
           <h3>コメント一覧</h3>
           <div id="comments-count">
             <%= render 'public/comments/count', post: @post %>
@@ -58,7 +60,7 @@
           <div id="comments-area">
             <%= render 'public/comments/index', post: @post %>
           </div>
-          <%= render 'public/comments/form', post: @post, comment: @comment %>
+          <div><%= render 'public/comments/form', post: @post, comment: @comment %></div>
         </div>
       </div>
 
@@ -74,7 +76,7 @@
             <style>
               #map {
                 height: 500px;
-                width: 70%;
+                width: 80%;
               }
             </style>
             <script>

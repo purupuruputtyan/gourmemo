@@ -1,4 +1,4 @@
 <%= form_with model: [post, comment], local: false do |f| %>
-  <%= f.text_area :comment, placeholder: "コメントを入力" %>
+  <%= f.text_area :comment, class: "col-10", placeholder: "コメントを入力" %>
   <%= f.submit "送信する" %>
 <% end %>

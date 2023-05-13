@@ -12,19 +12,22 @@
   </head>
 
   <body class="<%= @classname %>">
-    <%= render 'layouts/header' %>
-    <% if admin_signed_in? %>
-      <div class="text-center mt-2">
-        <%= render 'admin/searches/form' %>
-      </div>
-    <% elsif user_signed_in? %>
-      <div class="text-center mt-2">
-        <%= render 'public/searches/form' %>
-      </div>
-    <% end %>
-    <div><%= flash[:notice] %></div>
-    <p class="alert"><%= alert %></p>
-    <%= yield %>
+    <div class="wrapper">
+      <%= render 'layouts/header' %>
+      <div><%= flash[:notice] %></div>
+      <p class="alert"><%= alert %></p>
+      <% if admin_signed_in? %>
+        <div class="text-center mb-5">
+          <%= render 'admin/searches/form' %>
+        </div>
+      <% elsif user_signed_in? %>
+        <div class="text-center mb-5">
+          <%= render 'public/searches/form' %>
+        </div>
+      <% end %>
+      <%= yield %>
+    </div>
     <%= render 'layouts/footer' %>
+
   </body>
 </html>

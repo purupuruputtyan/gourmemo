@@ -5,10 +5,38 @@
   justify-content: center;
 }
 
+body {
+  // width: 100%;
+  // height: 100%;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+.wrapper{
+  margin: 60px 10px;
+}
+
+footer {
+  margin-top: auto;
+}
+
 header {
   background-color: #363738;
 }
 
 body.topbody {
   background-image: url("../images/top_image.jpeg");
+  background-attachment: fixed;
+  background-size:cover;                                 /* 画像のサイズを指定  */
+  width:100%;                                            /* 横幅のサイズを指定  */
+  height:400px;
+}
+
+body.other {
+  background-image: url("../images/background_image.jpeg");
+  background-attachment: fixed;
+  background-size:cover;                                 /* 画像のサイズを指定  */
+  width:100%;                                            /* 横幅のサイズを指定  */
+  height:400px;
 }
