@@ -50,6 +50,8 @@ ja:
         price: 金額
         volume_status: 量感
         star: また食べたい度
+      comment:
+        comment: コメント
 
   date:
     abbr_day_names:

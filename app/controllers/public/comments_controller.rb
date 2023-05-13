@@ -6,8 +6,11 @@ class Public::CommentsController < ApplicationController
     @comment = Comment.new(comment_params)
     @comment.user_id = current_user.id
     @comment.post_id = post.id
-    @comment.save
-    render :index
+    if @comment.save
+      render :index
+    else
+      render :errors
+    end
   end
 
   def destroy
