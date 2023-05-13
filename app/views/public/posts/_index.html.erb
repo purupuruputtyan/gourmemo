@@ -41,7 +41,9 @@
   <% end %>
 </div>
 
-<div class="card-list-container">
+<!------------------------------別のレイアウト候補--------------------------------->
+
+<div class="card-list-container py-5">
   <% posts.each do |post| %>
     <div class="card w-70 mx-auto mt-5">
       <%= link_to post_path(post.id) do %>
