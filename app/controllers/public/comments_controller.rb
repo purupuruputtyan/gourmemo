@@ -8,14 +8,12 @@ class Public::CommentsController < ApplicationController
     @comment.post_id = post.id
     @comment.save
     render :index
-    #redirect_to request.referer
   end
 
   def destroy
     @comment = Comment.find(params[:id])
     @comment.destroy
     render :index
-    #redirect_to request.referer
   end
 
   private

@@ -11,11 +11,13 @@ class Public::RelationshipsController < ApplicationController
     redirect_to request.referer
   end
 
+  #フォローした人の一覧を表示するため
   def followings
     user = User.find(params[:user_id])
     @users = user.followings.page(params[:page])
   end
 
+  #フォローしてくれた人の一覧を表示するため
   def followers
     user = User.find(params[:user_id])
     @users = user.followers.page(params[:page])

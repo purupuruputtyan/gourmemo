@@ -40,6 +40,7 @@ class Public::UsersController < ApplicationController
     redirect_to root_path
   end
 
+  #マイページにユーザー情報と自分が投稿した一覧を表示
   def my_page
     @user = current_user
     @posts = @user.posts.page(params[:page]).per(6)
