@@ -1,30 +1,30 @@
 <%= form_with model: post do |f| %>
   <div class="form-group">
-    <label for="user_image">お食事の写真</label>
+    <label for="user_image">【お食事の写真】</label>
     <%= f.file_field :image, accept: "image/*" %>
   </div>
   <div class="form-group">
-    <label for="shop_name">お店の名前（必須入力）</label>
+    <label for="shop_name">【お店の名前（必須入力）】</label>
     <div><%= f.text_field :shop_name, class: "form-control", placeholder: "◯◯◯食堂" %></div>
   </div>
   <div class="form-group">
-    <label for="shop_address_introduction">住所（任意）</label>
+    <label for="shop_address_introduction">【住所（任意）】</label>
     <div><%= f.text_field :address, class: "form-control", placeholder: "東京都渋谷区代々木神園町0-0、東京駅、etc、、、" %></div>
   </div>
   <div class="form-group">
-    <label for="menu">メニュー名（必須入力）</label>
+    <label for="menu">【メニュー名（必須入力）】</label>
     <div><%= f.text_field :menu, class: "form-control", placeholder: "◯◯◯定食" %></div>
   </div>
   <div class="form-group">
-    <label for="impression">感想（必須入力）</label>
+    <label for="impression">【感想（必須入力）】</label>
     <div><%= f.text_area :impression, class: "form-control", rows: 5, placeholder: "100文字まで入力可" %></div>
   </div>
   <div class="form-group">
-    <label for="price">値段（任意）</label>
+    <label for="price">【値段（任意）】</label>
     <div><%= f.text_field :price, class: "form-control", placeholder: "半角でご入力ください" %>円</div>
   </div>
   <div class="form-group">
-    <label for="volume_status">ボリューム感（必須選択）</label>
+    <label for="volume_status">【ボリューム感（必須選択）】</label>
     <div>
       <%= f.radio_button :volume_status, Post.volume_statuses.key(0) %>
       <%= f.label :volume_status_full, Post.volume_statuses_i18n[:full] %>
@@ -37,9 +37,9 @@
     </div>
   </div>
 
-  
+
     <div class="form-group" id="star">
-      <label for="star">また食べたい度（必須入力）</label>
+      <label for="star">【また食べたい度（必須入力）】</label>
   <% if post.id.nil? %>
       <%= f.hidden_field :star, id: :review_star, class: 'form-control' %>
       <div id="post_raty"></div>
@@ -67,9 +67,9 @@
 
   <div class="form-group">
     <% if f.object.new_record? %>
-      <%= f.submit '投稿する', class: "btn btn-success" %>
+      <%= f.submit '投稿する', class: "btn btn-block btn-success mt-5" %>
     <% else %>
-      <%= f.submit '更新する', class: "btn btn-success" %>
+      <%= f.submit '更新する', class: "btn btn-block btn-success mt-5" %>
     <% end %>
   </div>
 <% end %>

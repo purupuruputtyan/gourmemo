@@ -1,10 +1,14 @@
 <div class="container">
-  <div class="row">
-    <div class="col-sm-12 col-md-8 col-lg-5 px-5 px-sm-0 mx-auto">
+  <div class="row no-gutters">
+    <div class="col-lg-8 col-md-8 col-sm-12 round mx-auto">
       <%= render 'layouts/errors', obj: @post %>
-      <h2>編集画面</h2>
-      <%= render 'form', post: @post %>
-      <%= link_to '戻る', :back, class: "btn btn-outline-dark mt-3" %>
+      <h2 class="text-dark bg-light rounded-top py-4 mb-0 text-center shadow-lg">投稿編集フォーム</h2>
+      <div class="form-body p-4 bg-white rounded-bottom shadow-lg">
+        <%= render 'form', post: @post %>
+      </div>
+    </div>
+    <div class="row my-5">
+      <%= link_to '戻る', :back, class: "btn btn-outline-dark" %>
     </div>
   </div>
 </div>
