@@ -1,4 +1,5 @@
 <%= form_with model: post do |f| %>
+  <%= render 'layouts/errors', obj: post %>
   <div class="form-group">
     <label for="user_image">【お食事の写真】</label>
     <%= f.file_field :image, accept: "image/*" %>
