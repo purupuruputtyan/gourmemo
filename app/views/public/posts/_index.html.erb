@@ -4,13 +4,13 @@
       <div class="card-header">
     <span>
       <%= link_to user_path(post.user.id) do %>
-        <%= image_tag post.user.get_profile_image(50,50), class:"mt-o rounded-circle"; %>
+        <%= image_tag post.user.get_profile_image(50,50), class: "mt-o rounded-circle"; %>
       <% end %>
     </span>
-    <span><%= link_to post.user.name, user_path(post.user.id), class:"text-dark" %></span>
+    <span><%= link_to post.user.name, user_path(post.user.id), class: "text-dark" %></span>
   </div>
       <%= link_to post_path(post.id) do %>
-        <%= image_tag post.get_image(700,700), class:"card-img-top"; %>
+        <%= image_tag post.get_image(700,700), class: "border-bottom card-img-top"; %>
       <% end %>
       <div class="card-body">
         <div class="row">
@@ -22,10 +22,10 @@
       </div>
     </div>
     <div class="card-title">
-      お店の名前：<%= link_to post.shop_name, post_path(post.id), class:"text-dark" %>
+      お店の名前：<%= link_to post.shop_name, post_path(post.id), class: "text-dark" %>
     </div>
     <div class="card-text">
-      <div>メニュー名：<%= link_to post.menu, post_path(post.id), class:"text-dark" %></div>
+      <div>メニュー名：<%= link_to post.menu, post_path(post.id), class: "text-dark" %></div>
     </div>
     <div class="row mt-2">
       <div class="col-5">また食べたい度：</div>

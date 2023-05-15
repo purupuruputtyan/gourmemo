@@ -5,16 +5,18 @@
         <%= render 'layouts/sidebar' %>
       <% end %>
     </div>
-    <div class="col-xs-12 col-md-10 col-md-offset-1">
-      <h2>投稿詳細</h2>
+    <div class="col-sm-12 col-md-10 col-md-offset-1">
+      <div class="col-lg-4 col-md-7 col-sm-12 text-center">
+        <h2 class="headline">投稿詳細</h2>
+      </div>
         <div class="row">
           <div><%= image_tag @post.user.get_profile_image(50,50), class: "mt-o rounded-circle"; %></div>
           <div><%= @post.user.name %></div>
         </div>
 
       <div class="row">
-        <div class="col-xs-12 col-md-7">
-          <div><%= image_tag @post.get_image(500,400) %></div>
+        <div class="col-sm-12 col-md-7 mb-3">
+          <div><%= image_tag @post.get_image(500,400), class: "border rounded" %></div>
           <div class="favorite-btn<%= @post.id %>">
             <%= render 'public/favorites/btn', post: @post %>
           </div>
@@ -25,7 +27,7 @@
             </div>
           <% end %>
         </div>
-        <div class="shop-info col-xs-12 col-md-5">
+        <div class="col-sm-12 col-md-5 bg-white px-2">
           <dl>
             <dt>投稿日</dt>
             <dd><%= @post.created_at.strftime('%Y/%m/%d') %></dd>
@@ -50,10 +52,12 @@
           </dl>
         </div>
       </div>
-
+      <hr>
       <div class="row">
         <div class="col-12">
-          <h3>コメント一覧</h3>
+          <div class="col-lg-4 col-md-7 col-sm-12 text-center">
+            <h3 class="headline">コメント一覧</h3>
+          </div>
           <div id="comments-count">
             <%= render 'public/comments/count', post: @post %>
           </div>
@@ -63,10 +67,12 @@
           <div><%= render 'public/comments/form', post: @post, comment: @comment %></div>
         </div>
       </div>
-
+      <hr>
       <div class="row">
-        <div class="col-xs-12">
-          <h3>マップ</h3>
+        <div class="col-12">
+          <div class="col-lg-4 col-md-7 col-sm-12 text-center">
+            <h3 class="headline">マップ</h3>
+          </div>
         </div>
       </div>
       <div class="row">
@@ -76,7 +82,7 @@
             <style>
               #map {
                 height: 500px;
-                width: 80%;
+                width: 100%;
               }
             </style>
             <script>

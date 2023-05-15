@@ -44,3 +44,26 @@ body.other {
 #error_explanation {
   color: #f00;
 }
+
+.headline{
+font-size: 1.5em;/* フォントサイズ */
+font-weight: bold;/* フォント太さ */
+padding: 0.5em 1em;
+margin-bottom: 2em;
+position: relative;
+background-color: #f0d8e8;/* 背景色 */
+box-shadow: 0px 0px 0px 5px #f0d8e8;
+border: dashed 2px #ffffff;/* 破線 */
+color:#000000;/* フォント色 */
+}
+
+.headline:after {
+position: absolute;
+content: '';
+top: -7px;
+left: -7px;
+border-width: 0 0 20px 20px;
+border-style: dashed;
+border-color: #fff #fff #dec8d6;
+box-shadow: 1px 1px 1px rgba(0, 0, 0, 0.2);
+}
