@@ -18,7 +18,7 @@
 
       <div class="row">
         <div class="col-sm-12 col-md-7 mb-3">
-          <div><%= image_tag @post.get_image(500,400), class: "border rounded shadow-lg" %></div>
+          <div><%= image_tag @post.get_image(500,400), class: "img-thumbnail mx-1 my-1" %></div>
           <div class="favorite-btn<%= @post.id %>">
             <%= render 'public/favorites/btn', post: @post %>
           </div>
