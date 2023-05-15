@@ -4,7 +4,7 @@
       <%= render 'layouts/sidebar' %>
     </div>
     <div class="col-md-8 offset-md-1">
-      <h2>"<%= current_user.name %>"さんがいいねした一覧</h2>
+      <h2 class="headline col-lg-8 col-md-12 col-sm-12 text-center">"<%= current_user.name %>"さんがいいねした一覧</h2>
       <% if @favorite_posts.present? %>
         <%= render 'index', posts: @favorite_posts %>
       <% else %>

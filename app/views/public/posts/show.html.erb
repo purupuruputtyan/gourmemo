@@ -6,13 +6,11 @@
       <% end %>
     </div>
     <div class="col-sm-12 col-md-10 col-md-offset-1">
-      <div class="col-lg-4 col-md-7 col-sm-12 text-center">
-        <h2 class="headline">投稿詳細</h2>
+      <h2 class="headline col-lg-4 col-md-7 col-sm-12 text-center">投稿詳細</h2>
+      <div class="row">
+        <div><%= image_tag @post.user.get_profile_image(50,50), class: "mt-o rounded-circle"; %></div>
+        <div><%= @post.user.name %></div>
       </div>
-        <div class="row">
-          <div><%= image_tag @post.user.get_profile_image(50,50), class: "mt-o rounded-circle"; %></div>
-          <div><%= @post.user.name %></div>
-        </div>
 
       <div class="row">
         <div class="col-sm-12 col-md-7 mb-3">
@@ -55,9 +53,7 @@
       <hr>
       <div class="row">
         <div class="col-12">
-          <div class="col-lg-4 col-md-7 col-sm-12 text-center">
-            <h3 class="headline">コメント一覧</h3>
-          </div>
+          <h3 class="headline col-lg-4 col-md-7 col-sm-12 text-center">コメント一覧</h3>
           <div id="comments-count">
             <%= render 'public/comments/count', post: @post %>
           </div>
@@ -70,9 +66,7 @@
       <hr>
       <div class="row">
         <div class="col-12">
-          <div class="col-lg-4 col-md-7 col-sm-12 text-center">
-            <h3 class="headline">マップ</h3>
-          </div>
+          <h3 class="headline col-lg-4 col-md-7 col-sm-12 text-center">マップ</h3>
         </div>
       </div>
       <div class="row">
