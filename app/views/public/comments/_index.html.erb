@@ -1,4 +1,4 @@
-<table class="col-8">
+<table>
   <tbody>
     <% post.comments.each do |comment| %>
       <tr>
@@ -12,7 +12,7 @@
             <%= comment.user.name %>
           </div>
         </td>
-        <td class="col-5">
+        <td>
           <div><%= comment.created_at.strftime('%Y/%m/%d') %></div>
           <div><%= comment.comment %></div>
         </td>
