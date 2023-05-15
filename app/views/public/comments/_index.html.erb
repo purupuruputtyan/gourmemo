@@ -1,7 +1,7 @@
-<table>
+<table class="bg-white">
   <tbody>
     <% post.comments.each do |comment| %>
-      <tr>
+      <tr class="border">
         <td class="col-2 text-center">
           <div>
             <%= link_to user_path(comment.user.id) do %>
