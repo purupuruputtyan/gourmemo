@@ -30,9 +30,6 @@
             <div class="input-group-prepend">
               <span class="input-group-text" aria-hidden="true"><i class="fas fa-lock"></i></span>
             </div>
-            <%# if @minimum_password_length %>
-            <!--em>(<%#= @minimum_password_length %> characters minimum)</em-->
-            <%# end %>
             <%= f.password_field :password, autocomplete: "new-password", class: "form-control", placeholder: "パスワード（６桁以上）" %>
           </div>
 
