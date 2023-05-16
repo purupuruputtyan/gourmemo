@@ -1,10 +1,10 @@
 <div class="container">
   <div class="row">
-    <div class="col-lg-2 col-md-3 col-sm-4">
+    <div class="col-lg-2 col-md-3 col-sm-12">
       <%= render 'layouts/sidebar' %>
     </div>
-    <div class="col-sm-12 col-md-8 col-lg-5 px-5 px-sm-0 mx-auto">
-      <h2>投稿一覧</h2>
+    <div class="col-lg-6 col-md-8 col-sm-12 mx-auto">
+      <h2 class="headline col-lg-6 col-md-7 col-sm-12 text-center">投稿一覧</h2>
       <%= render 'index', posts: @posts %>
     </div>
   </div>

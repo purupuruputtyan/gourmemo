@@ -15,11 +15,7 @@
         <div class="col-xs-12 col-md-7">
           <div><%= image_tag @post.get_image(500,400) %></div>
           <div>
-            <% if @post.favorites.count != 0 %>
-              <p><i class="fas fa-heart" style="color: #ff0000;"></i><%= @post.favorites.count %></p>
-            <% else %>
-              <p><i class="far fa-heart" style="color: #000000;"></i>0</p>
-            <% end %>
+            <%= render 'admin/posts/favorites-count', post: @post %>
           </div>
           <div class="d-grid gap-2 d-md-block text-center">
             <%= link_to "投稿を削除", admin_post_path, method: :delete, "data-confirm" => "本当に削除しますか？", class: 'btn btn-danger' %>
