@@ -1,6 +1,7 @@
 class Public::FavoritesController < ApplicationController
   before_action :authenticate_user!
 
+  #いいね機能（作成、削除）非同期化
   def create
     @post = Post.find(params[:post_id])
     favorite = current_user.favorites.new(post_id: @post.id)

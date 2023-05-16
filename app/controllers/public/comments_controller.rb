@@ -1,6 +1,7 @@
 class Public::CommentsController < ApplicationController
   before_action :authenticate_user!
 
+  #コメント機能（作成、削除）非同期化
   def create
     post = Post.find(params[:post_id])
     @comment = Comment.new(comment_params)

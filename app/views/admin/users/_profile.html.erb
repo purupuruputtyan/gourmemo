@@ -33,16 +33,20 @@
     <% end %>
   </div>
   <hr>
-  <div class="row pl-3">
-    <h2 class="headline col-lg-4 col-md-7 col-sm-12 text-center mt-3">投稿一覧</h2>
-    <% if user.posts.present? %>
-      <% if user.released? || user == current_user %>
-        <div><%= render 'admin/posts/history', posts: posts %></div>
-      <% elsif user.nonreleased? && user != current_user %>
-        <div>このユーザーは非公開です。</div>
+  <div class="row">
+    <div class="col-12">
+      <h2 class="headline col-lg-4 col-md-7 col-sm-12 text-center mt-3">投稿一覧</h2>
+    </div>
+    <div class="col-12">
+      <% if user.posts.present? %>
+        <% if user.released? || user == current_user %>
+          <div><%= render 'admin/posts/history', posts: posts %></div>
+        <% elsif user.nonreleased? && user != current_user %>
+          <div>このユーザーは非公開です。</div>
+        <% end %>
+      <% else %>
+        <div>まだ投稿がありません。</div>
       <% end %>
-    <% else %>
-      <div>まだ投稿がありません。</div>
-    <% end %>
+    </div>
   </div>
 </div>
