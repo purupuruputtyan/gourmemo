@@ -57,15 +57,17 @@
         </div>
         <hr>
         <div>
-          <div class="col-12">
-            <h3 class="headline col-lg-4 col-md-7 col-sm-12 text-center">コメント一覧</h3>
-            <div id="comments-count">
-              <%= render 'public/comments/count', post: @post %>
+          <div class="row">
+            <div class="col-12">
+              <h3 class="headline col-lg-4 col-md-7 col-sm-12 text-center">コメント一覧</h3>
+              <div id="comments-count">
+                <%= render 'public/comments/count', post: @post %>
+              </div>
+              <div id="comments-area">
+                <%= render 'public/comments/index', post: @post %>
+              </div>
+              <div class="my-3"><%= render 'public/comments/form', post: @post, comment: @comment %></div>
             </div>
-            <div id="comments-area">
-              <%= render 'public/comments/index', post: @post %>
-            </div>
-            <div class="my-3"><%= render 'public/comments/form', post: @post, comment: @comment %></div>
           </div>
         </div>
         <hr>
@@ -73,9 +75,7 @@
           <div class="col-12">
             <h3 class="headline col-lg-4 col-md-7 col-sm-12 text-center">マップ</h3>
           </div>
-        </div>
-        <div class="row">
-          <div class="col-xs-12 col-md-10 col-md-offset-1">
+          <div class="col-12">
             <% if @post.address.present? %>
               <div id="map"></div>
               <style>
