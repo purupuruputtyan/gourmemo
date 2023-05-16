@@ -24,7 +24,7 @@ class Post < ApplicationRecord
   after_validation :geocode, if: :address_changed?
 
   #トップページを過去１週間のいいね順で投稿一覧を表示させるため
-  def self.week_favorites
+  def self.week_posts
     where(created_at: ((Time.current.at_end_of_day - 6.day).at_beginning_of_day)..(Time.current.at_end_of_day))
   end
 
