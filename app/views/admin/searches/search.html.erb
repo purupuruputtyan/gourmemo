@@ -1,19 +1,39 @@
-<% if admin_signed_in? %>
-  <% if @users.present? && @posts.present? %>
-    <h3>【ユーザーとメニュー名の検索結果】検索ワード："<%= @content %>"</h3>
-    <h4>・ユーザー</h4>
-    <%= render 'admin/users/index', users: @users %>
-    <h4>・メニュー名</h4>
-    <%= render 'admin/posts/index', posts: @posts %>
-  <% elsif @users.present? && @posts.empty? %>
-    <h3>【ユーザーの検索結果】検索ワード："<%= @content %>"</h3>
-    <h4>・ユーザー</h4>
-    <%= render 'admin/users/index', users: @users %>
-  <% elsif @users.empty? && @posts.present? %>
-    <h3>【メニュー名の検索結果】検索ワード："<%= @content %>"</h3>
-    <h4>・メニュー名</h4>
-    <%= render 'admin/posts/index', posts: @posts %>
-  <% else %>
-    <h3>検索ワード："<%= @content %>"に該当はありません</h3>
-  <% end %>
-<% end %>
+<div class="container">
+  <div class="row">
+    <div class="col-lg-2 col-md-3 col-sm-12">
+      <%= render 'layouts/sidebar' %>
+    </div>
+    <div class='col-lg-10 col-md-9 col-sm-12'>
+      <div class="card shadow-lg px-3 py-3">
+        <% if admin_signed_in? %>
+
+          <% if @users.present? && @posts.present? %>
+            <h3 class="headline col-lg-9 col-md-12 col-sm-12 text-center mb-3">【ユーザーとメニュー名の検索結果】検索ワード："<%= @content %>"</h3>
+            <h4>【ユーザー】</h4>
+              <%= render 'admin/users/index', users: @users %>
+            <hr class="mt-5">
+            <h4>【メニュー名】</h4>
+            <div class="col-lg-8 col-md-8 col-sm-12 mx-auto">
+              <%= render 'admin/posts/index', posts: @posts %>
+            </div>
+
+          <% elsif @users.present? && @posts.empty? %>
+            <h3 class="headline col-lg-9 col-md-12 col-sm-12 text-center mb-3">【ユーザーの検索結果】検索ワード："<%= @content %>"</h3>
+            <h4>【ユーザー】</h4>
+            <%= render 'admin/users/index', users: @users %>
+
+          <% elsif @users.empty? && @posts.present? %>
+            <h3 class="headline col-lg-9 col-md-12 col-sm-12 text-center mb-3">【メニュー名の検索結果】検索ワード："<%= @content %>"</h3>
+            <h4>【メニュー名】</h4>
+            <div class="col-lg-8 col-md-8 col-sm-12 mx-auto">
+              <%= render 'admin/posts/index', posts: @posts %>
+            </div>
+
+          <% else %>
+            <h3>検索ワード："<%= @content %>"に該当はありません</h3>
+          <% end %>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>
