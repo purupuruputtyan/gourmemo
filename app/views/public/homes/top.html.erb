@@ -1,7 +1,7 @@
 <% if user_signed_in? %>
   <div class="container">
     <div class="row">
-      <div class="col-lg-2 col-md-3 col-sm-4">
+      <div class="col-lg-2 col-md-3 col-sm-12">
         <%= render 'layouts/sidebar' %>
       </div>
       <div class='col-lg-6 col-md-8 col-sm-12 mx-auto'>
@@ -13,15 +13,17 @@
 <% else %>
   <div class="container">
     <div class="row">
-      <div class="mx-auto col-11 col-sm-10 col-lg-8 col-xl-6">
+      <div class="mx-auto col-12 mt-5 pt-3">
         <div class="text-center">
-          <h1>
+          <h1 class="top-text">
             <strong>グルメモ</strong>
             &nbsp;へようこそ！
           </h1>
-          <p>グルメのレビューをSNSで発信&nbsp;<i class="fas fa-broadcast-tower"></i></p>
-          <p>グルメライフをより充実させるのにお役立てください！</p>
+          <p class="top-text"><b>グルメのレビューをSNSで発信</b>&nbsp;<i class="fas fa-broadcast-tower"></i></p>
+          <p class="top-text"><b>グルメライフをより充実させるのにお役立てください！</b></p>
         </div>
+      </div>
+      <div class="mx-auto col-10 col-lg-6 mt-5">
         <div class-"btn-wrapper col-10 mx-auto">
           <div class="row">
           　<%= link_to 'ゲストログイン（閲覧用）', users_guest_sign_in_path, class: "btn btn-secondary btn-sm btn-block mb-3 sign_in", method: :post %>
@@ -33,6 +35,7 @@
             <%= link_to '新規登録', new_user_registration_path, class: "btn btn-success btn-sm btn-block" %>
           </div>
         </div>
+      </div>
       </div>
     </div>
   </div>

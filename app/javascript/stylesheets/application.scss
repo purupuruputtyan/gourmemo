@@ -72,3 +72,10 @@ box-shadow: 1px 1px 1px rgba(0, 0, 0, 0.2);
 .post-detail {
   text-indent: 1em;
 }
+
+.top-text {
+  text-shadow: 2px  2px 3px #fff,
+              -2px  2px 3px #fff,
+               2px -2px 3px #fff,
+              -2px -2px 3px #fff;
+}
