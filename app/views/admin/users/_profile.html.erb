@@ -4,8 +4,17 @@
       <%= image_tag user.get_profile_image(120,120), class: "mt-o rounded-circle"; %>
     </div>
     <div class="col-lg-5">
-      <div><strong>名前</strong></div>
-      <div><%= user.name %></div>
+      <div>
+        <% if user.released? %>
+          <h4><font color="#28a745">公開ユーザーです</font></h4>
+        <% elsif user.nonreleased? %>
+          <h4><font color="#6c757d">非公開ユーザーです</font></h4>
+        <% else %>
+          <h4><font color="#dc3545">退会済みユーザーです</font></h4>
+        <% end %>
+        <strong>名前</strong>:
+        <%= user.name %>
+      </div>
       <div>投稿件数：<%= user.posts.count %></div>
       <% if user.name != "guestuser" %>
         <div class="row">
@@ -13,7 +22,7 @@
           <div>フォロワー<%= user.followers.count %>人</div>
         </div>
         <div class="row">
-          <div><%= link_to 'プロフィールを編集', edit_admin_user_path(user.id), class: 'btn btn-sm btn-success' %></div>
+          <div class="mt-3 mr-3"><%= link_to 'プロフィールを編集', edit_admin_user_path(user.id), class: 'btn btn-sm btn-success' %></div>
         </div>
       <% end %>
     </div>
@@ -39,11 +48,7 @@
     </div>
     <div class="col-12">
       <% if user.posts.present? %>
-        <% if user.released? || user == current_user %>
-          <div><%= render 'admin/posts/history', posts: posts %></div>
-        <% elsif user.nonreleased? && user != current_user %>
-          <div>このユーザーは非公開です。</div>
-        <% end %>
+        <div><%= render 'admin/posts/history', posts: posts %></div>
       <% else %>
         <div>まだ投稿がありません。</div>
       <% end %>
