@@ -2,7 +2,7 @@
   <div class="d-flex flex-wrap justify-content-evenly">
     <% posts.each do |post| %>
       <%= link_to admin_post_path(post.id) do %>
-        <%= image_tag post.get_image(300,300), class: "img-thumbnail mx-1 my-1" %>
+        <%= image_tag post.get_image(300,300), class: "object img-thumbnail mx-1 my-1" %>
       <% end %>
     <% end %>
   </div>

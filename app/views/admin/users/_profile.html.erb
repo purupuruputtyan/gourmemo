@@ -1,7 +1,7 @@
 <div class="container">
   <div class="row">
-    <div class="col-lg-4">
-      <%= image_tag user.get_profile_image(100,100), class: "mt-o rounded-circle"; %>
+    <div class="col-lg-4 mb-3 text-center">
+      <%= image_tag user.get_profile_image(120,120), class: "mt-o rounded-circle"; %>
     </div>
     <div class="col-lg-5">
       <div><strong>名前</strong></div>
@@ -9,7 +9,7 @@
       <div>投稿件数：<%= user.posts.count %></div>
       <% if user.name != "guestuser" %>
         <div class="row">
-          <div>フォロー<%= user.followings.count %>人</div>
+          <div class="mr-3">フォロー<%= user.followings.count %>人</div>
           <div>フォロワー<%= user.followers.count %>人</div>
         </div>
         <div class="row">
@@ -18,8 +18,10 @@
       <% end %>
     </div>
   </div>
-  <div class="row">
+  <div class="row  pl-3">
     <div><strong>自己紹介</strong></div>
+  </div>
+  <div class="row mb-5 pl-3">
     <% if user.name != "guestuser" %>
       <% if user.introduction.present? %>
         <div><%= user.introduction %></div>
@@ -30,8 +32,9 @@
       <div>ゲストユーザーです。</div>
     <% end %>
   </div>
-  <div class="row">
-    <div><strong>投稿一覧</strong></div>
+  <hr>
+  <div class="row pl-3">
+    <h2 class="headline col-lg-4 col-md-7 col-sm-12 text-center mt-3">投稿一覧</h2>
     <% if user.posts.present? %>
       <% if user.released? || user == current_user %>
         <div><%= render 'admin/posts/history', posts: posts %></div>

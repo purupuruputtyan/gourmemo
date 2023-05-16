@@ -1,9 +1,14 @@
 <div class="container">
   <div class="row">
-    <div class="col-lg-2 col-md-3 col-sm-4">
+    <div class="col-lg-2 col-md-3 col-sm-12">
       <%= render 'layouts/sidebar' %>
     </div>
-    <h2>ユーザー詳細</h2>
-    <%= render 'profile', user: @user, posts: @posts %>
+    <div class='col-lg-10 col-md-9 col-sm-12'>
+      <div class="card shadow-lg px-3 py-3">
+        <h2 class="headline col-lg-4 col-md-7 col-sm-12 text-center">ユーザー詳細</h2>
+        <%= render 'profile', user: @user, posts: @posts %>
+      </div>
+    </div>
   </div>
+  <%= link_to '戻る', :back, class: "btn btn-outline-dark mt-3" %>
 </div>
