@@ -21,7 +21,11 @@
           <div class="col-sm-12 col-md-7 mb-3">
             <div><%= image_tag @post.get_image(500,400), class: "img-thumbnail mx-1 my-1 shadow" %></div>
             <div class="favorite-btn<%= @post.id %>">
-              <%= render 'public/favorites/btn', post: @post %>
+              <% if current_user %>
+                <%= render 'public/favorites/btn', post: @post %>
+              <% else %>
+                <%= render 'public/favorites/btn_unlink', post: @post %>
+              <% end %>
             </div>
             <% if @post.user == current_user %>
               <div class="d-grid gap-2 d-md-block text-center">
@@ -66,7 +70,13 @@
               <div id="comments-area">
                 <%= render 'public/comments/index', post: @post %>
               </div>
-              <div class="my-3"><%= render 'public/comments/form', post: @post, comment: @comment %></div>
+              <div class="my-3">
+                <% if current_user %>
+                  <%= render 'public/comments/form', post: @post, comment: @comment %>
+                <% else %>
+                  <p><%= link_to "ログイン", user_session_path %>するとコメントが書きこめます。</p>
+                <% end %>
+              </div>
             </div>
           </div>
         </div>

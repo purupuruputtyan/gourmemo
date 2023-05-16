@@ -39,7 +39,7 @@ class Post < ApplicationRecord
 
   #引数で渡されたユーザidがFavoritesテーブル内に存在するか確認する
   def favorited_by?(user)
-    #後置修飾の"if user"は非ログイン時にいいねボタンを押すとログインページに遷移させたいため記述
+    #後置修飾の"if user"は記述しないと非ログイン時にいいね機能のある画面を表示できないため記述
     favorites.exists?(user_id: user.id) if user
   end
 
