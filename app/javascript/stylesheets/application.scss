@@ -72,24 +72,3 @@ box-shadow: 1px 1px 1px rgba(0, 0, 0, 0.2);
 .post-detail {
   text-indent: 1em;
 }
-
-.object{
-      display: inline-block;
-      position: relative;
-      width: 100%;
-      max-width: 270px;
-    }
-    .object::before{
-      content: "";
-      display: block;
-      padding-top: 100%;
-    }
-    .object img{
-      position: absolute;
-      width: 100%;
-      height: 100%;
-      top: 0;
-      left: 0;
-      object-fit: cover;
-      object-position: 0 0;
-    }

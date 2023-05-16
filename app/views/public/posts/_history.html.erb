@@ -2,9 +2,11 @@
   <div class="d-flex flex-wrap justify-content-evenly">
   <% posts.each do |post| %>
     <%= link_to post_path(post.id) do %>
-      <%= image_tag post.get_image(300,300), class: "img-thumbnail mx-1 my-1" %>
+      <%= image_tag post.get_image(250,250), class: "img-thumbnail mx-1 my-1" %>
     <% end %>
   <% end %>
   </div>
 </div>
-<%= paginate posts %>
+<div class="mt-4">
+  <%= paginate posts %>
+</div>
