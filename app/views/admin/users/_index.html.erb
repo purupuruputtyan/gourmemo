@@ -1,22 +1,24 @@
 <table class="table">
-  <thead>
-    <tr>
-      <th>image</th>
-      <th>name</th>
-      <th>introduction</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
   <tbody>
     <% users.each do |user| %>
       <tr>
         <td>
           <%= link_to admin_user_path(user.id) do %>
-            <%= image_tag user.get_profile_image(100,100), class:"mt-o rounded-circle"; %>
+            <%= image_tag user.get_profile_image(100,100), class: "mt-o rounded-circle"; %>
           <% end %>
         </td>
-        <td><%= link_to user.name, admin_user_path(user.id) %></td>
-        <td><%= user.introduction %></td>
+        <td>
+          <div>【名前】</div>
+          <div><%= link_to user.name, admin_user_path(user.id) %></div>
+        </td>
+        <td>
+          <div>【自己紹介】</div>
+          <% if user.introduction.present? %>
+            <div><%= user.introduction %></div>
+          <% else %>
+            <div>自己紹介文がありません。</div>
+          <% end %>
+        </td>
         <td class="text-center">
           <% if user.released? %>
             <%= link_to user.status_i18n, edit_admin_user_path(user.id), class: "btn btn-success" %>
