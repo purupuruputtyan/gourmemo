@@ -24,6 +24,7 @@ class Admin::UsersController < ApplicationController
     end
   end
 
+  #問題のある会員を理論退会させることができる
   def is_deleted
     @user = current_user
     @user.update(status: 2)

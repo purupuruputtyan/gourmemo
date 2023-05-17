@@ -1,6 +1,6 @@
-<% if user_signed_in? %>
-  <div class="container">
-    <div class="row">
+<div class="container">
+  <div class="row">
+    <% if user_signed_in? %>
       <div class="col-lg-2 col-md-3 col-sm-12">
         <%= render 'layouts/sidebar' %>
       </div>
@@ -12,11 +12,7 @@
           </div>
         </div>
       </div>
-    </div>
-  </div>
-<% else %>
-  <div class="container">
-    <div class="row">
+    <% else %>
       <div class="mx-auto col-12 mt-5 pt-3">
         <div class="text-center">
           <h1 class="top-text">
@@ -40,8 +36,7 @@
           </div>
         </div>
       </div>
-      </div>
-    </div>
+    <% end %>
   </div>
-<% end %>
+</div>
 

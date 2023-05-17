@@ -22,7 +22,9 @@ scope module: :public do
   get '/about' => 'homes#about'
   get 'search' => 'searches#search'
   get '/my_page' => 'users#my_page'
+  #「退会する」を押した時に本当に退会するか確認をする画面
   get 'users/confirm_deleted' => 'users#confirm_deleted', as: 'confirm_deleted'
+  #退会処理
   patch 'users/is_deleted' => 'users#is_deleted', as: 'is_deleted'
   resources :users, only: [:index, :show, :edit, :update] do
     resource :relationships, only: [:create, :destroy]
