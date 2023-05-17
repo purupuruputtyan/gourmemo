@@ -4,9 +4,9 @@ class ApplicationController < ActionController::Base
   #トップページとそれ以外のページで背景を変えるため
   def set_classname
     if params[:controller] == 'public/homes' && params[:action] == 'top'
-      @classname = 'topbody'
+      @classname = 'top-body'
     else
-      @classname = 'other'
+      @classname = 'top-except'
     end
   end
 

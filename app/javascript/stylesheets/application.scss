@@ -25,7 +25,7 @@ header {
 }
 
 //トップページの背景の設定
-body.topbody {
+body.top-body {
   background-image: url("../images/top_image.jpg");
   background-attachment: fixed;
   background-size:cover;                                 /* 画像のサイズを指定  */
@@ -34,7 +34,7 @@ body.topbody {
 }
 
 //トップページ以外の背景画像の設定
-body.other {
+body.top-except {
   background-image: url("../images/background_image.jpg");
   background-attachment: fixed;
   background-size:cover;                                 /* 画像のサイズを指定  */

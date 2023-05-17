@@ -29,7 +29,7 @@ class User < ApplicationRecord
 
   has_many :comments, dependent: :destroy
 
-  #ユーザーの画像を各画面によってサイズの指定ができ、画像の更新がない時に「no_image」を表示する
+  #ユーザーがプロフィール写真を設定できるようにするため
   def get_profile_image(width, height)
     unless profile_image.attached?
       file_path = Rails.root.join('app/assets/images/no_image.jpeg')
@@ -38,7 +38,7 @@ class User < ApplicationRecord
     profile_image.variant(resize_to_limit: [width, height]).processed
   end
 
-  #理論退会機能を実装するにあたり、在籍状況ステータスが"withdraw?"(退会)だったら強制ログアウトさせる
+  #理論退会機能用。在籍状況ステータスが"withdraw?"(退会)だったら強制ログアウトさせる
   def active_for_authentication?
     super && !self.withdraw?
   end

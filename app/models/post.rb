@@ -28,7 +28,7 @@ class Post < ApplicationRecord
     where(created_at: ((Time.current.at_end_of_day - 6.day).at_beginning_of_day)..(Time.current.at_end_of_day))
   end
 
-  #投稿された食べ物の画像を各画面によってサイズの指定ができ、画像の投稿がない時に「no_image」を表示する
+  #投稿機能に画像も投稿できるように
   def get_image(width, height)
     unless image.attached?
       file_path = Rails.root.join('app/assets/images/no_post_image.jpeg')
