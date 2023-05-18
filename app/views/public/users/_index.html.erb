@@ -8,7 +8,7 @@
           <% end %>
         </td>
         <td>
-          <div>名前：<%= link_to user.name, user_path(user.id) %></div>
+          <div>ニックネーム：<%= link_to user.name, user_path(user.id) %></div>
           <% if user.name != "guestuser" %>
             <% if user.introduction.present? %>
               <div>自己紹介：<%= user.introduction %></div>
