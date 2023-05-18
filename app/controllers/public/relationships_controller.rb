@@ -14,12 +14,12 @@ class Public::RelationshipsController < ApplicationController
   #フォローした人の一覧を表示するため
   def followings
     user = User.find(params[:user_id])
-    @users = user.followings.page(params[:page])
+    @users = user.followings.order(created_at: :desc).page(params[:page])
   end
 
   #フォローしてくれた人の一覧を表示するため
   def followers
     user = User.find(params[:user_id])
-    @users = user.followers.page(params[:page])
+    @users = user.followers.order(created_at: :desc).page(params[:page])
   end
 end

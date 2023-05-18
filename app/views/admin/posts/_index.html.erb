@@ -17,8 +17,19 @@
           <div class="col-2">
             <%= render 'admin/posts/favorites-count', post: post %>
           </div>
-          <div class="col-4">
+          <div class="col-5">
             <%= render 'admin/comments/count', post: post %>
+          </div>
+          <div class="col-3">
+            <b>
+              <% if post.user.released? %>
+                <font color="#28a745">公開</font>
+              <% elsif post.user.nonreleased? %>
+                <font color="#6c757d ">非公開</font>
+              <% else %>
+                <font color="#dc3545">退会</font>
+              <% end %>
+            </b>
           </div>
         </div>
         <div class="card-title">
