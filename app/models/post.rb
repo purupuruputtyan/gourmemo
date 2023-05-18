@@ -2,7 +2,7 @@ class Post < ApplicationRecord
 
   validates :shop_name, presence: true, length: { maximum: 30 }
   validates :menu, presence: true, length: { maximum: 30 }
-  validates :impression, length: { maximum: 100 }
+  validates :impression, presence: true, length: { maximum: 100 }
   validates :volume_status, presence: true
   validates :star, presence: true
 

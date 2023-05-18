@@ -21,7 +21,7 @@ class Public::PostsController < ApplicationController
     @post = Post.new(post_params)
     @post.user_id = current_user.id
     if @post.save
-      flash[:notice] = "投稿に成功しました"
+      flash[:notice] = "投稿に成功しました。"
       redirect_to post_path(@post.id)
     else
       @posts = Post.all
@@ -41,7 +41,7 @@ class Public::PostsController < ApplicationController
   def update
     @post = Post.find(params[:id])
     if @post.update(post_params)
-      flash[:notice] = "編集に成功しました"
+      flash[:notice] = "編集に成功しました。"
       redirect_to post_path(@post.id)
     else
       render :edit
@@ -69,7 +69,7 @@ private
     post = Post.find(params[:id])
     unless post.user_id == current_user.id
       flash[:notice] = "他ユーザーの投稿編集画面には遷移できません。"
-      redirect_to posts_path
+      redirect_to post_path(post.id)
     end
   end
 

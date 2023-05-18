@@ -10,13 +10,15 @@
           </p>
         </div>
         <%= form_with model: @user, url: user_registration_path do |f| %>
-          <%= render "public/shared/error_messages", resource: resource %>
+          <div class="text-left">
+            <%= render "public/shared/error_messages", resource: resource %>
+          </div>
 
           <div class="input-group mb-3">
             <div class="input-group-prepend">
               <span class="input-group-text" aria-hidden="true"><i class="fas fa-user"></i></span>
             </div>
-            <%= f.text_field :name, autofocus: true, class: "form-control", autocomplete: "name", placeholder: "ニックネーム" %>
+            <%= f.text_field :name, autofocus: true, class: "form-control", autocomplete: "name", placeholder: "ニックネーム（２文字以上）" %>
           </div>
 
           <div class="input-group mb-3">
