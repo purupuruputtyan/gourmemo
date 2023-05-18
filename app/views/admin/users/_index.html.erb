@@ -13,10 +13,14 @@
         </td>
         <td>
           <div>【自己紹介】</div>
-          <% if user.introduction.present? %>
-            <div><%= user.introduction %></div>
+          <% if user.name != "guestuser" %>
+            <% if user.introduction.present? %>
+              <div><%= user.introduction %></div>
+            <% else %>
+              <div>自己紹介文がありません。</div>
+            <% end %>
           <% else %>
-            <div>自己紹介文がありません。</div>
+            <div>ゲストユーザーです。</div>
           <% end %>
         </td>
         <td class="text-center">

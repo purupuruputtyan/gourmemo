@@ -9,10 +9,14 @@
         </td>
         <td>
           <div>名前：<%= link_to user.name, user_path(user.id) %></div>
-          <% if user.introduction.present? %>
-            <div>自己紹介：<%= user.introduction %></div>
+          <% if user.name != "guestuser" %>
+            <% if user.introduction.present? %>
+              <div>自己紹介：<%= user.introduction %></div>
+            <% else %>
+              <div>自己紹介：自己紹介文がありません。</div>
+            <% end %>
           <% else %>
-            <div>自己紹介：自己紹介文がありません。</div>
+            <div>ゲストユーザーです。</div>
           <% end %>
         </td>
         <td>
