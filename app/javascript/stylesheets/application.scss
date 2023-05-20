@@ -77,6 +77,11 @@ box-shadow: 1px 1px 1px rgba(0, 0, 0, 0.2);
   text-indent: 1em;
 }
 
+//ユーザー一覧ページにて、ニックネームと自己紹介文を字下げして表示するため
+.users-index {
+  text-indent: 1em;
+}
+
 //非ログイン時のトップページのテキストを装飾
 .top-text {
   text-shadow: 2px  2px 3px #fff,

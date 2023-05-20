@@ -9,28 +9,28 @@
         </td>
         <td>
           <div>【ニックネーム】</div>
-          <div><%= link_to user.name, admin_user_path(user.id) %></div>
-        </td>
-        <td>
+          <div class="users-index"><%= link_to user.name, admin_user_path(user.id) %></div>
           <div>【自己紹介】</div>
           <% if user.name != "guestuser" %>
             <% if user.introduction.present? %>
-              <div><%= user.introduction %></div>
+              <div class="users-index"><%= user.introduction %></div>
             <% else %>
-              <div>自己紹介文がありません。</div>
+              <div class="users-index">自己紹介文がありません。</div>
             <% end %>
           <% else %>
-            <div>ゲストユーザーです。</div>
+            <div class="users-index">ゲストユーザーです。</div>
           <% end %>
         </td>
         <td class="text-center">
-          <% if user.released? %>
-            <%= link_to user.status_i18n, edit_admin_user_path(user.id), class: "btn btn-success" %>
-          <% elsif user.nonreleased? %>
-            <%= link_to user.status_i18n, edit_admin_user_path(user.id), class: "btn btn-secondary" %>
-          <% else %>
-            <%= link_to user.status_i18n, edit_admin_user_path(user.id), class: "btn btn-danger" %>
-          <% end %>
+          <div class="mt-4">
+            <% if user.released? %>
+              <%= link_to user.status_i18n, edit_admin_user_path(user.id), class: "btn btn-success" %>
+            <% elsif user.nonreleased? %>
+              <%= link_to user.status_i18n, edit_admin_user_path(user.id), class: "btn btn-secondary" %>
+            <% else %>
+              <%= link_to user.status_i18n, edit_admin_user_path(user.id), class: "btn btn-danger" %>
+            <% end %>
+          </div>
         </td>
       </tr>
     <% end %>

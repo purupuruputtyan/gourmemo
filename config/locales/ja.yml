@@ -52,6 +52,8 @@ ja:
         star: また食べたい度
       comment:
         comment: コメント
+      admin:
+        email: メールアドレス
 
   date:
     abbr_day_names:
