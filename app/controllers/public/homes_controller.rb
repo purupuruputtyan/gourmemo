@@ -1,4 +1,5 @@
 class Public::HomesController < ApplicationController
+  before_action :admin_exists?, only: [:top]
 
   #投稿一覧と似ているが、トップページはヒーローエリアにしている
   def top
@@ -16,6 +17,14 @@ class Public::HomesController < ApplicationController
   end
 
   def about
+  end
+
+private
+  #管理者がログインしているときに、ユーザーのrootパスに行けてしまうを防ぐため
+  def admin_exists?
+    if admin_signed_in?
+      redirect_to admin_root_path
+    end
   end
 
 end
