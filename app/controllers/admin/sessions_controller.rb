@@ -19,6 +19,11 @@ class Admin::SessionsController < Devise::SessionsController
   #   super
   # end
 
+  #deviseやブラウザの仕様でroot_pathに遷移しないことがあるため、あえて記述
+  def after_sign_in_path_for(resource)
+    admin_root_path
+  end
+
 protected
 
   # If you have extra params to permit, append them to the sanitizer.

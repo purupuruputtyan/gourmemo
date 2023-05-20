@@ -18,6 +18,11 @@ class Public::SessionsController < Devise::SessionsController
   # def destroy
   #   super
   # end
+  
+  #deviseやブラウザの仕様でroot_pathに遷移しないことがあるため、あえて記述
+  def after_sign_in_path_for(resource)
+    root_path
+  end
 
   #ゲストユーザーログイン用アクション
   def guest_sign_in
