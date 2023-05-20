@@ -11,7 +11,10 @@
           </div>
 
           <div class="form-group">
-            <label for="user_status">【公開ステータス】</label>
+            <label for="user_status">
+              【公開ステータス】
+              <span class="required">必須</span>
+            </label>
             <div>
               <%= f.radio_button :status, User.statuses.key(0) %>
               <%= f.label :status_released, User.statuses_i18n[:released] %>
@@ -22,7 +25,10 @@
           </div>
 
           <div class="form-group">
-            <label for="user_name">【ニックネーム】</label>
+            <label for="user_name">
+              【ニックネーム】
+              <span class="required">必須</span>
+            </label>
             <div><%= f.text_field :name, class: "form-control" %></div>
           </div>
 

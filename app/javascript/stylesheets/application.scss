@@ -89,3 +89,13 @@ box-shadow: 1px 1px 1px rgba(0, 0, 0, 0.2);
                2px -2px 3px #fff,
               -2px -2px 3px #fff;
 }
+
+//入力フォーム必須箇所装飾
+label span.required {
+  color: #fff;
+  background: #f14668;
+  font-size: 0.8rem;
+  padding: 5px 8px;
+  border-radius: 2px;
+  margin-left: 8px;
+}
