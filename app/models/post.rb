@@ -29,12 +29,16 @@ class Post < ApplicationRecord
   end
 
   #投稿機能に画像も投稿できるように
-  def get_image(width, height)
+  def get_image(width, height, shape = "rectangle")
     unless image.attached?
       file_path = Rails.root.join('app/assets/images/no_post_image.jpeg')
       image.attach(io: File.open(file_path), filename: 'default-image.jpg', content_type: 'image/jpeg')
     end
-    image.variant(resize_to_limit: [width, height]).processed
+    if shape == "square"
+      image.variant({gravity: :center, resize:"#{width}x#{height}^", crop:"#{width}x#{height}+0+0"}).processed
+    else
+      image.variant(resize_to_limit: [width, height]).processed
+    end
   end
 
   #引数で渡されたユーザidがFavoritesテーブル内に存在するか確認する
