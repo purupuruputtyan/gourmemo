@@ -9,7 +9,7 @@ class Public::UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id])
-    @posts = @user.posts.page(params[:page]).per(6)
+    @posts = @user.posts.order(created_at: :desc).page(params[:page]).per(6)
   end
 
   def edit
@@ -43,7 +43,7 @@ class Public::UsersController < ApplicationController
   #マイページにユーザー情報と自分が投稿した一覧を表示
   def my_page
     @user = current_user
-    @posts = @user.posts.page(params[:page]).per(6)
+    @posts = @user.posts.order(created_at: :desc).page(params[:page]).per(6)
   end
 
 private

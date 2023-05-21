@@ -2,12 +2,12 @@ class Admin::UsersController < ApplicationController
   before_action :authenticate_admin!
 
   def index
-    @users = User.all.page(params[:page])
+    @users = User.all.order(created_at: :desc).page(params[:page])
   end
 
   def show
     @user = User.find(params[:id])
-    @posts = @user.posts.page(params[:page]).per(6)
+    @posts = @user.posts.order(created_at: :desc).page(params[:page]).per(6)
   end
 
   def edit
@@ -18,7 +18,7 @@ class Admin::UsersController < ApplicationController
     @user = User.find(params[:id])
     if @user.update(user_params)
       redirect_to admin_user_path(@user.id)
-      flash[:notice] = "編集に成功しました"
+      flash[:notice] = "編集に成功しました。"
     else
       render :edit
     end
@@ -29,7 +29,7 @@ class Admin::UsersController < ApplicationController
     @user = current_user
     @user.update(status: 2)
     reset_session
-    flash[:notice] = "退会処理を実行いたしました"
+    flash[:notice] = "退会処理を実行いたしました。s"
     redirect_to admin_users_path
   end
 
