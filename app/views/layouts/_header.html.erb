@@ -2,9 +2,13 @@
   <nav class="navbar navbar-expand-lg navbar-dark">
     <div class="container">
       <% if admin_signed_in? %>
-        <%= link_to 'グルメモ', admin_root_path, class: "navbar-brand" %>
+        <%= link_to admin_root_path do %>
+          <%= image_tag('logo.png') %>
+        <% end %>
       <% else %>
-        <%= link_to 'グルメモ', root_path, class: "navbar-brand" %>
+        <%= link_to root_path do %>
+          <%= image_tag('logo.png') %>
+        <% end %>
       <% end %>
 
       <div class="text-light">
