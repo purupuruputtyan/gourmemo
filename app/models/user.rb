@@ -35,7 +35,7 @@ class User < ApplicationRecord
       file_path = Rails.root.join('app/assets/images/no_image.jpeg')
       profile_image.attach(io: File.open(file_path), filename: 'default-image.jpg', content_type: 'image/jpeg')
     end
-    profile_image.variant(resize_to_limit: [width, height]).processed
+    profile_image.variant({gravity: :center, resize: "#{width}x#{height}^", crop: "#{width}x#{height}+0+0"}).processed
   end
 
   #理論退会機能用。在籍状況ステータスが"withdraw?"(退会)だったら強制ログアウトさせる
