@@ -14,8 +14,25 @@
   <body class="<%= @classname %>">
     <div class="wrapper">
       <%= render 'layouts/header' %>
-      <div><%= flash[:notice] %></div>
-      <p class="alert"><%= alert %></p>
+
+      <% if flash[:notice] %>
+       <div class="alert alert-success" role="alert">
+        <%= flash[:notice] %>
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+       </div>
+      <% end %>
+
+      <% if flash[:alert] %>
+        <div class="alert alert-danger" role="alert">
+          <%= flash[:alert] %>
+          <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+      <% end %>
+
       <% if admin_signed_in? %>
         <div class="text-center mb-5">
           <%= render 'admin/searches/form' %>
@@ -25,6 +42,7 @@
           <%= render 'public/searches/form' %>
         </div>
       <% end %>
+
       <%= yield %>
     </div>
     <%= render 'layouts/footer' %>
