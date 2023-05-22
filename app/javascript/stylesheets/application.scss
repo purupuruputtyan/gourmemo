@@ -112,3 +112,12 @@ label span.required {
 .rounded-circle {
   border: 1px solid #dec8d6;
 }
+
+.edit-img{
+  width: 120px;
+  height: 120px;
+  object-fit: cover;
+  border-radius: 50%;
+  background-position: center center;
+  border: 1px solid #dec8d6;
+}
