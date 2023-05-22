@@ -7,7 +7,8 @@
           <%= render 'layouts/errors', obj: @user %>
           <div class="form-group">
             <label for="user_image">【プロフィール画像】</label>
-            <div id="edit-image"></div>
+
+            <div id="edit-image"><%= image_tag @user.get_profile_image(120, 120), class: "rounded-circle" %></div>
             <div class="mt-2"><%= f.file_field :profile_image, accept: "image/*" %></div>
           </div>
 

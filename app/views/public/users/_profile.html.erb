@@ -34,7 +34,7 @@
         <% if user == current_user %>
           <div class="mr-3"><%= link_to 'いいね一覧' + user.favorites.count.to_s + '件', favorites_posts_path, class: 'btn btn-sm btn-info' %></div>
           <% if user.name != "guestuser" %>
-            <div><%= link_to 'プロフィールを編集', edit_user_path(user.id), class: 'btn btn-sm btn-success' %></div>
+            <div><%= link_to 'プロフィールを編集', edit_user_path(user.id), class: 'btn btn-sm btn-success', 'data-turbolinks': false %></div>
           <% end %>
         <% end %>
       </div>

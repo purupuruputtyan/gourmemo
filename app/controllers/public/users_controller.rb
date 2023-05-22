@@ -22,6 +22,8 @@ class Public::UsersController < ApplicationController
       redirect_to  my_page_path
       flash[:notice] = "編集に成功しました。"
     else
+      @user.reload
+      @user.assign_attributes(user_params_without_image)
       render :edit
     end
   end
@@ -50,6 +52,10 @@ private
 
   def user_params
     params.require(:user).permit(:name, :profile_image, :introduction, :status)
+  end
+  
+  def user_params_without_image
+    params.require(:user).permit(:name, :introduction, :status)
   end
 
   #カレントユーザー以外プロフィール編集画面にアクセスできなくさせる
