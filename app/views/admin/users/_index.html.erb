@@ -2,14 +2,13 @@
   <tbody>
     <% users.each do |user| %>
       <tr>
-        <td>
+        <td class="text-center">
           <%= link_to admin_user_path(user.id) do %>
-            <%= image_tag user.get_profile_image(100,100), class: "mt-o rounded-circle"; %>
+            <%= image_tag user.get_profile_image(100,100), class: "mt-o rounded-circle"; %><br>
+            <%= link_to user.name, user_path(user.id) %>
           <% end %>
         </td>
         <td>
-          <div>【ニックネーム】</div>
-          <div class="users-index"><%= link_to user.name, admin_user_path(user.id) %></div>
           <div>【自己紹介】</div>
           <% if user.name != "guestuser" %>
             <% if user.introduction.present? %>

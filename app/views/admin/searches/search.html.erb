@@ -4,31 +4,39 @@
       <%= render 'layouts/sidebar' %>
     </div>
     <div class='col-lg-10 col-md-9 col-sm-12'>
-      <div class="card shadow-lg px-3 py-3">
+      <div class="card shadow-lg py-3">
         <% if @users.present? && @posts.present? %>
-          <h3 class="headline col-lg-9 col-md-12 col-sm-12 text-center mb-3">【ユーザーとメニュー名の検索結果】検索ワード："<%= @content %>"</h3>
-          <h4>【ユーザー】</h4>
-            <%= render 'admin/users/index', users: @users %>
-          <hr class="mt-5">
-          <h4>【メニュー名】</h4>
+          <div class="px-3">
+            <h3 class="headline col-lg-9 col-md-12 col-sm-12 text-center mb-3">【ユーザーとメニュー名の検索結果】検索ワード："<%= @content %>"</h3>
+            <h4>【ユーザー】</h4>
+              <%= render 'admin/users/index', users: @users %>
+            <hr class="mt-5">
+            <h4>【メニュー名】</h4>
+          </div>
           <div class="col-lg-8 col-md-8 col-sm-12 mx-auto">
             <%= render 'admin/posts/index', posts: @posts %>
           </div>
 
         <% elsif @users.present? && @posts.empty? %>
-          <h3 class="headline col-lg-9 col-md-12 col-sm-12 text-center mb-3">【ユーザーの検索結果】検索ワード："<%= @content %>"</h3>
-          <h4>【ユーザー】</h4>
-          <%= render 'admin/users/index', users: @users %>
+          <div class="px-3">
+            <h3 class="headline col-lg-9 col-md-12 col-sm-12 text-center mb-3">【ユーザーの検索結果】検索ワード："<%= @content %>"</h3>
+            <h4>【ユーザー】</h4>
+            <%= render 'admin/users/index', users: @users %>
+          </div>
 
         <% elsif @users.empty? && @posts.present? %>
-          <h3 class="headline col-lg-9 col-md-12 col-sm-12 text-center mb-3">【メニュー名の検索結果】検索ワード："<%= @content %>"</h3>
-          <h4>【メニュー名】</h4>
+          <div class="px-3">
+            <h3 class="headline col-lg-9 col-md-12 col-sm-12 text-center mb-3">【メニュー名の検索結果】検索ワード："<%= @content %>"</h3>
+            <h4>【メニュー名】</h4>
+          </div>
           <div class="col-lg-8 col-md-8 col-sm-12 mx-auto">
             <%= render 'admin/posts/index', posts: @posts %>
           </div>
 
         <% else %>
-          <h3>検索ワード："<%= @content %>"に該当はありません</h3>
+          <div class="px-3">
+            <h3>"<%= @content %>"に該当はありません。</h3>
+          </div>
         <% end %>
       </div>
       <%= link_to '戻る', :back, class: "btn btn-outline-dark mt-3" %>

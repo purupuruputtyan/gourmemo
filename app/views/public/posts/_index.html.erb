@@ -14,15 +14,19 @@
       <% end %>
       <div class="card-body">
         <div class="row">
-          <div class="favorite-btn<%= post.id %> col-2">
-            <% if current_user %>
-              <%= render 'public/favorites/btn', post: post %>
-            <% else %>
-              <%= render 'public/favorites/btn_unlink', post: post %>
-            <% end %>
+          <div class="ml-3">
+            <div class="favorite-btn<%= post.id %>">
+              <% if current_user %>
+                <%= render 'public/favorites/btn', post: post %>
+              <% else %>
+                <%= render 'public/favorites/btn_unlink', post: post %>
+              <% end %>
+            </div>
           </div>
-          <div id="comments-count col-4">
-            <%= render 'public/comments/count', post: post %>
+          <div class="ml-3">
+            <div id="comments-count">
+              <%= render 'public/comments/count', post: post %>
+            </div>
           </div>
         </div>
         <div class="card-title">
