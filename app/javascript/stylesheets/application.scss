@@ -1,5 +1,6 @@
 @use '~bootstrap/scss/bootstrap';
 @use '~@fortawesome/fontawesome-free/scss/fontawesome';
+@import url('https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c&display=swap');
 
 * {
   margin: 0;
@@ -28,6 +29,7 @@ footer {
 
 header {
   background-color: #363738;
+  font-family: 'M PLUS Rounded 1c', sans-serif;
 }
 
 //トップページの背景の設定
@@ -64,7 +66,7 @@ background-color: #f0d8e8;/* 背景色 */
 box-shadow: 0px 0px 0px 5px #f0d8e8;
 border: dashed 2px #ffffff;/* 破線 */
 color:#000000;/* フォント色 */
-font-family: "Tsukushi A Round Gothic";
+font-family: 'M PLUS Rounded 1c', sans-serif;
 }
 
 .headline:after {
