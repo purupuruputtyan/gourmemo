@@ -3,11 +3,11 @@
     <div class="card w-70 mx-auto mb-5 shadow-lg">
       <div class="card-header">
         <span>
-          <%= link_to user_path(post.user.id) do %>
+          <%= link_to admin_user_path(post.user.id) do %>
             <%= image_tag post.user.get_profile_image(50,50), class: "mt-o rounded-circle"; %>
           <% end %>
         </span>
-        <span><%= link_to post.user.name, user_path(post.user.id), class: "text-dark" %></span>
+        <span><%= link_to post.user.name, admin_user_path(post.user.id), class: "text-dark" %></span>
       </div>
       <%= link_to admin_post_path(post.id) do %>
         <%= image_tag post.get_image(700,700), class: "border-bottom card-img-top"; %>
