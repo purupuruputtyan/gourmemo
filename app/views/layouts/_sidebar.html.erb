@@ -1,5 +1,19 @@
 <div class="sidebar card text-dark bg-light mb-5 shadow-lg sticky-top">
-  <div class="card-header text-center">メニュー</div>
+  <div class="card-header text-center">
+
+      <div class="text-dark">
+        <div class="row">
+          <% if user_signed_in? %>
+            <div class="col-12">ログイン中</div>
+            <div class="col-12">
+              <%= image_tag current_user.get_profile_image(30,30), class: "mt-o rounded-circle"; %>
+              <%= current_user.name %>
+            </div>
+          <% end %>
+        </div>
+      </div>
+
+  </div>
   <div class="card-body">
     <ul class="card-text list-unstyled">
       <% if user_signed_in? %>

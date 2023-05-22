@@ -10,16 +10,6 @@
           <%= image_tag('logo1.png') %>
         <% end %>
       <% end %>
-
-      <div class="text-light">
-        <% if user_signed_in? %>
-          ようこそ、
-          <%= image_tag current_user.get_profile_image(30,30), class: "mt-o rounded-circle"; %>
-          <%= current_user.name %>
-          さん！
-        <% end %>
-      </div>
-
       <button class="navbar-toggler collapsed" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Taggle navigaion">
         <span class="navbar-toggler-icon"></span>
       </button>
