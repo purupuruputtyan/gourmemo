@@ -6,15 +6,30 @@ class Public::PostsController < ApplicationController
     @post = Post.new
   end
 
+  ##[公開ユーザー]と[非公開だけどカレントユーザーだった場合]の投稿だけ表示されるように絞り込み
   def index
-    #[公開ユーザー]と[非公開だけどカレントユーザーだった場合]の投稿だけ表示されるように絞り込み
     #ユーザーテーブルから”公開”になっているユーザーを探し、そのidをローカル変数に配列で保存
     released_user_ids = User.where(status: :released).pluck(:id)
     #カレントユーザーが”非公開”だった場合も一覧に表示するため、カレントユーザーのidをさっきの配列に入れている
     #if current_userは非ログイン時のエラーを回避するため。非ログイン時このifがないとidが取得できないと怒られる
     released_user_ids.push(current_user.id).uniq! if current_user
-    #postテーブルから上２行で絞り込んだユーザーのみ、投稿の新しい順で一覧に表示させる
-    @posts = Post.where(user_id: released_user_ids).order(created_at: :desc).page(params[:page])
+
+    ##サイドバーにソート機能を実装
+    #各メソッドはPostモデルに記述
+    if params[:latest]
+      @posts = Post.where(user_id: released_user_ids).latest.page(params[:page])
+    elsif params[:old]
+      @posts = Post.where(user_id: released_user_ids).old.page(params[:page])
+    elsif params[:star_count]
+      @posts = Post.where(user_id: released_user_ids).star_count.page(params[:page])
+    elsif params[:favorite_count]
+      @posts = Post.where(user_id: released_user_ids).favorite_count.page(params[:page])
+    elsif params[:comment_count]
+      @posts = Post.where(user_id: released_user_ids).comment_count.page(params[:page])
+    else
+      #postテーブルから”released_user_ids”に格納されたユーザーのみ、投稿の新しい順で一覧に表示させる
+      @posts = Post.where(user_id: released_user_ids).order(created_at: :desc).page(params[:page])
+    end
   end
 
   def create

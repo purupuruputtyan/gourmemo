@@ -1,9 +1,9 @@
 class Public::HomesController < ApplicationController
   before_action :admin_exists?, only: [:top]
 
-  #投稿一覧と似ているが、トップページはヒーローエリアにしている
+  ###投稿一覧と似ているが、トップページはヒーローエリアにしている
+  ##[公開ユーザー]と[非公開だけどカレントユーザーだった場合]の投稿だけ表示されるように絞り込み
   def top
-    #[公開ユーザー]と[非公開だけどカレントユーザーだった場合]の投稿だけ表示されるように絞り込み
     #ユーザーテーブルから”公開”になっているユーザーを探し、そのidをローカル変数に配列で保存
     released_user_ids = User.where(status: :released).pluck(:id)
     #カレントユーザーが”非公開”だった場合も一覧に表示するため、カレントユーザーのidをさっきの配列に入れている

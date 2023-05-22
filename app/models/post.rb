@@ -18,10 +18,22 @@ class Post < ApplicationRecord
   #物足りないなどの量感のステータスをenumで管理
   enum volume_status: { full: 0, just_right: 1, not_enough: 2 }
 
-  #投稿詳細画面でお店の住所の地図を表示させるため
+  ##投稿詳細画面でお店の住所の地図を表示させるため
   #ユーザーに入力してもらった住所から緯度経度をgeocorderで取得
   geocoded_by :address
   after_validation :geocode, if: :address_changed?
+
+  ##サイドバーにソート機能を実装
+  #投稿の新しい順に並び替え
+  scope :latest, -> {order(created_at: :desc)}
+  #投稿の古い順に並び替え
+  scope :old, -> {order(created_at: :asc)}
+  #投稿の星が多い順に並び替え
+  scope :star_count, -> {order(star: :desc)}
+  #投稿のいいねが多い順に並び替え
+  scope :favorite_count, -> {eager_load(:favorites).group('posts.id').order('count(favorites.post_id) DESC')}
+  #投稿のコメントが多いじゅんに並び替え
+  scope :comment_count, -> {eager_load(:comments).group('posts.id').order('count(comments.post_id) DESC')}
 
   #トップページを過去１週間のいいね順で投稿一覧を表示させるため
   def self.week_posts

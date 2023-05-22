@@ -19,54 +19,27 @@
   <div class="card-body">
     <ul class="card-text list-unstyled">
       <% if user_signed_in? %>
-        <li>
-          <%= link_to my_page_path do %>
-            <i class="fas fa-user"></i>マイページ
-          <% end %>
-        </li>
-        <li>
-          <%= link_to new_post_path do %>
-            <i class="fas fa-edit"></i>新規投稿
-          <% end %>
-        </li>
-        <li>
-          <%= link_to posts_path do %>
-            <i class="fas fa-utensils"></i>投稿一覧
-          <% end %>
-        </li>
-        <li>
-          <%= link_to  users_path do %>
-            <i class="fas fa-users"></i>ユーザー一覧
-          <% end %>
-        </li>
-        <li>
-          <%= link_to destroy_user_session_path, method: :delete do %>
-            <i class="fas fa-sign-out-alt"></i>ログアウト
-          <% end %>
-        </li>
+        <li><%= link_to '[投稿]新しい順', posts_path(latest: "true") %></li>
+        <li><%= link_to '[投稿]古い順', posts_path(old: "true") %></li>
+        <li><%= link_to '[投稿]星が多い順', posts_path(star_count: "true") %></li>
+        <li><%= link_to '[投稿]いいね多い順', posts_path(favorite_count: "true") %></li>
+        <li><%= link_to '[投稿]コメント多い順', posts_path(comment_count: "true") %></li>
         <% if current_user.name != "guestuser" %>
           <li>
             <%= link_to confirm_deleted_path do %>
-              <i class="fas fa-exclamation-triangle"></i>退会する
+              <font color="#f00">
+                <i class="fas fa-exclamation-triangle"></i>
+                退会する
+              </font>
             <% end %>
           </li>
         <% end %>
       <% elsif admin_signed_in? %>
-        <li>
-          <%= link_to admin_root_path do %>
-            <i class="fas fa-utensils"></i>投稿一覧
-          <% end %>
-        </li>
-        <li>
-          <%= link_to admin_users_path do %>
-            <i class="fas fa-users"></i>ユーザー一覧
-          <% end %>
-        </li>
-        <li>
-          <%= link_to destroy_admin_session_path, method: :delete do %>
-            <i class="fas fa-sign-out-alt"></i>ログアウト
-          <% end %>
-        </li>
+        <li><%= link_to '[投稿]新しい順', admin_root_path(latest: "true") %></li>
+        <li><%= link_to '[投稿]古い順', admin_root_path(old: "true") %></li>
+        <li><%= link_to '[投稿]星が多い順', admin_root_path(star_count: "true") %></li>
+        <li><%= link_to '[投稿]いいね多い順', admin_root_path(favorite_count: "true") %></li>
+        <li><%= link_to '[投稿]コメント多い順', admin_root_path(comment_count: "true") %></li>
       <% end %>
     </ul>
   </div>
