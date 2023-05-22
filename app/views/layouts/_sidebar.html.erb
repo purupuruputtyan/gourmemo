@@ -9,6 +9,8 @@
               <%= image_tag current_user.get_profile_image(30,30), class: "mt-o rounded-circle"; %>
               <%= current_user.name %>
             </div>
+          <% elsif admin_signed_in? %>
+            <div class="col-12">管理者ログイン中</div>
           <% end %>
         </div>
       </div>
