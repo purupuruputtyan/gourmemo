@@ -97,6 +97,10 @@ box-shadow: 1px 1px 1px rgba(0, 0, 0, 0.2);
                2px -2px 3px #fff,
               -2px -2px 3px #fff;
 }
+//非ログイン時のトップページのスマイルマークが上記94〜98行目の記述で反映しないため個別で対応
+.fa-smile {
+  filter:drop-shadow(4px 4px 4px #fff);
+}
 
 //入力フォーム必須箇所装飾
 label span.required {
@@ -123,7 +127,7 @@ label span.required {
   border: 1px solid #dec8d6;
 }
 
-
+//ユーザー一覧のプロフィール画像をスマホ幅の時に小さくする
 @media screen and (max-width: 425px) {
   .users-index-image {
     width: 50px;
