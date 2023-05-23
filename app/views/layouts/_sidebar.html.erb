@@ -21,7 +21,11 @@
       <% if user_signed_in? %>
         <li><%= link_to '[投稿]新しい順', posts_path(latest: "true") %></li>
         <li><%= link_to '[投稿]古い順', posts_path(old: "true") %></li>
-        <li><%= link_to '[投稿]星が多い順', posts_path(star_count: "true") %></li>
+        <li>
+          <%= link_to posts_path(star_count: "true") do %>
+            [投稿]<i class="fas fa-star"></i>が多い順
+          <% end %>
+        </li>
         <li><%= link_to '[投稿]いいね多い順', posts_path(favorite_count: "true") %></li>
         <li><%= link_to '[投稿]コメント多い順', posts_path(comment_count: "true") %></li>
         <% if current_user.name != "guestuser" %>
@@ -37,7 +41,11 @@
       <% elsif admin_signed_in? %>
         <li><%= link_to '[投稿]新しい順', admin_root_path(latest: "true") %></li>
         <li><%= link_to '[投稿]古い順', admin_root_path(old: "true") %></li>
-        <li><%= link_to '[投稿]星が多い順', admin_root_path(star_count: "true") %></li>
+        <li>
+          <%= link_to admin_root_path(star_count: "true") do %>
+            [投稿]<i class="fas fa-star"></i>が多い順
+          <% end %>
+        </li>
         <li><%= link_to '[投稿]いいね多い順', admin_root_path(favorite_count: "true") %></li>
         <li><%= link_to '[投稿]コメント多い順', admin_root_path(comment_count: "true") %></li>
       <% end %>

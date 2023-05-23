@@ -8,7 +8,7 @@
             <%= link_to user.name, user_path(user.id) %>
           <% end %>
         </td>
-        <td>
+        <td class="spview">
           <div>【自己紹介】</div>
           <% if user.name != "guestuser" %>
             <% if user.introduction.present? %>
