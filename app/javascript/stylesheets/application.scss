@@ -101,6 +101,10 @@ box-shadow: 1px 1px 1px rgba(0, 0, 0, 0.2);
 .fa-smile {
   filter:drop-shadow(4px 4px 4px #fff);
 }
+//非ログイン時の「グルメモへようこそ！」の<br>を無効化する
+.br-sp {
+  display: none;
+}
 
 //入力フォーム必須箇所装飾
 label span.required {
@@ -127,8 +131,8 @@ label span.required {
   border: 1px solid #dec8d6;
 }
 
-//ユーザー一覧のプロフィール画像をスマホ幅の時に小さくする
 @media screen and (max-width: 425px) {
+  //ユーザー一覧のプロフィール画像をスマホ幅の時に小さくする
   .users-index-image {
     width: 50px;
     height: 50px;
@@ -136,5 +140,9 @@ label span.required {
     border-radius: 50%;
     background-position: center center;
     border: 1px solid #dec8d6;
+  }
+  //非ログイン時の「グルメモへようこそ！」の<br>を有効化する
+  .br-sp {
+    display: inline;
   }
 }
