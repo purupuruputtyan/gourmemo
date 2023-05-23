@@ -6,7 +6,7 @@
           <% if user_signed_in? %>
             <div class="col-12">ログイン中</div>
             <div class="col-12">
-              <%= image_tag current_user.get_profile_image(30,30), class: "mt-o rounded-circle"; %>
+              <%= image_tag current_user.get_profile_image(50,50), class: "mt-o rounded-circle"; %>
               <%= current_user.name %>
             </div>
           <% elsif admin_signed_in? %>

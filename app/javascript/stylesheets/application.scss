@@ -113,6 +113,7 @@ label span.required {
   border: 1px solid #dec8d6;
 }
 
+//プロフィール編集画面、プロフィール機能
 .edit-img{
   width: 120px;
   height: 120px;
@@ -120,4 +121,16 @@ label span.required {
   border-radius: 50%;
   background-position: center center;
   border: 1px solid #dec8d6;
+}
+
+
+@media screen and (max-width: 425px) {
+  .users-index-image {
+    width: 50px;
+    height: 50px;
+    object-fit: cover;
+    border-radius: 50%;
+    background-position: center center;
+    border: 1px solid #dec8d6;
+  }
 }

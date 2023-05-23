@@ -4,7 +4,7 @@
       <tr>
         <td class="text-center">
           <%= link_to user_path(user.id) do %>
-            <%= image_tag user.get_profile_image(100,100), class: "mt-o rounded-circle"; %><br>
+            <%= image_tag user.get_profile_image(100,100), class: "users-index-image mt-o rounded-circle"; %><br>
             <%= link_to user.name, user_path(user.id) %>
           <% end %>
         </td>
