@@ -69,4 +69,33 @@ class Post < ApplicationRecord
     end
   end
 
+##リファクタリング途中
+  # def self.public_posts_index(params)
+  #   if params[:latest]
+  #     Post.where(user_id: released_user_ids).latest.page(params[:page])
+  #   elsif params[:old]
+  #     Post.where(user_id: released_user_ids).old.page(params[:page])
+  #   elsif params[:star_count]
+  #     Post.where(user_id: released_user_ids).star_count.page(params[:page])
+  #   elsif params[:favorite_count]
+  #     Post.where(user_id: released_user_ids).favorite_count.page(params[:page])
+  #   elsif params[:comment_count]
+  #     Post.where(user_id: released_user_ids).comment_count.page(params[:page])
+  #   end
+  # end
+
+  # def self.public_posts_index(params)
+  #   if params[:latest]
+  #     Post.latest.page(params[:page])
+  #   elsif params[:old]
+  #     Post.old.page(params[:page])
+  #   elsif params[:star_count]
+  #     Post.star_count.page(params[:page])
+  #   elsif params[:favorite_count]
+  #     Post.favorite_count.page(params[:page])
+  #   elsif params[:comment_count]
+  #     Post.comment_count.page(params[:page])
+  #   end
+  # end
+
 end
