@@ -8,12 +8,14 @@ class Public::PostsController < ApplicationController
 
   ##[公開ユーザー]と[非公開だけどカレントユーザーだった場合]の投稿だけ表示されるように絞り込み
   def index
-    #ユーザーテーブルから”公開”になっているユーザーを探し、そのidをローカル変数に配列で保存
-    released_user_ids = User.where(status: :released).pluck(:id)
-    #カレントユーザーが”非公開”だった場合も一覧に表示するため、カレントユーザーのidをさっきの配列に入れている
-    #if current_userは非ログイン時のエラーを回避するため。非ログイン時このifがないとidが取得できないと怒られる
-    released_user_ids.push(current_user.id).uniq! if current_user
-
+    #ユーザーテーブルから”公開”になっているユーザーかカレントユーザーの場合非公開でも表示させたいためカレントユーザーのidを取得し変数に代入
+    if current_user
+      released_user_ids = User.where(status: :released).or(User.where(id: current_user.id)).pluck(:id)
+    else
+      #非ログイン時はカレントユーザーのidを取得できないため公開ユーザーのみ取得
+      released_user_ids = User.where(status: :released).pluck(:id)
+    end
+    
     ##サイドバーにソート機能を実装
     #各メソッドはPostモデルに記述
     if params[:latest]
