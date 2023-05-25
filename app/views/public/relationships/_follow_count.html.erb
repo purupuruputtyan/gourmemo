@@ -1,0 +1,7 @@
+<% if user.released? || user == current_user %>
+  <div class="mr-3 mb-2"><%= link_to 'フォロー' + user.followings.count.to_s + '人', user_followings_path(user.id), class: 'btn btn-sm btn-primary' %></div>
+  <div class="mr-3"><%= link_to 'フォロワー' + user.followers.count.to_s + '人', user_followers_path(user.id), class: 'btn btn-sm btn-primary' %></div>
+<% else %>
+  <div class="mr-3">フォロー<%= user.followings.count %>人</div>
+  <div class="mr-3">フォロワー<%= user.followers.count %>人</div>
+<% end %>
