@@ -23,18 +23,6 @@ class Post < ApplicationRecord
   geocoded_by :address
   after_validation :geocode, if: :address_changed?
 
-  ##サイドバーにソート機能を実装
-  #投稿の新しい順に並び替え
-  scope :latest, -> {order(created_at: :desc)}
-  #投稿の古い順に並び替え
-  scope :old, -> {order(created_at: :asc)}
-  #投稿の星が多い順に並び替え
-  scope :star_count, -> {order(star: :desc)}
-  #投稿のいいねが多い順に並び替え
-  scope :favorite_count, -> {eager_load(:favorites).group('posts.id').order('count(favorites.post_id) DESC')}
-  #投稿のコメントが多いじゅんに並び替え
-  scope :comment_count, -> {eager_load(:comments).group('posts.id').order('count(comments.post_id) DESC')}
-
   #トップページを過去１週間のいいね順で投稿一覧を表示させるため
   def self.week_posts
     where(created_at: ((Time.current.at_end_of_day - 6.day).at_beginning_of_day)..(Time.current.at_end_of_day))
@@ -69,23 +57,8 @@ class Post < ApplicationRecord
     end
   end
 
-##リファクタリング途中
-  # def self.public_posts_index(params)
-  #   if params[:latest]
-  #     Post.where(user_id: released_user_ids).latest.page(params[:page])
-  #   elsif params[:old]
-  #     Post.where(user_id: released_user_ids).old.page(params[:page])
-  #   elsif params[:star_count]
-  #     Post.where(user_id: released_user_ids).star_count.page(params[:page])
-  #   elsif params[:favorite_count]
-  #     Post.where(user_id: released_user_ids).favorite_count.page(params[:page])
-  #   elsif params[:comment_count]
-  #     Post.where(user_id: released_user_ids).comment_count.page(params[:page])
-  #   end
-  # end
-
-  ##[管理者側]サイドバーにソート機能を実装
-  def self.admin_posts_index(sort)
+  ##[管理者側、ユーザー側]サイドバーにソート機能を実装
+  def self.sort_index(sort)
     #投稿の新しい順に並び替え
     if sort == 'latest'
       Post.order(created_at: :desc)
@@ -98,7 +71,7 @@ class Post < ApplicationRecord
     #投稿のいいねが多い順に並び替え
     elsif sort == 'favorite_count'
       Post.eager_load(:favorites).group('posts.id').order('count(favorites.post_id) DESC')
-    #投稿のコメントが多いじゅんに並び替え
+    #投稿のコメントが多い順に並び替え
     elsif sort == 'comment_count'
       Post.eager_load(:comments).group('posts.id').order('count(comments.post_id) DESC')
     end

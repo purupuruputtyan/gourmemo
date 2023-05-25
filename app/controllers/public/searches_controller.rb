@@ -5,7 +5,7 @@ class Public::SearchesController < ApplicationController
     @content = params[:content]
     #active_userはユーザーのステータスが”退会”以外のユーザーを絞り込んだメソッドでモデルに記述している
     #検索ワードに引っかかったユーザーだけ一覧に表示させる
-    #search_forはモデルにメソッドを記述
+    #search_forメソッドはモデルに記述
     @users = User.active_user.search_for(@content).page(params[:page])
 
     #[公開ユーザー]と[非公開だけどカレントユーザーだった場合]の投稿だけ表示されるように絞り込み

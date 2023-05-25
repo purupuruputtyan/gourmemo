@@ -15,21 +15,14 @@ class Public::PostsController < ApplicationController
       #非ログイン時はカレントユーザーのidを取得できないため公開ユーザーのみ取得
       released_user_ids = User.where(status: :released).pluck(:id)
     end
-    
+
     ##サイドバーにソート機能を実装
-    #各メソッドはPostモデルに記述
-    if params[:latest]
-      @posts = Post.where(user_id: released_user_ids).latest.page(params[:page])
-    elsif params[:old]
-      @posts = Post.where(user_id: released_user_ids).old.page(params[:page])
-    elsif params[:star_count]
-      @posts = Post.where(user_id: released_user_ids).star_count.page(params[:page])
-    elsif params[:favorite_count]
-      @posts = Post.where(user_id: released_user_ids).favorite_count.page(params[:page])
-    elsif params[:comment_count]
-      @posts = Post.where(user_id: released_user_ids).comment_count.page(params[:page])
+    @sort = params[:sort]
+    if params[:sort]
+      #sort_indexメソッドはモデルに記述
+      @posts = Post.where(user_id: released_user_ids).sort_index(@sort).page(params[:page])
     else
-      #postテーブルから”released_user_ids”に格納されたユーザーのみ、投稿の新しい順で一覧に表示させる
+      #デフォルトは新しい順で
       @posts = Post.where(user_id: released_user_ids).order(created_at: :desc).page(params[:page])
     end
   end
@@ -83,6 +76,7 @@ private
     params.require(:post).permit(:image, :shop_name, :address, :latitude, :longitude, :menu, :impression, :price, :volume_status, :star)
   end
 
+  #カレントユーザー以外が発信した投稿の編集画面に遷移できないようアクセス制限
   def is_matching_login_user
     post = Post.find(params[:id])
     unless post.user_id == current_user.id
