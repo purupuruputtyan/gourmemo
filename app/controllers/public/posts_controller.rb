@@ -22,7 +22,7 @@ class Public::PostsController < ApplicationController
       #sort_indexメソッドはモデルに記述
       @posts = Post.where(user_id: released_user_ids).sort_index(@sort).page(params[:page])
     else
-      #デフォルトは新しい順で
+      #デフォルトは新しい順で表示
       @posts = Post.where(user_id: released_user_ids).order(created_at: :desc).page(params[:page])
     end
   end
