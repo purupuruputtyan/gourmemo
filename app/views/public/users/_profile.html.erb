@@ -27,7 +27,7 @@
           <div class="mr-3">フォロワー<%= user.followers.count %>人</div>
         <% end %>
         <% if user != current_user %>
-          <div class="mt-2"><%= render 'public/relationships/btn', user: user %></div>
+          <div class="follow-btn<%= user.id %>"><%= render 'public/relationships/btn', user: user %></div>
         <% end %>
       </div>
       <div class="row mt-2 mb-3">

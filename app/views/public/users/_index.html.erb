@@ -28,7 +28,11 @@
         <!--end--smとスマホ幅のみ非表示-->
         <td>
           <% if user != current_user %>
-            <div class="mt-2"><%= render 'public/relationships/btn', user: user %></div>
+            <div class="mt-2">
+              <div class="follow-btn<%= user.id %>">
+                <%= render 'public/relationships/btn', user: user %>
+              </div>
+            </div>
           <% end %>
         </td>
       </tr>
