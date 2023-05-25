@@ -59,7 +59,7 @@ class Post < ApplicationRecord
 
   ##[管理者側、ユーザー側]サイドバーにソート機能を実装
   def self.sort_index(sort)
-    投稿の古い順に並び替え
+    #投稿の古い順に並び替え
     if sort == 'old'
       order(created_at: :asc)
     #投稿の星が多い順に並び替え
