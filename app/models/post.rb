@@ -59,7 +59,7 @@ class Post < ApplicationRecord
 
   ##[管理者側、ユーザー側]サイドバーにソート機能を実装
   def self.sort_index(sort)
-    #投稿の古い順に並び替え
+    投稿の古い順に並び替え
     if sort == 'old'
       order(created_at: :asc)
     #投稿の星が多い順に並び替え
@@ -75,6 +75,23 @@ class Post < ApplicationRecord
       #投稿の新しい順に並び替え
       order(created_at: :desc)
     end
+    # case (sort)
+    #   #投稿の古い順に並び替え
+    #   when old
+    #     order(created_at: :asc)
+    #   #投稿の星が多い順に並び替え
+    #   when star_count
+    #     order(star: :desc)
+    #   #投稿のいいねが多い順に並び替え
+    #   when favorite_count
+    #     eager_load(:favorites).group('posts.id').order('count(favorites.post_id) DESC')
+    #   #投稿のコメントが多い順に並び替え
+    #   when comment_count
+    #     eager_load(:comments).group('posts.id').order('count(comments.post_id) DESC')
+    #   else
+    #     #投稿の新しい順に並び替え
+    #     order(created_at: :desc)
+    # end
   end
 
 end
