@@ -84,18 +84,24 @@ class Post < ApplicationRecord
   #   end
   # end
 
-  # def self.public_posts_index(params)
-  #   if params[:latest]
-  #     Post.latest.page(params[:page])
-  #   elsif params[:old]
-  #     Post.old.page(params[:page])
-  #   elsif params[:star_count]
-  #     Post.star_count.page(params[:page])
-  #   elsif params[:favorite_count]
-  #     Post.favorite_count.page(params[:page])
-  #   elsif params[:comment_count]
-  #     Post.comment_count.page(params[:page])
-  #   end
-  # end
+  ##[管理者側]サイドバーにソート機能を実装
+  def self.admin_posts_index(sort)
+    #投稿の新しい順に並び替え
+    if sort == 'latest'
+      Post.order(created_at: :desc)
+    #投稿の古い順に並び替え
+    elsif sort == 'old'
+      Post.order(created_at: :asc)
+    #投稿の星が多い順に並び替え
+    elsif sort == 'star_count'
+      Post.order(star: :desc)
+    #投稿のいいねが多い順に並び替え
+    elsif sort == 'favorite_count'
+      Post.eager_load(:favorites).group('posts.id').order('count(favorites.post_id) DESC')
+    #投稿のコメントが多いじゅんに並び替え
+    elsif sort == 'comment_count'
+      Post.eager_load(:comments).group('posts.id').order('count(comments.post_id) DESC')
+    end
+  end
 
 end
