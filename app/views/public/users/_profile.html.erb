@@ -3,7 +3,7 @@
     <div class="col-lg-4 mb-3 text-center">
       <%= image_tag user.get_profile_image(120,120), class: "mt-o rounded-circle"; %>
     </div>
-    <div class="col-lg-5">
+    <div class="col-lg-8">
       <div class="row">
         <label><strong>ニックネーム</strong>：</label>
         <div><%= user.name %></div>
@@ -19,10 +19,8 @@
         <div class="mr-3">投稿件数：<%= user.posts.count %></div>
       </div>
       <div class="row my-2">
-        <div class="follow-count"><%= render 'public/relationships/follow_count', user: user %></div>
-        <% if user != current_user %>
-          <div class="follow-btn<%= user.id %>"><%= render 'public/relationships/btn', user: user %></div>
-        <% end %>
+        <div class="follow-count mb-2"><%= render 'public/relationships/follow_count', user: user %></div>
+        <div class="follow-btn<%= user.id %>"><%= render 'public/relationships/btn', user: user %></div>
       </div>
       <div class="row mt-2 mb-3">
         <% if user == current_user %>
