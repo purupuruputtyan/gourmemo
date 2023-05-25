@@ -71,9 +71,9 @@ class User < ApplicationRecord
   #ユーザー名を曖昧検索をするため
   def self.search_for(content)
     if content != nil
-      User.where('name LIKE ?', '%' + content + '%')
+      where('name LIKE ?', '%' + content + '%').order(created_at: :desc)
     else
-      User.all
+      order(created_at: :desc)
     end
   end
 

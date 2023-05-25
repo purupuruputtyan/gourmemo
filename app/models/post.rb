@@ -51,29 +51,29 @@ class Post < ApplicationRecord
   #メニュー名を曖昧検索するためのメソッド
   def self.search_for(content)
     if content != nil
-      Post.where('menu LIKE ?', '%' + content + '%')
+      where('menu LIKE ?', '%' + content + '%').order(created_at: :desc)
     else
-      Post.all
+      order(created_at: :desc)
     end
   end
 
   ##[管理者側、ユーザー側]サイドバーにソート機能を実装
   def self.sort_index(sort)
-    #投稿の新しい順に並び替え
-    if sort == 'latest'
-      Post.order(created_at: :desc)
     #投稿の古い順に並び替え
-    elsif sort == 'old'
-      Post.order(created_at: :asc)
+    if sort == 'old'
+      order(created_at: :asc)
     #投稿の星が多い順に並び替え
     elsif sort == 'star_count'
-      Post.order(star: :desc)
+      order(star: :desc)
     #投稿のいいねが多い順に並び替え
     elsif sort == 'favorite_count'
-      Post.eager_load(:favorites).group('posts.id').order('count(favorites.post_id) DESC')
+      eager_load(:favorites).group('posts.id').order('count(favorites.post_id) DESC')
     #投稿のコメントが多い順に並び替え
     elsif sort == 'comment_count'
-      Post.eager_load(:comments).group('posts.id').order('count(comments.post_id) DESC')
+      eager_load(:comments).group('posts.id').order('count(comments.post_id) DESC')
+    else
+      #投稿の新しい順に並び替え
+      order(created_at: :desc)
     end
   end
 
