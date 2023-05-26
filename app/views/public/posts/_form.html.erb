@@ -53,13 +53,36 @@
     </div>
   </div>
 
-
+  <% if post.id.nil? %>
     <div class="form-group" id="star">
       <label for="star">
         【また食べたい度】
         <span class="required">必須</span>
       </label>
-  <% if post.id.nil? %>
+      <%= f.hidden_field :star, id: :review_star, class: 'form-control' %>
+      <div id="post_raty"></div>
+    </div>
+    <script>
+      $(document).on('turbolinks:load', function() {
+        let elem = document.querySelector('#post_raty');
+        if (elem == null) return;
+
+        elem.innerHTML = ""
+        let opt = {
+          starOn: "<%= asset_path('star-on.png') %>",
+          starOff: "<%= asset_path('star-off.png') %>",
+          starHalf: "<%= asset_path('star-half.png') %>",
+          scoreName: 'post[star]',
+        };
+        raty(elem, opt);
+      });
+    </script>
+  <% elsif current_page?(edit_post_path) %>
+    <div class="form-group" id="star">
+      <label for="star">
+        【また食べたい度】
+        <span class="required">必須</span>
+      </label>
       <%= f.hidden_field :star, id: :review_star, class: 'form-control' %>
       <div id="post_raty"></div>
     </div>
