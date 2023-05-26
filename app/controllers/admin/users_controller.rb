@@ -29,7 +29,7 @@ class Admin::UsersController < ApplicationController
     @user = current_user
     @user.update(status: 2)
     reset_session
-    flash[:notice] = "退会処理を実行いたしました。s"
+    flash[:notice] = "退会処理を実行いたしました。"
     redirect_to admin_users_path
   end
 

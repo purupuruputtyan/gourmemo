@@ -18,7 +18,7 @@ class Public::SessionsController < Devise::SessionsController
   # def destroy
   #   super
   # end
-  
+
   #deviseやブラウザの仕様でroot_pathに遷移しないことがあるため、あえて記述
   def after_sign_in_path_for(resource)
     root_path
@@ -38,7 +38,7 @@ protected
     @user = User.find_by(email: params[:user][:email])
     if @user
       if @user.valid_password?(params[:user][:password]) && (@user.withdraw?)
-        flash[:notice] = "退会済みです。再度ご登録をしてご利用ください。"
+        flash[:alert] = "退会済みです。再度ご登録をしてご利用ください。"
         redirect_to root_path
       end
     end

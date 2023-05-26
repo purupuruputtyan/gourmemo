@@ -53,7 +53,7 @@ private
   def user_params
     params.require(:user).permit(:name, :profile_image, :introduction, :status)
   end
-  
+
   def user_params_without_image
     params.require(:user).permit(:name, :introduction, :status)
   end
@@ -62,7 +62,7 @@ private
   def is_matching_login_user
     user = User.find(params[:id])
     unless user.id == current_user.id
-      flash[:notice] = "他ユーザーのプロフィール編集画面には遷移できません。"
+      flash[:alert] = "他ユーザーのプロフィール編集画面には遷移できません。"
       redirect_to user_path(current_user.id)
     end
   end
@@ -71,7 +71,7 @@ private
   def ensure_guest_user
     @user = User.find(params[:id])
     if @user.name == "guestuser"
-      flash[:notice] = "ゲストユーザーはプロフィール編集画面へ遷移できません。"
+      flash[:alert] = "ゲストユーザーはプロフィール編集画面へ遷移できません。"
       redirect_to user_path(current_user)
     end
   end

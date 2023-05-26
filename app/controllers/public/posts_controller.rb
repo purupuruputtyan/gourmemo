@@ -74,7 +74,7 @@ private
   def is_matching_login_user
     post = Post.find(params[:id])
     unless post.user_id == current_user.id
-      flash[:notice] = "他ユーザーの投稿編集画面には遷移できません。"
+      flash[:alert] = "他ユーザーの投稿編集画面には遷移できません。"
       redirect_to post_path(post.id)
     end
   end
