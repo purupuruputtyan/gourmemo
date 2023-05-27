@@ -77,7 +77,7 @@
         raty(elem, opt);
       });
     </script>
-  <% elsif current_page?(edit_post_path) %>
+  <% else %>
     <div class="form-group" id="star">
       <label for="star">
         【また食べたい度】
@@ -97,14 +97,11 @@
           starOff: "<%= asset_path('star-off.png') %>",
           starHalf: "<%= asset_path('star-half.png') %>",
           scoreName: 'post[star]',
+          score: <%= post.star %>,
         };
         raty(elem, opt);
       });
     </script>
-  <% else %>
-    <div class="form-group">
-      <%= render "static_rate", post: post %>
-    </div>
   <% end %>
 
   <div class="form-group">

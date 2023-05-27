@@ -57,6 +57,16 @@ class Post < ApplicationRecord
     end
   end
 
+  # scope :latest, -> {order(created_at: :desc)}
+  # #投稿の古い順に並び替え
+  # scope :old, -> {order(created_at: :asc)}
+  # #投稿の星が多い順に並び替え
+  # scope :star_count, -> {order(star: :desc)}
+  # #投稿のいいねが多い順に並び替え
+  # scope :favorite_count, -> {eager_load(:favorites).group('posts.id').order('count(favorites.post_id) DESC')}
+  # #投稿のコメントが多いじゅんに並び替え
+  # scope :comment_count, -> {eager_load(:comments).group('posts.id').order('count(comments.post_id) DESC')}
+
   ##[管理者側、ユーザー側]サイドバーにソート機能を実装
   def self.sort_index(sort)
     #投稿の古い順に並び替え
