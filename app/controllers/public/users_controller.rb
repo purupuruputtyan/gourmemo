@@ -22,6 +22,7 @@ class Public::UsersController < ApplicationController
       redirect_to  my_page_path
       flash[:notice] = "編集に成功しました。"
     else
+      #26,27行目はプロフィール編集画面をリロードしてしまった時に元の画像表示を消えなくさせるため。
       @user.reload
       @user.assign_attributes(user_params_without_image)
       render :edit
