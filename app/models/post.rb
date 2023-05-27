@@ -25,6 +25,7 @@ class Post < ApplicationRecord
 
   #トップページを過去１週間のいいね順で投稿一覧を表示させるため
   def self.week_posts
+    #(今日の日付から-6することで過去1週間の日付を取得)..(今日の日付が変わる最後の時間23:59:59を取得)
     where(created_at: ((Time.current.at_end_of_day - 6.day).at_beginning_of_day)..(Time.current.at_end_of_day))
   end
 
