@@ -40,6 +40,7 @@ Comment.create!(
     {user_id: users[0].id, post_id: posts[3].id, comment: '美味しそうですね。'},
     {user_id: users[1].id, post_id: posts[2].id, comment: 'お腹が減ってきました。'},
     {user_id: users[2].id, post_id: posts[1].id, comment: '店内は綺麗でしたか？'},
-    {user_id: users[3].id, post_id: posts[0].id, comment: '結構混んでました？'}
+    {user_id: users[3].id, post_id: posts[0].id, comment: '結構混んでました？'},
+    {user_id: users[3].id, post_id: posts[2].id, comment: '王道ですね！'}
   ]
   )
