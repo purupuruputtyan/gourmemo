@@ -3,14 +3,8 @@ class Admin::PostsController < ApplicationController
 
   def index
     ##サイドバーにソート機能を実装
-    @sort = params[:sort]
-    if params[:sort]
-      #sort_indexメソッドはモデルに記述
-      @posts = Post.sort_index(@sort).page(params[:page])
-    else
-      #デフォルトは新しい順で表示
-      @posts = Post.all.order(created_at: :desc).page(params[:page])
-    end
+    #sort_indexメソッドはモデルに記述
+    @posts = Post.sort_index(params[:sort]).page(params[:page])
   end
 
   def show
