@@ -121,7 +121,7 @@ label span.required {
   border: 1px solid #dec8d6;
 }
 
-//プロフィール編集画面、プロフィール機能
+//プロフィール編集画面、プレビュー機能
 .edit-img{
   width: 120px;
   height: 120px;
@@ -129,6 +129,17 @@ label span.required {
   border-radius: 50%;
   background-position: center center;
   border: 1px solid #dec8d6;
+}
+
+//新規投稿・編集時、アップロードする画像のプレビューをする
+.post-img, .no-post-image{
+  width: 350px;
+  height: 250px;
+  object-fit: cover;
+  background-position: center center;
+  text-align: center;
+  border: 1px solid #dec8d6;
+  border-radius: 2%;
 }
 
 @media screen and (max-width: 425px) {
@@ -148,5 +159,16 @@ label span.required {
   //ユーザー一覧の「自己紹介文」とユーザー側でログインしている際のロゴをスマホ幅の時のみ非表示
   .spview {
     display: none;
+  }
+  //新規投稿・編集時、アップロードする画像のプレビューをする
+  //スマホ幅のみ他の幅よりサイズを下げる
+  .post-img, .no-post-image{
+    width: 250px;
+    height: 170px;
+    object-fit: cover;
+    background-position: center center;
+    text-align: center;
+    border: 1px solid #dec8d6;
+    border-radius: 2%;
   }
 }

@@ -2,6 +2,13 @@
   <%= render 'layouts/errors', obj: post %>
   <div class="form-group">
     <label for="post_image">【お食事の写真】</label>
+    <div id="post-image" class="text-center text-md-left">
+    <% if @post.image.present? %>
+      <%= image_tag @post.get_image(350, 250), class: "rounded border" %>
+    <% else %>
+      <%= image_tag 'no_post_image.jpeg', class: "no-post-image" %>
+    <% end %>
+    </div>
     <div class="mt-2"><%= f.file_field :image, accept: "image/*" %></div>
   </div>
   <div class="form-group">

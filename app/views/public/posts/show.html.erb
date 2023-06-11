@@ -27,7 +27,7 @@
             </div>
             <% if @post.user == current_user %>
               <div class="d-grid gap-2 d-md-block text-center">
-                <%= link_to "投稿を編集", edit_post_path, class: 'btn btn-success' %>
+                <%= link_to "投稿を編集", edit_post_path, class: 'btn btn-success', 'data-turbolinks': false %>
                 <%= link_to "投稿を削除", post_path, method: :delete, "data-confirm" => "本当に削除しますか？", class: 'btn btn-danger' %>
               </div>
             <% end %>

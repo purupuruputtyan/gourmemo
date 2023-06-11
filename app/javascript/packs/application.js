@@ -25,6 +25,7 @@ window.raty = function(elem,opt){
   return raty;
 }
 import "./preview";
+import "./post";
 
 Rails.start()
 Turbolinks.start()

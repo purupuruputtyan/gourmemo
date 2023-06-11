@@ -45,6 +45,9 @@ class Public::PostsController < ApplicationController
       flash[:notice] = "編集に成功しました。"
       redirect_to post_path(@post.id)
     else
+      #26,27行目は、必須箇所をブランクにするなど編集に失敗した時に元の画像表示を消えなくさせるため。
+      @post.reload
+      @post.assign_attributes(post_params_without_image)
       render :edit
     end
   end
