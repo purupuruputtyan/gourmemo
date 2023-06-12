@@ -74,6 +74,7 @@ private
     params.require(:post).permit(:image, :shop_name, :address, :latitude, :longitude, :menu, :impression, :price, :volume_status, :star)
   end
 
+  #投稿の編集画面で、入力必須がblankになってしまった時にプレビューを表示させるため
   def post_params_without_image
     params.require(:post).permit(:shop_name, :address, :latitude, :longitude, :menu, :impression, :price, :volume_status, :star)
   end

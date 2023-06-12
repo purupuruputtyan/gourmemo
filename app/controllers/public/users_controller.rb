@@ -55,6 +55,7 @@ private
     params.require(:user).permit(:name, :profile_image, :introduction, :status)
   end
 
+  #ユーザーの編集画面で、入力必須がblankになってしまった時にプレビューを表示させるため
   def user_params_without_image
     params.require(:user).permit(:name, :introduction, :status)
   end
