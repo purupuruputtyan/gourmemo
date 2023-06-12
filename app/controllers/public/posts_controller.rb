@@ -26,6 +26,10 @@ class Public::PostsController < ApplicationController
       redirect_to post_path(@post.id)
     else
       @posts = Post.all
+      #この記述↓がないとimage以外をblankにして「新規登録」を押した時に、
+      #imageだけパラメータに渡ってしまうため、
+      #必須入力のバリデーションと競合してエラーが起きてしまう。
+      @post.image = nil
       render :new
     end
   end
@@ -68,6 +72,10 @@ private
 
   def post_params
     params.require(:post).permit(:image, :shop_name, :address, :latitude, :longitude, :menu, :impression, :price, :volume_status, :star)
+  end
+
+  def post_params_without_image
+    params.require(:post).permit(:shop_name, :address, :latitude, :longitude, :menu, :impression, :price, :volume_status, :star)
   end
 
   #カレントユーザー以外が発信した投稿の編集画面に遷移できないようアクセス制限
