@@ -2,7 +2,6 @@
 //3と25行目はドキュメントが読み込まれたら2〜24行目までの処理を走らせるために待ち構えている。
 //逆にドキュメントが読み込まれなければ何も処理を走らせない。
 document.addEventListener('DOMContentLoaded', () => {
-  console.log('loadされました')
   // no-post-imageのsrc属性を事前に取得しておく
   const noPostImgeSrc = document.getElementsByClassName('no-post-image')[0].src;
   //39行目に値が入った時のための準備。この時点では何も処理はされない
