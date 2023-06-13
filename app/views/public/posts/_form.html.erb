@@ -5,8 +5,6 @@
     <div id="post-image" class="text-center text-md-left">
     <% if @post.image.present? %>
       <%= image_tag @post.get_image(350, 250), class: "rounded border" %>
-      <!--↓edit画面で画像を選択しないで「キャンセル」を押した時に画像が消えないようにするため↓-->
-      <%#= image_tag 'no_post_image.jpeg', class: "no-post-image", style: "display:none;" %>
     <% else %>
       <%= image_tag 'no_post_image.jpeg', class: "no-post-image" %>
     <% end %>
