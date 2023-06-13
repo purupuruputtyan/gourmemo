@@ -2,6 +2,8 @@
 //3と25行目はドキュメントが読み込まれたら2〜24行目までの処理を走らせるために待ち構えている。
 //逆にドキュメントが読み込まれなければ何も処理を走らせない。
 document.addEventListener('DOMContentLoaded', () => {
+  // no-post-imageのsrc属性を事前に取得しておく
+  const noPostImgeSrc = document.getElementsByClassName('no-post-image')[0].src;
   //39行目に値が入った時のための準備。この時点では何も処理はされない
   const createImageHTML = (blob) => {
     //imageElement = <div id="post-image"></div> <=divにidをつけている
@@ -33,10 +35,15 @@ document.addEventListener('DOMContentLoaded', () => {
       }
       //e.target.files[0];はフォームのこと。26でチェンジが起きた時にフォームに挿入された画像を定義している
       const file = e.target.files[0];
-      //srcに画像を表示させるためのURLを持たせるためにcreateObjectURL(file);でさっきの画像のURLを生成している
-      const blob = window.URL.createObjectURL(file);
-      //6行目のcreateImageHTMに37行目に作成したURLを渡している
-      createImageHTML(blob);
+      
+      if (file) {
+        //srcに画像を表示させるためのURLを持たせるためにcreateObjectURL(file);でさっきの画像のURLを生成している
+        const blob = window.URL.createObjectURL(file);
+        //6行目のcreateImageHTMに37行目に作成したURLを渡している
+        createImageHTML(blob); 
+      } else {
+        createImageHTML(noPostImgeSrc);
+      }
     });
   }
 });
