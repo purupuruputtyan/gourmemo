@@ -1,4 +1,5 @@
 <div class="container">
+  <!--begin:user info-->
   <div class="row">
     <div class="col-lg-4 mb-3 text-center">
       <%= image_tag user.get_profile_image(120,120), class: "mt-o rounded-circle"; %>
@@ -27,6 +28,8 @@
       <% end %>
     </div>
   </div>
+  <!--end:user info-->
+  <!--begin:user introduction-->
   <div class="row  pl-3">
     <strong>自己紹介</strong>
   </div>
@@ -45,7 +48,9 @@
       </div>
     </div>
   </div>
+  <!--end:user introduction-->
   <hr>
+  <!--begin:post history-->
   <div class="row">
     <div class="col-12">
       <h2 class="headline col-lg-4 col-md-7 col-sm-12 text-center mt-3">投稿履歴</h2>
@@ -58,4 +63,5 @@
       <% end %>
     </div>
   </div>
+  <!--end:post history-->
 </div>

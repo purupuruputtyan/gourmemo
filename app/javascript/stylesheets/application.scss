@@ -102,6 +102,7 @@ box-shadow: 1px 1px 1px rgba(0, 0, 0, 0.2);
   filter:drop-shadow(4px 4px 4px #fff);
 }
 //非ログイン時の「グルメモへようこそ！」の<br>を無効化する
+//ユーザー一覧画面のフォローボタンの<br>を無効化する
 .br-sp {
   display: none;
 }
@@ -142,17 +143,19 @@ label span.required {
   border-radius: 2%;
 }
 
+//スマホ幅の時のみ有効化させたい設定
 @media screen and (max-width: 425px) {
-  //ユーザー一覧のプロフィール画像をスマホ幅の時に小さくする
+  //ユーザー一覧のプロフィール画像を小さくする
   .users-index-image {
-    width: 60px;
-    height: 60px;
+    width: 50px;
+    height: 50px;
     object-fit: cover;
     border-radius: 50%;
     background-position: center center;
     border: 1px solid #dec8d6;
   }
   //非ログイン時の「グルメモへようこそ！」の<br>を有効化する
+  //ユーザー一覧画面のフォローボタンがスマホ幅だと変なところで改行が入るため<br>を有効化する
   .br-sp {
     display: inline;
   }
@@ -170,5 +173,12 @@ label span.required {
     text-align: center;
     border: 1px solid #dec8d6;
     border-radius: 2%;
+  }
+  //スマホ幅の時のみ投稿一覧の星を小さくする
+  .index-raty-size{
+    img{
+      width: 20px;
+      height: auto;
+    }
   }
 }
