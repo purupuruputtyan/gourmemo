@@ -2,15 +2,16 @@
   <%= render 'layouts/errors', obj: post %>
   <div class="form-group">
     <label for="post_image">【お食事の写真】</label>
+    <!--begin:JavaScript post.js 画像プレビュー表示-->
     <div id="post-image" class="text-center text-md-left">
     <% if @post.image.present? %>
       <%= image_tag @post.get_image(350, 250), class: "rounded border" %>
-      <!--↓edit画面で画像を選択しないで「キャンセル」を押した時に画像が消えないようにするため↓-->
       <%= image_tag 'no_post_image.jpeg', class: "no-post-image", style: "display:none;" %>
     <% else %>
       <%= image_tag 'no_post_image.jpeg', class: "no-post-image" %>
     <% end %>
     </div>
+    <!--end:JavaScript post.js 画像プレビュー表示-->
     <div class="mt-2"><%= f.file_field :image, accept: "image/*" %></div>
   </div>
   <div class="form-group">
