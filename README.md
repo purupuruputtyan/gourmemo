@@ -47,6 +47,8 @@ SNSとレビューサイトが掛け合わさることにより、SNSのよう�
 * 管理者監視機能（不適切な投稿、コメントの削除、ユーザーの退会処理）
 * 投稿機能（CURD）
 * Raty☆評価機能（投稿機能で投稿する際に☆評価をする）
+<img width="300" alt="スクリーンショット 2023-06-18 15 55 24" src="https://github.com/purupuruputtyan/gourmemo/assets/125232334/2924a245-fd60-4b0c-96d4-8c49e3aa486a">
+
 ![星評価](https://github.com/purupuruputtyan/gourmemo/assets/125232334/46a8e465-14be-4ac8-b71a-2a3d25caa58d)
 * いいね機能（非同期化）
 * フォロー機能（非同期化）
