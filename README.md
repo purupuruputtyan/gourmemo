@@ -1,7 +1,7 @@
 # グルメモ
 
 ## URL
-[グルメモURL](https://gourmemo.blog/)
+[https://gourmemo.blog](https://gourmemo.blog/)</br>
 【ゲストログイン】のボタンをクリックしていただければ、ユーザー登録不要でログインができます。</br>
 管理者へは非ログイン時のフッターに存在する[管理者はこちら](https://gourmemo.blog/admin/sign_in)をクリックし、</br>
 下記情報をご入力いただけますとログインができます。
@@ -43,7 +43,7 @@ SNSとレビューサイトが掛け合わさることにより、SNSのよう�
 ## 実装機能一覧
 * ゲストログイン機能
 * ユーザー公開、非公開、退会機能
-* 管理者監視機能
+* 管理者監視機能（不適切な投稿、コメントの削除、ユーザーの退会処理）
 * 投稿機能（CURD）
 * いいね機能（非同期化）
 * フォロー機能（非同期化）
@@ -60,7 +60,7 @@ SNSとレビューサイトが掛け合わさることにより、SNSのよう�
 * [アプリケーション詳細設計](https://docs.google.com/spreadsheets/d/1JDjvKIgUSdZqSr7BulIy5VqYVIshHa2IlF3i3uH2l5c/edit#gid=549108681)
 
 ## AWS構成図
-* [AWS構成図](https://app.diagrams.net/#G1_pyKTptPluKeP5UMT6_8leoKqWY4E3ZS)
+* [AWS構成図](https://drive.google.com/file/d/1TFz9OUpKd1ETvhEp_IrslHJGrbKXgcuR/view?usp=drive_link)
 
 ## 開発環境
 - OS：Linux(CentOS)
