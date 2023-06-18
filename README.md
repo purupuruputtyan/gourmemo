@@ -58,7 +58,7 @@ SNSとレビューサイトが掛け合わさることにより、SNSのよう�
  <img width="300" alt="スクリーンショット 2023-06-18 15 56 18" src="https://github.com/purupuruputtyan/gourmemo/assets/125232334/98183145-0734-4b27-ab77-c2dfe5c4c30a"></br>
 * レスポンシブデザイン</br>
  【PC画面】
- <img width="350" alt="スクリーンショット 2023-06-18 16 00 49" src="https://github.com/purupuruputtyan/gourmemo/assets/125232334/e84f9779-0c52-404d-8d84-bdc6b7c40e58"></br>
+ <img width="350" alt="スクリーンショット 2023-06-18 16 00 49" src="https://github.com/purupuruputtyan/gourmemo/assets/125232334/e84f9779-0c52-404d-8d84-bdc6b7c40e58">
  【スマホ画面】
  <img width="150" alt="スクリーンショット 2023-06-18 13 01 12" src="https://github.com/purupuruputtyan/gourmemo/assets/125232334/01a176ce-3338-4fff-8f88-6cac9a3119db"></br>
 
