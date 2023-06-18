@@ -1,4 +1,5 @@
 # グルメモ
+![トップ画面](https://github.com/purupuruputtyan/gourmemo/assets/125232334/e118b45e-6208-43cc-9d4f-536cc78de3d0)
 
 ## URL
 [https://gourmemo.blog](https://gourmemo.blog/)</br>
