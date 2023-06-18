@@ -59,8 +59,10 @@ SNSとレビューサイトが掛け合わさることにより、SNSのよう�
 * レスポンシブデザイン</br>
  【PC画面】
  <img width="350" alt="スクリーンショット 2023-06-18 16 00 49" src="https://github.com/purupuruputtyan/gourmemo/assets/125232334/e84f9779-0c52-404d-8d84-bdc6b7c40e58">
+ <img width="350" alt="スクリーンショット 2023-06-18 16 56 04" src="https://github.com/purupuruputtyan/gourmemo/assets/125232334/c9dd5f09-341a-45cc-b1dd-d5e72ba6b7ce"></br>
  【スマホ画面】
- <img width="150" alt="スクリーンショット 2023-06-18 13 01 12" src="https://github.com/purupuruputtyan/gourmemo/assets/125232334/01a176ce-3338-4fff-8f88-6cac9a3119db"></br>
+ <img width="150" alt="スクリーンショット 2023-06-18 13 01 12" src="https://github.com/purupuruputtyan/gourmemo/assets/125232334/01a176ce-3338-4fff-8f88-6cac9a3119db">
+ <img width="150" alt="スクリーンショット 2023-06-18 16 59 08" src="https://github.com/purupuruputtyan/gourmemo/assets/125232334/db0458dc-55be-41ee-aaca-5423666c4cae"></br>
 
 ## 設計書
 * ER-図</br>
