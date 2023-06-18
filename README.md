@@ -56,14 +56,15 @@ SNSとレビューサイトが掛け合わさることにより、SNSのよう�
 * 検索機能（ユーザー名、メニュー名あいまい検索）
 * マップ表示（gem:Geocorder、API:Geocoding API、Maps JavaScript API）
 * <img width="300" alt="スクリーンショット 2023-06-18 15 56 18" src="https://github.com/purupuruputtyan/gourmemo/assets/125232334/98183145-0734-4b27-ab77-c2dfe5c4c30a">
-* レスポンシブデザイン
-* 【PC画面】
+* レスポンシブデザイン</br>
+ 【PC画面】
 <img width="350" alt="スクリーンショット 2023-06-18 16 00 49" src="https://github.com/purupuruputtyan/gourmemo/assets/125232334/e84f9779-0c52-404d-8d84-bdc6b7c40e58">
-* 【スマホ画面】
+ 【スマホ画面】
 <img width="150" alt="スクリーンショット 2023-06-18 13 01 12" src="https://github.com/purupuruputtyan/gourmemo/assets/125232334/01a176ce-3338-4fff-8f88-6cac9a3119db">
 
 ## 設計書
-* ![ER-図](https://github.com/purupuruputtyan/gourmemo/assets/125232334/43b6eb7d-361a-44f2-9c02-0387a3fab762)
+* ER-図</br>
+![ER-図](https://github.com/purupuruputtyan/gourmemo/assets/125232334/43b6eb7d-361a-44f2-9c02-0387a3fab762)
 * [テーブル定義書](https://docs.google.com/spreadsheets/d/14xiu30fAtfGhKccVJcjfzS4OSJhOn4Bb7xRlfqMfLr0/edit#gid=1373217982)
 * [アプリケーション詳細設計](https://docs.google.com/spreadsheets/d/1JDjvKIgUSdZqSr7BulIy5VqYVIshHa2IlF3i3uH2l5c/edit#gid=549108681)
 
