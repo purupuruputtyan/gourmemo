@@ -47,7 +47,7 @@ SNSとレビューサイトが掛け合わさることにより、SNSのよう�
 * 管理者監視機能（不適切な投稿、コメントの削除、ユーザーの退会処理）
 * 投稿機能（CURD）
 * Raty☆評価機能（投稿機能で投稿する際に☆評価をする）</br>
- <img width="300" alt="スクリーンショット 2023-06-18 15 55 24" src="https://github.com/purupuruputtyan/gourmemo/assets/125232334/2924a245-fd60-4b0c-96d4-8c49e3aa486a">
+ <img width="300" alt="スクリーンショット 2023-06-18 15 55 24" src="https://github.com/purupuruputtyan/gourmemo/assets/125232334/2924a245-fd60-4b0c-96d4-8c49e3aa486a"></br>
 * いいね機能（非同期化）
 * フォロー機能（非同期化）
 * コメント機能（非同期化）
@@ -55,12 +55,12 @@ SNSとレビューサイトが掛け合わさることにより、SNSのよう�
 * 画像プレビュー機能（JavaScript:新規投稿画面、投稿編集画面、プロフィール編集画面）
 * 検索機能（ユーザー名、メニュー名あいまい検索）
 * マップ表示（gem:Geocorder、API:Geocoding API、Maps JavaScript API）</br>
- <img width="300" alt="スクリーンショット 2023-06-18 15 56 18" src="https://github.com/purupuruputtyan/gourmemo/assets/125232334/98183145-0734-4b27-ab77-c2dfe5c4c30a">
+ <img width="300" alt="スクリーンショット 2023-06-18 15 56 18" src="https://github.com/purupuruputtyan/gourmemo/assets/125232334/98183145-0734-4b27-ab77-c2dfe5c4c30a"></br>
 * レスポンシブデザイン</br>
  【PC画面】
- <img width="350" alt="スクリーンショット 2023-06-18 16 00 49" src="https://github.com/purupuruputtyan/gourmemo/assets/125232334/e84f9779-0c52-404d-8d84-bdc6b7c40e58">
+ <img width="350" alt="スクリーンショット 2023-06-18 16 00 49" src="https://github.com/purupuruputtyan/gourmemo/assets/125232334/e84f9779-0c52-404d-8d84-bdc6b7c40e58"></br>
  【スマホ画面】
- <img width="150" alt="スクリーンショット 2023-06-18 13 01 12" src="https://github.com/purupuruputtyan/gourmemo/assets/125232334/01a176ce-3338-4fff-8f88-6cac9a3119db">
+ <img width="150" alt="スクリーンショット 2023-06-18 13 01 12" src="https://github.com/purupuruputtyan/gourmemo/assets/125232334/01a176ce-3338-4fff-8f88-6cac9a3119db"></br>
 
 ## 設計書
 * ER-図</br>
