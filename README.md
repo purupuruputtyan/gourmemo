@@ -46,22 +46,26 @@ SNSとレビューサイトが掛け合わさることにより、SNSのよう�
 * ユーザー公開、非公開、退会機能
 * 管理者監視機能（不適切な投稿、コメントの削除、ユーザーの退会処理）
 * 投稿機能（CURD）
+* Raty☆評価機能（投稿機能で投稿する際に☆評価をする）
+![星評価](https://github.com/purupuruputtyan/gourmemo/assets/125232334/46a8e465-14be-4ac8-b71a-2a3d25caa58d)
 * いいね機能（非同期化）
 * フォロー機能（非同期化）
 * コメント機能（非同期化）
 * ソート機能（新しい順、古い順、いいね多い順、星多い順、コメント多い順）
 * 画像プレビュー機能（JavaScript:新規投稿画面、投稿編集画面、プロフィール編集画面）
-* 検索機能(ユーザー名、メニュー名あいまい検索)
+* 検索機能（ユーザー名、メニュー名あいまい検索）
 * マップ表示（gem:Geocorder、API:Geocoding API、Maps JavaScript API）
+![マップ表示](https://github.com/purupuruputtyan/gourmemo/assets/125232334/67260332-919b-48ae-b9d6-8da2fe21f210)
 * レスポンシブデザイン
+【PC画面】
+![PC](https://github.com/purupuruputtyan/gourmemo/assets/125232334/c0cb68d8-8455-4d8d-8d35-da17ed4a48c3)
+【スマホ画面】
+![スマホ](https://github.com/purupuruputtyan/gourmemo/assets/125232334/be414eed-a560-42bf-8754-352dad20074c)
 
 ## 設計書
-* [ER-図](https://app.diagrams.net/#G150Jy_cvpsanD-eS_ZyifpeQhiiZE3qx6)
+* ![ER-図](https://github.com/purupuruputtyan/gourmemo/assets/125232334/43b6eb7d-361a-44f2-9c02-0387a3fab762)
 * [テーブル定義書](https://docs.google.com/spreadsheets/d/14xiu30fAtfGhKccVJcjfzS4OSJhOn4Bb7xRlfqMfLr0/edit#gid=1373217982)
 * [アプリケーション詳細設計](https://docs.google.com/spreadsheets/d/1JDjvKIgUSdZqSr7BulIy5VqYVIshHa2IlF3i3uH2l5c/edit#gid=549108681)
-
-## AWS構成図
-* [AWS構成図](https://drive.google.com/file/d/1TFz9OUpKd1ETvhEp_IrslHJGrbKXgcuR/view?usp=drive_link)
 
 ## 開発環境
 - OS：Linux(CentOS)
