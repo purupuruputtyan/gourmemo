@@ -3,6 +3,7 @@ class Post < ApplicationRecord
   validates :shop_name, presence: true, length: { maximum: 30 }
   validates :menu, presence: true, length: { maximum: 30 }
   validates :impression, presence: true, length: { maximum: 100 }
+  validates :price, numericality: { greater_than_or_equal_to: 0, less_than_or_equal_to: 9_999_999 }, format: { with: /\A[0-9]+\z/ }
   validates :volume_status, presence: true
   validates :star, presence: true
 
