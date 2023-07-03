@@ -68,6 +68,8 @@ SNSとレビューサイトが掛け合わさることにより、SNSのよう�
 ![ER-図](https://github.com/purupuruputtyan/gourmemo/assets/125232334/43b6eb7d-361a-44f2-9c02-0387a3fab762)
 * [テーブル定義書](https://docs.google.com/spreadsheets/d/14xiu30fAtfGhKccVJcjfzS4OSJhOn4Bb7xRlfqMfLr0/edit#gid=1373217982)
 * [アプリケーション詳細設計](https://docs.google.com/spreadsheets/d/1JDjvKIgUSdZqSr7BulIy5VqYVIshHa2IlF3i3uH2l5c/edit#gid=549108681)
+* インフラ構成図</br>
+![AWS構成図 drawio](https://github.com/purupuruputtyan/gourmemo/assets/125232334/8c6f24c7-4fa7-4558-bd25-5de78327e719)
 
 ## 開発環境
 - OS：Linux(CentOS)
