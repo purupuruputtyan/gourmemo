@@ -23,7 +23,20 @@
   </div>
   <div class="form-group">
     <label for="shop_address_introduction">【住所】</label>
-    <div><%= f.text_field :address, class: "form-control", placeholder: "東京都渋谷区代々木神園町0-0、東京駅、etc、、、" %></div>
+    <div><%= f.text_field :address, class: "form-control", placeholder: "東京都渋谷区代々木神園町0-0、東京駅、etc、、、", id: "address-input" %></div>
+    <button type="button" onclick="codeAddress()" class="btn btn-sm btn-primary">住所検索</button>
+  </div>
+  <div class="form-group">
+    <label for="map">【住所地図】</label>
+    <div id="map"></div>
+    <style>
+      #map {
+        height: 200px;
+        width: 100%;
+      }
+    </style>
+    <%= f.hidden_field :latitude, id: "latitude-input" %>
+    <%= f.hidden_field :longitude, id: "longitude-input" %>
   </div>
   <div class="form-group">
     <label for="menu">
@@ -122,3 +135,53 @@
     <% end %>
   </div>
 <% end %>
+
+<script>
+  let map;
+  let marker;
+
+  function initMap() {
+    const mapOptions = {
+      center: { lat: <%= @post.latitude || 0 %>, lng: <%= @post.longitude || 0 %> },
+      zoom: 16
+    };
+
+    map = new google.maps.Map(document.getElementById('map'), mapOptions);
+
+    marker = new google.maps.Marker({
+      position: { lat: <%= @post.latitude || 0 %>, lng: <%= @post.longitude || 0 %> },
+      map: map,
+      draggable: true
+    });
+
+    google.maps.event.addListener(marker, 'dragend', function(event) {
+      document.getElementById('latitude-input').value = event.latLng.lat();
+      document.getElementById('longitude-input').value = event.latLng.lng();
+    });
+  }
+
+  function codeAddress() {
+    const geocoder = new google.maps.Geocoder();
+    const address = document.getElementById('address-input').value;
+
+    geocoder.geocode({ 'address': address }, function(results, status) {
+      if (status === 'OK') {
+        map.setCenter(results[0].geometry.location);
+        marker.setPosition(results[0].geometry.location);
+        document.getElementById('latitude-input').value = results[0].geometry.location.lat();
+        document.getElementById('longitude-input').value = results[0].geometry.location.lng();
+      } else {
+        alert('該当の住所が見つかりませんでした');
+      }
+    });
+  }
+
+  // DOMの読み込み完了後にGoogle Maps APIを読み込む
+  document.addEventListener('DOMContentLoaded', function() {
+    const script = document.createElement('script');
+    script.src = 'https://maps.googleapis.com/maps/api/js?key=<%= ENV['GOOGLEMAP'] %>&callback=initMap';
+    script.defer = true;
+    script.async = true;
+    document.head.appendChild(script);
+  });
+</script>
